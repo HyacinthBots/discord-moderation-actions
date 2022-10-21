@@ -7,21 +7,21 @@
  * please see the LICENSE file or https://mit-license.org/
  */
 
+@file:Suppress("DuplicatedCode")
+
 package io.github.nocomment1105.discordmoderationactions.builder
 
 import com.kotlindiscord.kord.extensions.commands.application.slash.SlashCommandContext
-import com.kotlindiscord.kord.extensions.utils.dm
-import com.kotlindiscord.kord.extensions.utils.timeoutUntil
 import com.kotlindiscord.kord.extensions.utils.toDuration
 import dev.kord.core.behavior.ban
-import dev.kord.core.behavior.channel.createEmbed
-import dev.kord.core.behavior.edit
-import dev.kord.core.behavior.getChannelOfOrNull
-import dev.kord.core.entity.channel.GuildMessageChannel
 import io.github.nocomment1105.discordmoderationactions.builder.action.BanActionBuilder
 import io.github.nocomment1105.discordmoderationactions.builder.action.KickActionBuilder
 import io.github.nocomment1105.discordmoderationactions.builder.action.SoftBanActionBuilder
-import io.github.nocomment1105.discordmoderationactions.enums.DMOutcome
+import io.github.nocomment1105.discordmoderationactions.utils.Result
+import io.github.nocomment1105.discordmoderationactions.utils.logPrivately
+import io.github.nocomment1105.discordmoderationactions.utils.logPublicly
+import io.github.nocomment1105.discordmoderationactions.utils.removeTimeout
+import io.github.nocomment1105.discordmoderationactions.utils.sendDm
 import kotlinx.datetime.TimeZone
 
 /**
@@ -31,112 +31,87 @@ import kotlinx.datetime.TimeZone
  * @param builder - Builder lambda used for setting up the ban action
  * @see BanActionBuilder
  */
-@Suppress("DuplicatedCode")
-public suspend inline fun SlashCommandContext<*, *>.ban(builder: BanActionBuilder.() -> Unit) {
+public suspend inline fun SlashCommandContext<*, *>.ban(builder: BanActionBuilder.() -> Unit): Result {
 	val action = BanActionBuilder()
 	action.builder()
 
-	if (action.sendDm) {
-		val dm = action.user.asUser().dm {
-			action.dmEmbedBuilder
-		}
-		if (dm == null) {
-			action.dmOutcome = DMOutcome.FAIL.message()
-		} else {
-			action.dmOutcome = DMOutcome.SUCCESS.message()
-		}
-	}
+	action.dmOutcome = sendDm(action.sendDm, action.user, action.dmEmbedBuilder).message()
 
-	if (action.removeTimeout) {
-		action.user.asMemberOrNull(guild!!.id)?.edit { timeoutUntil = null }
-	}
+	removeTimeout(action.removeTimeout, action.user)
 
 	action.user.asMember(guild!!.id).ban {
 		reason = action.reason
 		deleteMessageDuration = action.deleteMessageDuration.toDuration(TimeZone.UTC)
 	}
 
-	if (action.logPublicly != null && action.logPublicly == true) {
-		channel.createEmbed {
-			action.publicActionEmbedBuilder
-		}
-	}
+	logPublicly(action.logPublicly, channel, action.publicActionEmbedBuilder)
 
-	if (!action.sendActionLog && (action.hasLogChannelPerms == null || action.hasLogChannelPerms == true)) {
-		guild!!.getChannelOfOrNull<GuildMessageChannel>(action.loggingChannel.id)?.createEmbed {
+	return when (
+		logPrivately(
+			action.sendActionLog,
+			action.hasLogChannelPerms,
+			action.loggingChannel,
 			action.actionEmbedBuilder
-		}
+		)
+	) {
+		"" -> Result("Well fuck")
+		"success" -> Result("yey")
+		else -> Result("No log sent")
 	}
 }
 
 @Suppress("DuplicatedCode")
-public suspend inline fun SlashCommandContext<*, *>.softban(builder: SoftBanActionBuilder.() -> Unit) {
+public suspend inline fun SlashCommandContext<*, *>.softban(builder: SoftBanActionBuilder.() -> Unit): Result {
 	val action = SoftBanActionBuilder()
 	action.builder()
 
-	if (action.sendDm) {
-		val dm = action.user.asUser().dm {
-			action.dmEmbedBuilder
-		}
-		if (dm == null) {
-			action.dmOutcome = DMOutcome.FAIL.message()
-		} else {
-			action.dmOutcome = DMOutcome.SUCCESS.message()
-		}
-	}
+	action.dmOutcome = sendDm(action.sendDm, action.user, action.dmEmbedBuilder).message()
 
-	if (action.removeTimeout) {
-		action.user.asMemberOrNull(guild!!.id)?.edit { timeoutUntil = null }
-	}
+	removeTimeout(action.removeTimeout, action.user)
 
 	action.user.asMember(guild!!.id).ban {
 		reason = action.reason
 		deleteMessageDuration = action.deleteMessageDuration.toDuration(TimeZone.UTC)
 	}
 
-	if (action.logPublicly != null && action.logPublicly == true) {
-		channel.createEmbed {
-			action.publicActionEmbedBuilder
-		}
-	}
+	logPublicly(action.logPublicly, channel, action.publicActionEmbedBuilder)
 
-	if (!action.sendActionLog && (action.hasLogChannelPerms == null || action.hasLogChannelPerms == true)) {
-		guild!!.getChannelOfOrNull<GuildMessageChannel>(action.loggingChannel.id)?.createEmbed {
+	return when (
+		logPrivately(
+			action.sendActionLog,
+			action.hasLogChannelPerms,
+			action.loggingChannel,
 			action.actionEmbedBuilder
-		}
+		)
+	) {
+		"" -> Result("Well fuck")
+		"success" -> Result("yey")
+		else -> Result("No log sent")
 	}
 }
 
-public suspend inline fun SlashCommandContext<*, *>.kick(builder: KickActionBuilder.() -> Unit) {
+public suspend inline fun SlashCommandContext<*, *>.kick(builder: KickActionBuilder.() -> Unit): Result {
 	val action = KickActionBuilder()
 	action.builder()
 
-	if (action.sendDm) {
-		val dm = action.user.asUser().dm {
-			action.dmEmbedBuilder
-		}
-		if (dm == null) {
-			action.dmOutcome = DMOutcome.FAIL.message()
-		} else {
-			action.dmOutcome = DMOutcome.SUCCESS.message()
-		}
-	}
+	action.dmOutcome = sendDm(action.sendDm, action.user, action.dmEmbedBuilder).message()
 
-	if (action.removeTimeout) {
-		action.user.asMemberOrNull(guild!!.id)?.edit { timeoutUntil = null }
-	}
+	removeTimeout(action.removeTimeout, action.user)
 
 	action.user.asMember(guild!!.id).kick(action.reason)
 
-	if (action.logPublicly != null && action.logPublicly == true) {
-		channel.createEmbed {
-			action.publicActionEmbedBuilder
-		}
-	}
+	logPublicly(action.logPublicly, channel, action.publicActionEmbedBuilder)
 
-	if (!action.sendActionLog && (action.hasLogChannelPerms == null || action.hasLogChannelPerms == true)) {
-		guild!!.getChannelOfOrNull<GuildMessageChannel>(action.loggingChannel.id)?.createEmbed {
+	return when (
+		logPrivately(
+			action.sendActionLog,
+			action.hasLogChannelPerms,
+			action.loggingChannel,
 			action.actionEmbedBuilder
-		}
+		)
+	) {
+		"" -> Result("Well fuck")
+		"success" -> Result("yey")
+		else -> Result("No log sent")
 	}
 }

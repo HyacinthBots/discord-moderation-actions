@@ -16,7 +16,8 @@ package io.github.nocomment1105.discordmoderationactions.enums
  */
 public enum class DMOutcome(private val resultMessage: String) {
 	SUCCESS("User notified with a direct message"),
-	FAIL("Failed to notify user with a message");
+	FAIL("Failed to notify user with a message"),
+	NOT_SENT("DM notification was disabled");
 
 	public fun message(): String = resultMessage
 }
