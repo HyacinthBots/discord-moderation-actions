@@ -17,6 +17,16 @@ import dev.kord.rest.builder.message.EmbedBuilder
  * An interface containing the common fields for actions.
  */
 public interface Action {
+
+	/** Whether to send a DM about this action to the user. Default: true. */
+	public var sendDm: Boolean
+
+	/** Whether to remove any outstanding timeout the user has applied to them before banning. Default: false. */
+	public var removeTimeout: Boolean
+
+	/** Whether to send a message to the action log provided. Default: True. */
+	public var sendActionLog: Boolean
+
 	/** The reason for the action. */
 	public var reason: String
 
@@ -24,7 +34,7 @@ public interface Action {
 	public val user: User
 
 	/** The outcome of DMing the [user]. */
-	public val dmOutcome: String
+	public var dmOutcome: String
 
 	/** The channel to send the [actionEmbed] too. */
 	public val loggingChannel: GuildMessageChannel
@@ -40,31 +50,40 @@ public interface Action {
 
 	/** @suppress Builder that shouldn't be set directly by the user. */
 	public val dmEmbedBuilder: EmbedBuilder
+		get() = EmbedBuilder()
 
 	/** @suppress Builder that shouldn't be set directly by the user. */
 	public val actionEmbedBuilder: EmbedBuilder
+		get() = EmbedBuilder()
 
 	/** @suppress Builder that shouldn't be set directly by the user. */
 	public val publicActionEmbedBuilder: EmbedBuilder
+		get() = EmbedBuilder()
 
 	/**
 	 * DSL function used to configure the DM embed.
 	 *
 	 * @see EmbedBuilder
 	 */
-	public fun dmEmbed(builder: EmbedBuilder.() -> Unit)
+	public fun dmEmbed(builder: EmbedBuilder.() -> Unit) {
+		builder(dmEmbedBuilder)
+	}
 
 	/**
 	 * DSL function used to configure the Action log embed.
 	 *
 	 * @see EmbedBuilder
 	 */
-	public fun actionEmbed(builder: EmbedBuilder.() -> Unit)
+	public fun actionEmbed(builder: EmbedBuilder.() -> Unit) {
+		builder(actionEmbedBuilder)
+	}
 
 	/**
 	 * DSL function used to configure the DM embed.
 	 *
 	 * @see EmbedBuilder
 	 */
-	public fun publicActionEmbed(builder: EmbedBuilder.() -> Unit)
+	public fun publicActionEmbed(builder: EmbedBuilder.() -> Unit) {
+		builder(publicActionEmbedBuilder)
+	}
 }
