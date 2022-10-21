@@ -1,6 +1,4 @@
-import org.gradle.internal.time.Time
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import java.time.Clock
 
 plugins {
     kotlin("jvm")
