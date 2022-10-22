@@ -9,20 +9,18 @@
 
 package io.github.nocomment1105.discordmoderationactions.builder.action
 
-import dev.kord.core.entity.User
 import dev.kord.core.entity.channel.GuildMessageChannel
 import dev.kord.rest.builder.message.EmbedBuilder
+import io.github.nocomment1105.discordmoderationactions.annotations.ActionBuilderDSL
 
 /**
  * An interface containing the common fields for actions.
  */
+@ActionBuilderDSL
 public interface Action {
 
 	/** Whether to send a DM about this action to the user. Default: true. */
 	public var sendDm: Boolean
-
-	/** Whether to remove any outstanding timeout the user has applied to them before banning. Default: false. */
-	public var removeTimeout: Boolean
 
 	/** Whether to send a message to the action log provided. Default: True. */
 	public var sendActionLog: Boolean
@@ -30,14 +28,11 @@ public interface Action {
 	/** The reason for the action. */
 	public var reason: String
 
-	/** The target user for the action. */
-	public val user: User
-
-	/** The outcome of DMing the [user]. */
+	/** The outcome of DMing the user. */
 	public var dmOutcome: String
 
 	/** The channel to send the [actionEmbed] too. */
-	public val loggingChannel: GuildMessageChannel
+	public var loggingChannel: GuildMessageChannel
 
 	/** Whether to log the action publicly. I.E in the channel the command was run in. */
 	public var logPublicly: Boolean?
@@ -65,6 +60,7 @@ public interface Action {
 	 *
 	 * @see EmbedBuilder
 	 */
+	@ActionBuilderDSL
 	public fun dmEmbed(builder: EmbedBuilder.() -> Unit) {
 		builder(dmEmbedBuilder)
 	}
@@ -74,6 +70,7 @@ public interface Action {
 	 *
 	 * @see EmbedBuilder
 	 */
+	@ActionBuilderDSL
 	public fun actionEmbed(builder: EmbedBuilder.() -> Unit) {
 		builder(actionEmbedBuilder)
 	}
@@ -83,6 +80,7 @@ public interface Action {
 	 *
 	 * @see EmbedBuilder
 	 */
+	@ActionBuilderDSL
 	public fun publicActionEmbed(builder: EmbedBuilder.() -> Unit) {
 		builder(publicActionEmbedBuilder)
 	}

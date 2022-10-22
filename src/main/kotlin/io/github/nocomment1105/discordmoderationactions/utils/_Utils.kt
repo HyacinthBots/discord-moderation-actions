@@ -22,26 +22,31 @@ import dev.kord.core.entity.channel.GuildMessageChannel
 import dev.kord.rest.builder.message.EmbedBuilder
 import io.github.nocomment1105.discordmoderationactions.enums.DMOutcome
 
-public suspend inline fun SlashCommandContext<*, *>.removeTimeout(removeTimeout: Boolean, user: User) {
-	if (removeTimeout) {
+public suspend inline fun SlashCommandContext<*, *>.removeTimeout(removeTimeout: Boolean, user: User?) {
+	if (removeTimeout && user != null) {
 		user.asMemberOrNull(guildFor(event)!!.id)?.edit { timeoutUntil = null }
 	}
 }
 
-public suspend inline fun sendDm(sendDm: Boolean, user: User, dmEmbedBuilder: EmbedBuilder): DMOutcome =
+public suspend inline fun sendDm(sendDm: Boolean, user: User?, dmEmbedBuilder: EmbedBuilder): DMOutcome {
 	if (sendDm) {
+		if (user == null) {
+			return DMOutcome.FAIL
+		}
+
 		val dm = user.asUser().dm {
 			embeds.add(dmEmbedBuilder)
 		}
 
-		if (dm == null) {
+		return if (dm == null) {
 			DMOutcome.FAIL
 		} else {
 			DMOutcome.SUCCESS
 		}
 	} else {
-		DMOutcome.NOT_SENT
+		return DMOutcome.NOT_SENT
 	}
+}
 
 public suspend inline fun logPublicly(logPublicly: Boolean?, channel: MessageChannelBehavior, logEmbed: EmbedBuilder) {
 	if (logPublicly != null && logPublicly) {

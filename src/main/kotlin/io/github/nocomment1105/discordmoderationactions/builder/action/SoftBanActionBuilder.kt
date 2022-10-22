@@ -9,8 +9,10 @@
 
 package io.github.nocomment1105.discordmoderationactions.builder.action
 
+import io.github.nocomment1105.discordmoderationactions.annotations.ActionBuilderDSL
 import kotlinx.datetime.DateTimePeriod
 
+@ActionBuilderDSL
 public open class SoftBanActionBuilder : BanActionBuilder() {
 	public override var deleteMessageDuration: DateTimePeriod = DateTimePeriod(days = 3)
 }

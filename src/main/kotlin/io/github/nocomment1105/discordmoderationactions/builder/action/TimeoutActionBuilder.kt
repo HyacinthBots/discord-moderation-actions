@@ -11,10 +11,11 @@ package io.github.nocomment1105.discordmoderationactions.builder.action
 
 import dev.kord.core.entity.channel.GuildMessageChannel
 import io.github.nocomment1105.discordmoderationactions.annotations.ActionBuilderDSL
+import kotlinx.datetime.Instant
 
 @ActionBuilderDSL
-public open class KickActionBuilder : Action {
-	public var removeTimeout: Boolean = false
+public open class TimeoutActionBuilder : Action {
+	public lateinit var timeoutDuration: Instant
 
 	public override var sendDm: Boolean = true
 

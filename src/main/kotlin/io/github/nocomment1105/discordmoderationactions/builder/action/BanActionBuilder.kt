@@ -9,7 +9,6 @@
 
 package io.github.nocomment1105.discordmoderationactions.builder.action
 
-import dev.kord.core.entity.User
 import dev.kord.core.entity.channel.GuildMessageChannel
 import io.github.nocomment1105.discordmoderationactions.annotations.ActionBuilderDSL
 import kotlinx.datetime.DateTimePeriod
@@ -19,17 +18,14 @@ public open class BanActionBuilder : Action {
 	/** The duration of past messages to delete for this user. */
 	public open lateinit var deleteMessageDuration: DateTimePeriod
 
+	/** Whether to remove any outstanding timeout the user has applied to them before banning. Default: false. */
+	public var removeTimeout: Boolean = false
+
 	/** Whether to send a DM about this action to the user. Default: true. */
 	public override var sendDm: Boolean = true
 
-	/** Whether to remove any outstanding timeout the user has applied to them before banning. Default: false. */
-	public override var removeTimeout: Boolean = false
-
 	/** Whether to send a message to the action log provided. Default: True. */
 	public override var sendActionLog: Boolean = true
-
-	/** The user to ban. */
-	public override lateinit var user: User
 
 	/** The outcome of DMing the user. */
 	public override lateinit var dmOutcome: String
