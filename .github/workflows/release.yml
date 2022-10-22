@@ -34,8 +34,3 @@ jobs:
         with:
           files: 'build/libs/*-all.jar'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Gradle (Publish)
-        uses: gradle/gradle-build-action@v2
-        with:
-          arguments: publish

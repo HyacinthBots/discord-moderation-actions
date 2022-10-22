@@ -7,7 +7,6 @@ plugins {
     id("io.gitlab.arturbosch.detekt")
     id("com.github.jakemarsden.git-hooks")
     id("org.cadixdev.licenser")
-    `maven-publish`
 }
 
 group = "io.github.nocomment1105"
@@ -63,17 +62,6 @@ tasks {
             freeCompilerArgs = freeCompilerArgs + listOf(
                 "-opt-in=kotlin.RequiresOptIn"
             )
-        }
-    }
-
-    publishing {
-        repositories {
-            mavenCentral()
-        }
-        publications {
-            create<MavenPublication>("maven") {
-                artifact(kotlinSourcesJar)
-            }
         }
     }
 }
