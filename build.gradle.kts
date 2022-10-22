@@ -1,6 +1,8 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
+    `java-library`
+    `maven-publish`
     kotlin("jvm")
     kotlin("plugin.serialization")
     id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.11.1"
