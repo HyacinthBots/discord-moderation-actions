@@ -46,9 +46,16 @@ kotlin {
     jvmToolchain(javaVersion)
 }
 
-java {
-    withSourcesJar()
-    withJavadocJar()
+val sourceJar = task("sourceJar", Jar::class) {
+    dependsOn(tasks["classes"])
+    archiveClassifier.set("sources")
+    from(sourceSets.main.get().allSource)
+}
+
+val javadocJar = task("javadocJar", Jar::class) {
+    archiveClassifier.set("javadoc")
+    from(tasks.javadoc)
+    from(tasks.javadoc)
 }
 
 tasks {
@@ -87,10 +94,10 @@ license {
 
 publishing {
     publications {
-        create<MavenPublication>("name") {
+        create<MavenPublication>("publishToMavenLocal") {
             from(components.getByName("java"))
-            artifact(tasks.javadoc)
-            artifact(tasks.kotlinSourcesJar)
+            artifact(javadocJar)
+            artifact(sourceJar)
         }
     }
     repositories {  }
