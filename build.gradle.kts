@@ -29,9 +29,6 @@ repositories {
 }
 
 dependencies {
-    testImplementation(kotlin("test"))
-    testRuntimeOnly(kotlin("test-junit5"))
-
     detektPlugins(libs.detekt)
     implementation(libs.kotlin.stdlib)
     implementation(libs.kordex)
@@ -39,7 +36,7 @@ dependencies {
 
 gitHooks {
     setHooks(
-        mapOf("pre-commit" to "detekt updateLicenses")
+        mapOf("pre-commit" to "updateLicenses detekt")
     )
 }
 
@@ -68,6 +65,17 @@ tasks {
             )
         }
     }
+
+    publishing {
+        repositories {
+            mavenCentral()
+        }
+        publications {
+            create<MavenPublication>("maven") {
+                artifact(kotlinSourcesJar)
+            }
+        }
+    }
 }
 
 detekt {
@@ -81,3 +89,5 @@ license {
     setHeader(rootProject.file("HEADER"))
     include("**/*.kt")
 }
+
+
