@@ -1,13 +1,14 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
+    `java-library`
+    `maven-publish`
     kotlin("jvm")
     kotlin("plugin.serialization")
     id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.11.1"
     id("io.gitlab.arturbosch.detekt")
     id("com.github.jakemarsden.git-hooks")
     id("org.cadixdev.licenser")
-    `maven-publish`
 }
 
 group = "io.github.nocomment1105"
@@ -45,6 +46,18 @@ kotlin {
     jvmToolchain(javaVersion)
 }
 
+val sourceJar = task("sourceJar", Jar::class) {
+    dependsOn(tasks["classes"])
+    archiveClassifier.set("sources")
+    from(sourceSets.main.get().allSource)
+}
+
+val javadocJar = task("javadocJar", Jar::class) {
+    archiveClassifier.set("javadoc")
+    from(tasks.javadoc)
+    from(tasks.javadoc)
+}
+
 tasks {
     wrapper {
         gradleVersion = "7.5.1"
@@ -65,17 +78,6 @@ tasks {
             )
         }
     }
-
-    publishing {
-        repositories {
-            mavenCentral()
-        }
-        publications {
-            create<MavenPublication>("maven") {
-                artifact(kotlinSourcesJar)
-            }
-        }
-    }
 }
 
 detekt {
@@ -90,4 +92,14 @@ license {
     include("**/*.kt")
 }
 
+publishing {
+    publications {
+        create<MavenPublication>("publishToMavenLocal") {
+            from(components.getByName("java"))
+            artifact(javadocJar)
+            artifact(sourceJar)
+        }
+    }
+    repositories {  }
+}
 
