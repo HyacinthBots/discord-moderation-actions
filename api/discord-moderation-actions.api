@@ -1,0 +1,174 @@
+public abstract interface annotation class io/github/nocomment1105/discordmoderationactions/annotations/ActionBuilderDSL : java/lang/annotation/Annotation {
+}
+
+public final class io/github/nocomment1105/discordmoderationactions/builder/_ActionsKt {
+	public static final fun ban (Lcom/kotlindiscord/kord/extensions/commands/application/slash/SlashCommandContext;Ldev/kord/common/entity/Snowflake;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun ban (Lcom/kotlindiscord/kord/extensions/commands/application/slash/SlashCommandContext;Ldev/kord/core/behavior/UserBehavior;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun ban (Lcom/kotlindiscord/kord/extensions/commands/application/slash/SlashCommandContext;Ldev/kord/core/entity/User;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun kick (Lcom/kotlindiscord/kord/extensions/commands/application/slash/SlashCommandContext;Ldev/kord/common/entity/Snowflake;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun kick (Lcom/kotlindiscord/kord/extensions/commands/application/slash/SlashCommandContext;Ldev/kord/core/behavior/UserBehavior;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun kick (Lcom/kotlindiscord/kord/extensions/commands/application/slash/SlashCommandContext;Ldev/kord/core/entity/User;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun softban (Lcom/kotlindiscord/kord/extensions/commands/application/slash/SlashCommandContext;Ldev/kord/common/entity/Snowflake;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun softban (Lcom/kotlindiscord/kord/extensions/commands/application/slash/SlashCommandContext;Ldev/kord/core/behavior/UserBehavior;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun softban (Lcom/kotlindiscord/kord/extensions/commands/application/slash/SlashCommandContext;Ldev/kord/core/entity/User;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun timeout (Lcom/kotlindiscord/kord/extensions/commands/application/slash/SlashCommandContext;Ldev/kord/common/entity/Snowflake;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun timeout (Lcom/kotlindiscord/kord/extensions/commands/application/slash/SlashCommandContext;Ldev/kord/core/behavior/UserBehavior;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun timeout (Lcom/kotlindiscord/kord/extensions/commands/application/slash/SlashCommandContext;Ldev/kord/core/entity/User;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public abstract interface class io/github/nocomment1105/discordmoderationactions/builder/action/Action {
+	public abstract fun actionEmbed (Lkotlin/jvm/functions/Function1;)V
+	public abstract fun dmEmbed (Lkotlin/jvm/functions/Function1;)V
+	public abstract fun getActionEmbedBuilder ()Ldev/kord/rest/builder/message/EmbedBuilder;
+	public abstract fun getDmEmbedBuilder ()Ldev/kord/rest/builder/message/EmbedBuilder;
+	public abstract fun getDmOutcome ()Ljava/lang/String;
+	public abstract fun getHasLogChannelPerms ()Ljava/lang/Boolean;
+	public abstract fun getLogPublicly ()Ljava/lang/Boolean;
+	public abstract fun getLoggingChannel ()Ldev/kord/core/entity/channel/GuildMessageChannel;
+	public abstract fun getPublicActionEmbedBuilder ()Ldev/kord/rest/builder/message/EmbedBuilder;
+	public abstract fun getReason ()Ljava/lang/String;
+	public abstract fun getSendActionLog ()Z
+	public abstract fun getSendDm ()Z
+	public abstract fun publicActionEmbed (Lkotlin/jvm/functions/Function1;)V
+	public abstract fun setDmOutcome (Ljava/lang/String;)V
+	public abstract fun setHasLogChannelPerms (Ljava/lang/Boolean;)V
+	public abstract fun setLogPublicly (Ljava/lang/Boolean;)V
+	public abstract fun setLoggingChannel (Ldev/kord/core/entity/channel/GuildMessageChannel;)V
+	public abstract fun setReason (Ljava/lang/String;)V
+	public abstract fun setSendActionLog (Z)V
+	public abstract fun setSendDm (Z)V
+}
+
+public final class io/github/nocomment1105/discordmoderationactions/builder/action/Action$DefaultImpls {
+	public static fun actionEmbed (Lio/github/nocomment1105/discordmoderationactions/builder/action/Action;Lkotlin/jvm/functions/Function1;)V
+	public static fun dmEmbed (Lio/github/nocomment1105/discordmoderationactions/builder/action/Action;Lkotlin/jvm/functions/Function1;)V
+	public static fun getActionEmbedBuilder (Lio/github/nocomment1105/discordmoderationactions/builder/action/Action;)Ldev/kord/rest/builder/message/EmbedBuilder;
+	public static fun getDmEmbedBuilder (Lio/github/nocomment1105/discordmoderationactions/builder/action/Action;)Ldev/kord/rest/builder/message/EmbedBuilder;
+	public static fun getPublicActionEmbedBuilder (Lio/github/nocomment1105/discordmoderationactions/builder/action/Action;)Ldev/kord/rest/builder/message/EmbedBuilder;
+	public static fun publicActionEmbed (Lio/github/nocomment1105/discordmoderationactions/builder/action/Action;Lkotlin/jvm/functions/Function1;)V
+}
+
+public class io/github/nocomment1105/discordmoderationactions/builder/action/BanActionBuilder : io/github/nocomment1105/discordmoderationactions/builder/action/Action {
+	public field deleteMessageDuration Lkotlinx/datetime/DateTimePeriod;
+	public field dmOutcome Ljava/lang/String;
+	public field loggingChannel Ldev/kord/core/entity/channel/GuildMessageChannel;
+	public field reason Ljava/lang/String;
+	public fun <init> ()V
+	public fun actionEmbed (Lkotlin/jvm/functions/Function1;)V
+	public fun dmEmbed (Lkotlin/jvm/functions/Function1;)V
+	public fun getActionEmbedBuilder ()Ldev/kord/rest/builder/message/EmbedBuilder;
+	public fun getDeleteMessageDuration ()Lkotlinx/datetime/DateTimePeriod;
+	public fun getDmEmbedBuilder ()Ldev/kord/rest/builder/message/EmbedBuilder;
+	public fun getDmOutcome ()Ljava/lang/String;
+	public fun getHasLogChannelPerms ()Ljava/lang/Boolean;
+	public fun getLogPublicly ()Ljava/lang/Boolean;
+	public fun getLoggingChannel ()Ldev/kord/core/entity/channel/GuildMessageChannel;
+	public fun getPublicActionEmbedBuilder ()Ldev/kord/rest/builder/message/EmbedBuilder;
+	public fun getReason ()Ljava/lang/String;
+	public final fun getRemoveTimeout ()Z
+	public fun getSendActionLog ()Z
+	public fun getSendDm ()Z
+	public fun publicActionEmbed (Lkotlin/jvm/functions/Function1;)V
+	public fun setDeleteMessageDuration (Lkotlinx/datetime/DateTimePeriod;)V
+	public fun setDmOutcome (Ljava/lang/String;)V
+	public fun setHasLogChannelPerms (Ljava/lang/Boolean;)V
+	public fun setLogPublicly (Ljava/lang/Boolean;)V
+	public fun setLoggingChannel (Ldev/kord/core/entity/channel/GuildMessageChannel;)V
+	public fun setReason (Ljava/lang/String;)V
+	public final fun setRemoveTimeout (Z)V
+	public fun setSendActionLog (Z)V
+	public fun setSendDm (Z)V
+}
+
+public class io/github/nocomment1105/discordmoderationactions/builder/action/KickActionBuilder : io/github/nocomment1105/discordmoderationactions/builder/action/Action {
+	public field dmOutcome Ljava/lang/String;
+	public field loggingChannel Ldev/kord/core/entity/channel/GuildMessageChannel;
+	public field reason Ljava/lang/String;
+	public fun <init> ()V
+	public fun actionEmbed (Lkotlin/jvm/functions/Function1;)V
+	public fun dmEmbed (Lkotlin/jvm/functions/Function1;)V
+	public fun getActionEmbedBuilder ()Ldev/kord/rest/builder/message/EmbedBuilder;
+	public fun getDmEmbedBuilder ()Ldev/kord/rest/builder/message/EmbedBuilder;
+	public fun getDmOutcome ()Ljava/lang/String;
+	public fun getHasLogChannelPerms ()Ljava/lang/Boolean;
+	public fun getLogPublicly ()Ljava/lang/Boolean;
+	public fun getLoggingChannel ()Ldev/kord/core/entity/channel/GuildMessageChannel;
+	public fun getPublicActionEmbedBuilder ()Ldev/kord/rest/builder/message/EmbedBuilder;
+	public fun getReason ()Ljava/lang/String;
+	public final fun getRemoveTimeout ()Z
+	public fun getSendActionLog ()Z
+	public fun getSendDm ()Z
+	public fun publicActionEmbed (Lkotlin/jvm/functions/Function1;)V
+	public fun setDmOutcome (Ljava/lang/String;)V
+	public fun setHasLogChannelPerms (Ljava/lang/Boolean;)V
+	public fun setLogPublicly (Ljava/lang/Boolean;)V
+	public fun setLoggingChannel (Ldev/kord/core/entity/channel/GuildMessageChannel;)V
+	public fun setReason (Ljava/lang/String;)V
+	public final fun setRemoveTimeout (Z)V
+	public fun setSendActionLog (Z)V
+	public fun setSendDm (Z)V
+}
+
+public class io/github/nocomment1105/discordmoderationactions/builder/action/SoftBanActionBuilder : io/github/nocomment1105/discordmoderationactions/builder/action/BanActionBuilder {
+	public fun <init> ()V
+	public fun getDeleteMessageDuration ()Lkotlinx/datetime/DateTimePeriod;
+	public fun setDeleteMessageDuration (Lkotlinx/datetime/DateTimePeriod;)V
+}
+
+public class io/github/nocomment1105/discordmoderationactions/builder/action/TimeoutActionBuilder : io/github/nocomment1105/discordmoderationactions/builder/action/Action {
+	public field dmOutcome Ljava/lang/String;
+	public field loggingChannel Ldev/kord/core/entity/channel/GuildMessageChannel;
+	public field reason Ljava/lang/String;
+	public field timeoutDuration Lkotlinx/datetime/Instant;
+	public fun <init> ()V
+	public fun actionEmbed (Lkotlin/jvm/functions/Function1;)V
+	public fun dmEmbed (Lkotlin/jvm/functions/Function1;)V
+	public fun getActionEmbedBuilder ()Ldev/kord/rest/builder/message/EmbedBuilder;
+	public fun getDmEmbedBuilder ()Ldev/kord/rest/builder/message/EmbedBuilder;
+	public fun getDmOutcome ()Ljava/lang/String;
+	public fun getHasLogChannelPerms ()Ljava/lang/Boolean;
+	public fun getLogPublicly ()Ljava/lang/Boolean;
+	public fun getLoggingChannel ()Ldev/kord/core/entity/channel/GuildMessageChannel;
+	public fun getPublicActionEmbedBuilder ()Ldev/kord/rest/builder/message/EmbedBuilder;
+	public fun getReason ()Ljava/lang/String;
+	public fun getSendActionLog ()Z
+	public fun getSendDm ()Z
+	public final fun getTimeoutDuration ()Lkotlinx/datetime/Instant;
+	public fun publicActionEmbed (Lkotlin/jvm/functions/Function1;)V
+	public fun setDmOutcome (Ljava/lang/String;)V
+	public fun setHasLogChannelPerms (Ljava/lang/Boolean;)V
+	public fun setLogPublicly (Ljava/lang/Boolean;)V
+	public fun setLoggingChannel (Ldev/kord/core/entity/channel/GuildMessageChannel;)V
+	public fun setReason (Ljava/lang/String;)V
+	public fun setSendActionLog (Z)V
+	public fun setSendDm (Z)V
+	public final fun setTimeoutDuration (Lkotlinx/datetime/Instant;)V
+}
+
+public final class io/github/nocomment1105/discordmoderationactions/enums/DMOutcome : java/lang/Enum {
+	public static final field FAIL Lio/github/nocomment1105/discordmoderationactions/enums/DMOutcome;
+	public static final field NOT_SENT Lio/github/nocomment1105/discordmoderationactions/enums/DMOutcome;
+	public static final field SUCCESS Lio/github/nocomment1105/discordmoderationactions/enums/DMOutcome;
+	public final fun message ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/nocomment1105/discordmoderationactions/enums/DMOutcome;
+	public static fun values ()[Lio/github/nocomment1105/discordmoderationactions/enums/DMOutcome;
+}
+
+public final class io/github/nocomment1105/discordmoderationactions/utils/Result {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lio/github/nocomment1105/discordmoderationactions/utils/Result;
+	public static synthetic fun copy$default (Lio/github/nocomment1105/discordmoderationactions/utils/Result;Ljava/lang/String;ILjava/lang/Object;)Lio/github/nocomment1105/discordmoderationactions/utils/Result;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getResult ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/nocomment1105/discordmoderationactions/utils/_UtilsKt {
+	public static final fun logPrivately (Lcom/kotlindiscord/kord/extensions/commands/application/slash/SlashCommandContext;ZLjava/lang/Boolean;Ldev/kord/core/behavior/channel/MessageChannelBehavior;Ldev/kord/rest/builder/message/EmbedBuilder;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun logPublicly (Ljava/lang/Boolean;Ldev/kord/core/behavior/channel/MessageChannelBehavior;Ldev/kord/rest/builder/message/EmbedBuilder;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun removeTimeout (Lcom/kotlindiscord/kord/extensions/commands/application/slash/SlashCommandContext;ZLdev/kord/core/entity/User;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun sendDm (ZLdev/kord/core/entity/User;Ldev/kord/rest/builder/message/EmbedBuilder;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
