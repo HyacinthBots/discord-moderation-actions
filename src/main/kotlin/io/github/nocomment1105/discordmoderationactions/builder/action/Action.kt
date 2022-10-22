@@ -26,13 +26,13 @@ public interface Action {
 	public var sendActionLog: Boolean
 
 	/** The reason for the action. */
-	public var reason: String
+	public var reason: String?
 
 	/** The outcome of DMing the user. */
 	public var dmOutcome: String
 
 	/** The channel to send the [actionEmbed] too. */
-	public var loggingChannel: GuildMessageChannel
+	public var loggingChannel: GuildMessageChannel?
 
 	/** Whether to log the action publicly. I.E in the channel the command was run in. */
 	public var logPublicly: Boolean?

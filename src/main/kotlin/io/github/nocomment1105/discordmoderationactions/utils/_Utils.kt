@@ -20,6 +20,7 @@ import dev.kord.core.behavior.getChannelOfOrNull
 import dev.kord.core.entity.User
 import dev.kord.core.entity.channel.GuildMessageChannel
 import dev.kord.rest.builder.message.EmbedBuilder
+import dev.kord.rest.builder.message.create.embed
 import io.github.nocomment1105.discordmoderationactions.enums.DMOutcome
 
 public suspend inline fun SlashCommandContext<*, *>.removeTimeout(removeTimeout: Boolean, user: User?) {
@@ -51,7 +52,9 @@ public suspend inline fun sendDm(sendDm: Boolean, user: User?, dmEmbedBuilder: E
 public suspend inline fun logPublicly(logPublicly: Boolean?, channel: MessageChannelBehavior, logEmbed: EmbedBuilder) {
 	if (logPublicly != null && logPublicly) {
 		channel.createMessage {
-			embeds.add(logEmbed)
+			embed {
+				logEmbed
+			}
 		}
 	}
 }
@@ -59,12 +62,14 @@ public suspend inline fun logPublicly(logPublicly: Boolean?, channel: MessageCha
 public suspend inline fun SlashCommandContext<*, *>.logPrivately(
 	sendLog: Boolean,
 	hasChannelPerms: Boolean?,
-	channel: MessageChannelBehavior,
+	channel: MessageChannelBehavior?,
 	actionEmbed: EmbedBuilder
 ): String? =
-	if (sendLog && hasChannelPerms == true) {
+	if (sendLog && hasChannelPerms == true && channel != null) {
 		val message = guildFor(event)!!.getChannelOfOrNull<GuildMessageChannel>(channel.id)?.createMessage {
-			embeds.add(actionEmbed)
+			embed {
+				actionEmbed
+			}
 		}
 		if (message == null) "" else "success"
 	} else {

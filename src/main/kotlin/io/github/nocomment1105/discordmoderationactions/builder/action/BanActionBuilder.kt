@@ -31,10 +31,10 @@ public open class BanActionBuilder : Action {
 	public override lateinit var dmOutcome: String
 
 	/** The reason for the ban. */
-	public override lateinit var reason: String
+	public override var reason: String? = "No reason provided"
 
 	/** THe logging channel to send the [actionEmbed] too. */
-	public override lateinit var loggingChannel: GuildMessageChannel
+	public override var loggingChannel: GuildMessageChannel? = null
 
 	/** Whether to log the action publicly. I.E in the channel the command was run in. Default: false*/
 	public override var logPublicly: Boolean? = null

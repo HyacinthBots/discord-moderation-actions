@@ -21,11 +21,11 @@ public open class TimeoutActionBuilder : Action {
 
 	public override var sendActionLog: Boolean = true
 
-	public override lateinit var reason: String
+	public override var reason: String? = "No reason provided"
 
 	public override lateinit var dmOutcome: String
 
-	public override lateinit var loggingChannel: GuildMessageChannel
+	public override var loggingChannel: GuildMessageChannel? = null
 
 	public override var logPublicly: Boolean? = null
 
