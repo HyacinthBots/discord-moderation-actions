@@ -46,6 +46,11 @@ kotlin {
     jvmToolchain(javaVersion)
 }
 
+java {
+    withSourcesJar()
+    withJavadocJar()
+}
+
 tasks {
     wrapper {
         gradleVersion = "7.5.1"
@@ -80,4 +85,14 @@ license {
     include("**/*.kt")
 }
 
+publishing {
+    publications {
+        create<MavenPublication>("name") {
+            from(components.getByName("java"))
+            artifact(tasks.javadoc)
+            artifact(tasks.kotlinSourcesJar)
+        }
+    }
+    repositories {  }
+}
 
