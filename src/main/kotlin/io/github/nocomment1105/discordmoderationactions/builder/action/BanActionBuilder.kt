@@ -10,38 +10,31 @@
 package io.github.nocomment1105.discordmoderationactions.builder.action
 
 import dev.kord.core.entity.channel.GuildMessageChannel
+import dev.kord.rest.builder.message.EmbedBuilder
 import io.github.nocomment1105.discordmoderationactions.annotations.ActionBuilderDSL
 import kotlinx.datetime.DateTimePeriod
 
 @ActionBuilderDSL
 public open class BanActionBuilder : Action {
-	/** The duration of past messages to delete for this user. */
 	public open lateinit var deleteMessageDuration: DateTimePeriod
 
-	/** Whether to remove any outstanding timeout the user has applied to them before banning. Default: false. */
 	public var removeTimeout: Boolean = false
 
-	/** Whether to send a DM about this action to the user. Default: true. */
 	public override var sendDm: Boolean = true
 
-	/** Whether to send a message to the action log provided. Default: True. */
 	public override var sendActionLog: Boolean = true
 
-	/** The outcome of DMing the user. */
-	public override lateinit var dmOutcome: String
-
-	/** The reason for the ban. */
 	public override var reason: String? = "No reason provided"
 
-	/** THe logging channel to send the [actionEmbed] too. */
 	public override var loggingChannel: GuildMessageChannel? = null
 
-	/** Whether to log the action publicly. I.E in the channel the command was run in. Default: false*/
 	public override var logPublicly: Boolean? = null
 
-	/**
-	 * Whether the bot has permission the required permissions to use the logging channel. This should be evaluated
-	 * by a check system from within the bot and passed into this variable.
-	 */
 	public override var hasLogChannelPerms: Boolean? = null
+
+	public override var dmEmbedBuilder: (EmbedBuilder.() -> Unit)? = null
+
+	public override var actionEmbedBuilder: (EmbedBuilder.() -> Unit)? = null
+
+	public override var publicActionEmbedBuilder: (EmbedBuilder.() -> Unit)? = null
 }

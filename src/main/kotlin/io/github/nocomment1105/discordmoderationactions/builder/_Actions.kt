@@ -7,6 +7,8 @@
  * please see the LICENSE file or https://mit-license.org/
  */
 
+@file:Suppress("DuplicatedCode")
+
 package io.github.nocomment1105.discordmoderationactions.builder
 
 import com.kotlindiscord.kord.extensions.commands.application.slash.SlashCommandContext
@@ -16,17 +18,20 @@ import dev.kord.common.entity.Snowflake
 import dev.kord.core.behavior.UserBehavior
 import dev.kord.core.behavior.ban
 import dev.kord.core.behavior.edit
-import dev.kord.core.entity.User
 import io.github.nocomment1105.discordmoderationactions.builder.action.BanActionBuilder
 import io.github.nocomment1105.discordmoderationactions.builder.action.KickActionBuilder
 import io.github.nocomment1105.discordmoderationactions.builder.action.SoftBanActionBuilder
 import io.github.nocomment1105.discordmoderationactions.builder.action.TimeoutActionBuilder
+import io.github.nocomment1105.discordmoderationactions.enums.ActionResults
 import io.github.nocomment1105.discordmoderationactions.utils.Result
-import io.github.nocomment1105.discordmoderationactions.utils.logPrivately
-import io.github.nocomment1105.discordmoderationactions.utils.logPublicly
 import io.github.nocomment1105.discordmoderationactions.utils.removeTimeout
 import io.github.nocomment1105.discordmoderationactions.utils.sendDm
+import io.github.nocomment1105.discordmoderationactions.utils.sendPrivateLog
+import io.github.nocomment1105.discordmoderationactions.utils.sendPublicLog
 import kotlinx.datetime.TimeZone
+import mu.KotlinLogging
+
+internal val actionLogger = KotlinLogging.logger("Action Logger")
 
 /**
  * DSL function for easily running a ban action.
@@ -36,17 +41,16 @@ import kotlinx.datetime.TimeZone
  * @param builder Builder lambda used for setting up the ban action
  * @see BanActionBuilder
  */
-@Suppress("DuplicatedCode")
-public suspend inline fun SlashCommandContext<*, *>.ban(
+public suspend fun SlashCommandContext<*, *>.ban(
 	targetUserId: Snowflake,
 	builder: BanActionBuilder.() -> Unit
 ): Result {
 	val action = BanActionBuilder()
 	action.builder()
 
-	if (guild == null) return Result("Guild was null. This command must be run in a guild.")
+	if (guild == null) return Result(ActionResults.ACTION_FAIL)
 
-	action.dmOutcome = sendDm(action.sendDm, event.kord.getUser(targetUserId), action.dmEmbedBuilder).message()
+	val dm = sendDm(action.sendDm, targetUserId, action.dmEmbedBuilder)
 
 	removeTimeout(action.removeTimeout, event.kord.getUser(targetUserId))
 
@@ -55,20 +59,11 @@ public suspend inline fun SlashCommandContext<*, *>.ban(
 		deleteMessageDuration = action.deleteMessageDuration.toDuration(TimeZone.UTC)
 	}
 
-	logPublicly(action.logPublicly, channel, action.publicActionEmbedBuilder)
+	val publicLog = sendPublicLog(action.logPublicly, action.publicActionEmbedBuilder)
 
-	return when (
-		logPrivately(
-			action.sendActionLog,
-			action.hasLogChannelPerms,
-			action.loggingChannel,
-			action.actionEmbedBuilder
-		)
-	) {
-		"" -> Result("Well fuck")
-		"success" -> Result("yey")
-		else -> Result("No log sent")
-	}
+	val privateLog = sendPrivateLog(action.sendActionLog, action.loggingChannel, action.actionEmbedBuilder)
+
+	return Result(ActionResults.ACTION_SUCCESS, dm, privateLog, publicLog)
 }
 
 /**
@@ -79,21 +74,8 @@ public suspend inline fun SlashCommandContext<*, *>.ban(
  * @param builder Builder lambda used for setting up the ban action
  * @see BanActionBuilder
  */
-public suspend inline fun SlashCommandContext<*, *>.ban(
-	targetUser: User,
-	builder: BanActionBuilder.() -> Unit
-): Result = ban(targetUser.id, builder)
-
-/**
- * DSL function for easily running a ban action.
- * This will ban the user, and carryout any extra tasks specified
- *
- * @param targetUser The user to ban
- * @param builder Builder lambda used for setting up the ban action
- * @see BanActionBuilder
- */
-public suspend inline fun SlashCommandContext<*, *>.ban(
-	targetUser: UserBehavior,
+public suspend fun <T : UserBehavior> SlashCommandContext<*, *>.ban(
+	targetUser: T,
 	builder: BanActionBuilder.() -> Unit
 ): Result = ban(targetUser.id, builder)
 
@@ -106,16 +88,16 @@ public suspend inline fun SlashCommandContext<*, *>.ban(
  * @see SoftBanActionBuilder
  */
 @Suppress("DuplicatedCode")
-public suspend inline fun SlashCommandContext<*, *>.softban(
+public suspend fun SlashCommandContext<*, *>.softban(
 	targetUserId: Snowflake,
 	builder: SoftBanActionBuilder.() -> Unit
 ): Result {
 	val action = SoftBanActionBuilder()
 	action.builder()
 
-	if (guild == null) return Result("Guild was null. This command must be run in a guild.")
+	if (guild == null) return Result(ActionResults.NULL_GUILD)
 
-	action.dmOutcome = sendDm(action.sendDm, event.kord.getUser(targetUserId), action.dmEmbedBuilder).message()
+	val dm = sendDm(action.sendDm, targetUserId, action.dmEmbedBuilder)
 
 	removeTimeout(action.removeTimeout, event.kord.getUser(targetUserId))
 
@@ -126,20 +108,11 @@ public suspend inline fun SlashCommandContext<*, *>.softban(
 
 	guild?.unban(targetUserId)
 
-	logPublicly(action.logPublicly, channel, action.publicActionEmbedBuilder)
+	val publicLog = sendPublicLog(action.logPublicly, action.publicActionEmbedBuilder)
 
-	return when (
-		logPrivately(
-			action.sendActionLog,
-			action.hasLogChannelPerms,
-			action.loggingChannel,
-			action.actionEmbedBuilder
-		)
-	) {
-		"" -> Result("Well fuck")
-		"success" -> Result("yey")
-		else -> Result("No log sent")
-	}
+	val privateLog = sendPrivateLog(action.sendActionLog, action.loggingChannel, action.actionEmbedBuilder)
+
+	return Result(ActionResults.ACTION_SUCCESS, dm, privateLog, publicLog)
 }
 
 /**
@@ -150,21 +123,8 @@ public suspend inline fun SlashCommandContext<*, *>.softban(
  * @param builder Builder lambda used for setting up the softban action
  * @see SoftBanActionBuilder
  */
-public suspend inline fun SlashCommandContext<*, *>.softban(
-	targetUser: User,
-	builder: SoftBanActionBuilder.() -> Unit
-): Result = softban(targetUser.id, builder)
-
-/**
- * DSL function for easily running a ban action.
- * This will softban the user, and carryout any extra tasks specified
- *
- * @param targetUser The user to softban
- * @param builder Builder lambda used for setting up the softban action
- * @see SoftBanActionBuilder
- */
-public suspend inline fun SlashCommandContext<*, *>.softban(
-	targetUser: UserBehavior,
+public suspend fun <T : UserBehavior> SlashCommandContext<*, *>.softban(
+	targetUser: T,
 	builder: SoftBanActionBuilder.() -> Unit
 ): Result = softban(targetUser.id, builder)
 
@@ -176,35 +136,26 @@ public suspend inline fun SlashCommandContext<*, *>.softban(
  * @param builder Builder lambda used for setting up the kick action
  * @see KickActionBuilder
  */
-public suspend inline fun SlashCommandContext<*, *>.kick(
+public suspend fun SlashCommandContext<*, *>.kick(
 	targetUserId: Snowflake,
 	builder: KickActionBuilder.() -> Unit
 ): Result {
 	val action = KickActionBuilder()
 	action.builder()
 
-	if (guild == null) return Result("Guild was null. This command must be run in a guild.")
+	if (guild == null) return Result(ActionResults.NULL_GUILD)
 
-	action.dmOutcome = sendDm(action.sendDm, event.kord.getUser(targetUserId), action.dmEmbedBuilder).message()
+	val dm = sendDm(action.sendDm, targetUserId, action.dmEmbedBuilder)
 
 	removeTimeout(action.removeTimeout, event.kord.getUser(targetUserId))
 
 	guild?.kick(targetUserId, action.reason)
 
-	logPublicly(action.logPublicly, channel, action.publicActionEmbedBuilder)
+	val publicLog = sendPublicLog(action.logPublicly, action.publicActionEmbedBuilder)
 
-	return when (
-		logPrivately(
-			action.sendActionLog,
-			action.hasLogChannelPerms,
-			action.loggingChannel,
-			action.actionEmbedBuilder
-		)
-	) {
-		"" -> Result("Well fuck")
-		"success" -> Result("yey")
-		else -> Result("No log sent")
-	}
+	val privateLog = sendPrivateLog(action.sendActionLog, action.loggingChannel, action.actionEmbedBuilder)
+
+	return Result(ActionResults.ACTION_SUCCESS, dm, privateLog, publicLog)
 }
 
 /**
@@ -215,21 +166,8 @@ public suspend inline fun SlashCommandContext<*, *>.kick(
  * @param builder Builder lambda used for setting up the kick action
  * @see KickActionBuilder
  */
-public suspend inline fun SlashCommandContext<*, *>.kick(
-	targetUser: User,
-	builder: KickActionBuilder.() -> Unit
-): Result = kick(targetUser.id, builder)
-
-/**
- * DSL function for easily running a ban action.
- * This will kick the user, and carryout any extra tasks specified
- *
- * @param targetUser The user to kick
- * @param builder Builder lambda used for setting up the kick action
- * @see KickActionBuilder
- */
-public suspend inline fun SlashCommandContext<*, *>.kick(
-	targetUser: UserBehavior,
+public suspend fun <T : UserBehavior> SlashCommandContext<*, *>.kick(
+	targetUser: T,
 	builder: KickActionBuilder.() -> Unit
 ): Result = kick(targetUser.id, builder)
 
@@ -241,33 +179,24 @@ public suspend inline fun SlashCommandContext<*, *>.kick(
  * @param builder Builder lambda used for setting up the timeout action
  * @see BanActionBuilder
  */
-public suspend inline fun SlashCommandContext<*, *>.timeout(
+public suspend fun SlashCommandContext<*, *>.timeout(
 	targetUserId: Snowflake,
 	builder: TimeoutActionBuilder.() -> Unit
 ): Result {
 	val action = TimeoutActionBuilder()
 	action.builder()
 
-	if (guild == null) return Result("Guild was null. This command must be run in a guild.")
+	if (guild == null) return Result(ActionResults.NULL_GUILD)
 
-	action.dmOutcome = sendDm(action.sendDm, event.kord.getUser(targetUserId), action.dmEmbedBuilder).message()
+	val dm = sendDm(action.sendDm, targetUserId, action.dmEmbedBuilder)
 
 	guild?.getMemberOrNull(targetUserId)?.edit { timeoutUntil = action.timeoutDuration }
 
-	logPublicly(action.logPublicly, channel, action.publicActionEmbedBuilder)
+	val publicLog = sendPublicLog(action.logPublicly, action.publicActionEmbedBuilder)
 
-	return when (
-		logPrivately(
-			action.sendActionLog,
-			action.hasLogChannelPerms,
-			action.loggingChannel,
-			action.actionEmbedBuilder
-		)
-	) {
-		"" -> Result("Well fuck")
-		"success" -> Result("yey")
-		else -> Result("No log sent")
-	}
+	val privateLog = sendPrivateLog(action.sendActionLog, action.loggingChannel, action.actionEmbedBuilder)
+
+	return Result(ActionResults.ACTION_SUCCESS, dm, privateLog, publicLog)
 }
 
 /**
@@ -278,20 +207,7 @@ public suspend inline fun SlashCommandContext<*, *>.timeout(
  * @param builder Builder lambda used for setting up the timeout action
  * @see BanActionBuilder
  */
-public suspend inline fun SlashCommandContext<*, *>.timeout(
-	targetUser: User,
-	builder: TimeoutActionBuilder.() -> Unit
-): Result = timeout(targetUser.id, builder)
-
-/**
- * DSL function for easily running a ban action.
- * This will time out the user, and carryout any extra tasks specified
- *
- * @param targetUser The user to timeout
- * @param builder Builder lambda used for setting up the timeout action
- * @see BanActionBuilder
- */
-public suspend inline fun SlashCommandContext<*, *>.timeout(
-	targetUser: UserBehavior,
+public suspend fun <T : UserBehavior> SlashCommandContext<*, *>.timeout(
+	targetUser: T,
 	builder: TimeoutActionBuilder.() -> Unit
 ): Result = timeout(targetUser.id, builder)

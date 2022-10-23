@@ -33,6 +33,9 @@ dependencies {
     detektPlugins(libs.detekt)
     implementation(libs.kotlin.stdlib)
     implementation(libs.kordex)
+
+    implementation(libs.logback)
+    implementation(libs.logging)
 }
 
 gitHooks {

@@ -10,6 +10,7 @@
 package io.github.nocomment1105.discordmoderationactions.builder.action
 
 import dev.kord.core.entity.channel.GuildMessageChannel
+import dev.kord.rest.builder.message.EmbedBuilder
 import io.github.nocomment1105.discordmoderationactions.annotations.ActionBuilderDSL
 
 @ActionBuilderDSL
@@ -22,11 +23,15 @@ public open class KickActionBuilder : Action {
 
 	public override var reason: String? = "No reason provided"
 
-	public override lateinit var dmOutcome: String
-
 	public override var loggingChannel: GuildMessageChannel? = null
 
 	public override var logPublicly: Boolean? = null
 
 	public override var hasLogChannelPerms: Boolean? = null
+
+	public override var dmEmbedBuilder: (EmbedBuilder.() -> Unit)? = null
+
+	public override var actionEmbedBuilder: (EmbedBuilder.() -> Unit)? = null
+
+	public override var publicActionEmbedBuilder: (EmbedBuilder.() -> Unit)? = null
 }

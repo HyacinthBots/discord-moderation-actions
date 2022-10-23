@@ -3,8 +3,12 @@ kotlin = "1.7.20"
 kordex = "1.5.5-20221019.205922-33"
 
 detekt = "1.21.0"
+logging = "3.0.2"
+logback = "1.4.4"
 
 [libraries]
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8" }
 detekt = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
 kordex = { module = "com.kotlindiscord.kord.extensions:kord-extensions", version.ref = "kordex" }
+logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+logging = { module = "io.github.microutils:kotlin-logging", version.ref = "logging" }

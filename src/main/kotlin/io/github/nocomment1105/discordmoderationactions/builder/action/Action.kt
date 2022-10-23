@@ -28,9 +28,6 @@ public interface Action {
 	/** The reason for the action. */
 	public var reason: String?
 
-	/** The outcome of DMing the user. */
-	public var dmOutcome: String
-
 	/** The channel to send the [actionEmbed] too. */
 	public var loggingChannel: GuildMessageChannel?
 
@@ -44,16 +41,13 @@ public interface Action {
 	public var hasLogChannelPerms: Boolean?
 
 	/** @suppress Builder that shouldn't be set directly by the user. */
-	public val dmEmbedBuilder: EmbedBuilder
-		get() = EmbedBuilder()
+	public var dmEmbedBuilder: (EmbedBuilder.() -> Unit)?
 
 	/** @suppress Builder that shouldn't be set directly by the user. */
-	public val actionEmbedBuilder: EmbedBuilder
-		get() = EmbedBuilder()
+	public var actionEmbedBuilder: (EmbedBuilder.() -> Unit)?
 
 	/** @suppress Builder that shouldn't be set directly by the user. */
-	public val publicActionEmbedBuilder: EmbedBuilder
-		get() = EmbedBuilder()
+	public var publicActionEmbedBuilder: (EmbedBuilder.() -> Unit)?
 
 	/**
 	 * DSL function used to configure the DM embed.
@@ -62,7 +56,7 @@ public interface Action {
 	 */
 	@ActionBuilderDSL
 	public fun dmEmbed(builder: EmbedBuilder.() -> Unit) {
-		builder(dmEmbedBuilder)
+		dmEmbedBuilder = builder
 	}
 
 	/**
@@ -72,7 +66,7 @@ public interface Action {
 	 */
 	@ActionBuilderDSL
 	public fun actionEmbed(builder: EmbedBuilder.() -> Unit) {
-		builder(actionEmbedBuilder)
+		actionEmbedBuilder = builder
 	}
 
 	/**
@@ -82,6 +76,6 @@ public interface Action {
 	 */
 	@ActionBuilderDSL
 	public fun publicActionEmbed(builder: EmbedBuilder.() -> Unit) {
-		builder(publicActionEmbedBuilder)
+		publicActionEmbedBuilder = builder
 	}
 }
