@@ -6,6 +6,13 @@ on:
       - main
 
 jobs:
+  check-api:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Check API
+        run: ./gradlew clean apiCheck
+
   build:
     runs-on: ubuntu-latest
 
