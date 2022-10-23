@@ -102,11 +102,11 @@ public suspend fun SlashCommandContext<*, *>.softban(
 	removeTimeout(action.removeTimeout, event.kord.getUser(targetUserId))
 
 	guild?.ban(targetUserId) {
-		reason = action.reason
+		reason = action.reason + "**SOFT-BAN**"
 		deleteMessageDuration = action.deleteMessageDuration.toDuration(TimeZone.UTC)
 	}
 
-	guild?.unban(targetUserId)
+	guild?.unban(targetUserId, "Soft-ban unban")
 
 	val publicLog = sendPublicLog(action.logPublicly, action.publicActionEmbedBuilder)
 
