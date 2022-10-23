@@ -12,41 +12,37 @@ package io.github.nocomment1105.discordmoderationactions.builder.action
 import dev.kord.core.entity.channel.GuildMessageChannel
 import dev.kord.rest.builder.message.EmbedBuilder
 import io.github.nocomment1105.discordmoderationactions.annotations.ActionBuilderDSL
+import io.github.nocomment1105.discordmoderationactions.enums.DmResult
+import io.github.nocomment1105.discordmoderationactions.enums.PrivateLogResult
+import io.github.nocomment1105.discordmoderationactions.enums.PublicActionLogResult
 
 /**
  * An interface containing the common fields for actions.
  */
 @ActionBuilderDSL
 public interface Action {
-
-	/** Whether to send a DM about this action to the user. Default: true. */
 	public var sendDm: Boolean
 
-	/** Whether to send a message to the action log provided. Default: True. */
 	public var sendActionLog: Boolean
 
-	/** The reason for the action. */
 	public var reason: String?
 
-	/** The channel to send the [actionEmbed] too. */
 	public var loggingChannel: GuildMessageChannel?
 
-	/** Whether to log the action publicly. I.E in the channel the command was run in. */
 	public var logPublicly: Boolean?
 
-	/**
-	 * Whether the bot has permission the required permissions to use the logging channel. This should be evaluated
-	 * by a check system from within the bot and passed into this variable.
-	 */
+	public var dmResult: DmResult
+
+	public var publicLogResult: PublicActionLogResult
+
+	public var privateLogResult: PrivateLogResult
+
 	public var hasLogChannelPerms: Boolean?
 
-	/** @suppress Builder that shouldn't be set directly by the user. */
 	public var dmEmbedBuilder: (suspend EmbedBuilder.() -> Unit)?
 
-	/** @suppress Builder that shouldn't be set directly by the user. */
 	public var actionEmbedBuilder: (suspend EmbedBuilder.() -> Unit)?
 
-	/** @suppress Builder that shouldn't be set directly by the user. */
 	public var publicActionEmbedBuilder: (suspend EmbedBuilder.() -> Unit)?
 
 	/**

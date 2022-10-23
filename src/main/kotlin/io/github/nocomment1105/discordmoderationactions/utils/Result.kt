@@ -9,9 +9,9 @@
 
 package io.github.nocomment1105.discordmoderationactions.utils
 
-import io.github.nocomment1105.discordmoderationactions.enums.ActionLogResult
 import io.github.nocomment1105.discordmoderationactions.enums.ActionResults
 import io.github.nocomment1105.discordmoderationactions.enums.DmResult
+import io.github.nocomment1105.discordmoderationactions.enums.PrivateLogResult
 import io.github.nocomment1105.discordmoderationactions.enums.PublicActionLogResult
 
 /**
@@ -26,6 +26,6 @@ import io.github.nocomment1105.discordmoderationactions.enums.PublicActionLogRes
 public data class Result(
 	public val result: ActionResults,
 	public val dmResult: DmResult? = null,
-	public val logResult: ActionLogResult? = null,
+	public val logResult: PrivateLogResult? = null,
 	public val publicLogResult: PublicActionLogResult? = null
 )

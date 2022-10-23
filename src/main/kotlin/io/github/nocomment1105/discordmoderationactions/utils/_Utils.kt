@@ -22,8 +22,8 @@ import dev.kord.core.behavior.edit
 import dev.kord.core.entity.User
 import dev.kord.rest.builder.message.EmbedBuilder
 import io.github.nocomment1105.discordmoderationactions.builder.actionLogger
-import io.github.nocomment1105.discordmoderationactions.enums.ActionLogResult
 import io.github.nocomment1105.discordmoderationactions.enums.DmResult
+import io.github.nocomment1105.discordmoderationactions.enums.PrivateLogResult
 import io.github.nocomment1105.discordmoderationactions.enums.PublicActionLogResult
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.InvocationKind
@@ -96,31 +96,31 @@ internal suspend inline fun SlashCommandContext<*, *>.sendPublicLog(
 	}
 
 /**
- * Sends a private log to a [channel] and returns the [ActionLogResult].
+ * Sends a private log to a [channel] and returns the [PrivateLogResult].
  *
  * @param shouldLog Whether to send a log or not
  * @param channel The channel to send the message in
  * @param actionEmbedBuilder The builder for the embed to send
  *
- * @return [ActionLogResult] ordinal based on the success
+ * @return [PrivateLogResult] ordinal based on the success
  */
 internal suspend inline fun sendPrivateLog(
 	shouldLog: Boolean?,
 	channel: MessageChannelBehavior?,
 	noinline actionEmbedBuilder: (suspend EmbedBuilder.() -> Unit)?
-): ActionLogResult =
+): PrivateLogResult =
 	if (shouldLog == true && actionEmbedBuilder != null && channel != null) {
 		try {
 			channel.createMessage {
 				embeds.add(EmbedBuilder().applyBuilder(actionEmbedBuilder))
 			}
-			ActionLogResult.LOG_SUCCESS
+			PrivateLogResult.LOG_SUCCESS
 		} catch (e: Exception) {
 			actionLogger.error(e) { e.message }
-			ActionLogResult.LOG_FAIL
+			PrivateLogResult.LOG_FAIL
 		}
 	} else {
-		ActionLogResult.LOG_NOT_SENT
+		PrivateLogResult.LOG_NOT_SENT
 	}
 
 @OptIn(ExperimentalContracts::class)

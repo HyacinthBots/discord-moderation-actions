@@ -50,7 +50,7 @@ public suspend fun SlashCommandContext<*, *>.ban(
 
 	if (guild == null) return Result(ActionResults.ACTION_FAIL)
 
-	val dm = sendDm(action.sendDm, targetUserId, action.dmEmbedBuilder)
+	action.dmResult = sendDm(action.sendDm, targetUserId, action.dmEmbedBuilder)
 
 	removeTimeout(action.removeTimeout, event.kord.getUser(targetUserId))
 
@@ -63,7 +63,7 @@ public suspend fun SlashCommandContext<*, *>.ban(
 
 	val privateLog = sendPrivateLog(action.sendActionLog, action.loggingChannel, action.actionEmbedBuilder)
 
-	return Result(ActionResults.ACTION_SUCCESS, dm, privateLog, publicLog)
+	return Result(ActionResults.ACTION_SUCCESS, action.dmResult, privateLog, publicLog)
 }
 
 /**

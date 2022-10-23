@@ -10,11 +10,11 @@
 package io.github.nocomment1105.discordmoderationactions.enums
 
 /**
- * An enum for the result of action logs.
+ * An enum for the result of private action logs.
  *
  * @property message The message attached to the ordinal
  */
-public enum class ActionLogResult(public val message: String) {
+public enum class PrivateLogResult(public val message: String) {
 	/** Represents the success of an attempt at sending an action log. */
 	LOG_SUCCESS("Action log sent successfully"),
 
