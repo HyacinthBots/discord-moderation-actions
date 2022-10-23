@@ -25,6 +25,9 @@ import io.github.nocomment1105.discordmoderationactions.builder.actionLogger
 import io.github.nocomment1105.discordmoderationactions.enums.ActionLogResult
 import io.github.nocomment1105.discordmoderationactions.enums.DmResult
 import io.github.nocomment1105.discordmoderationactions.enums.PublicActionLogResult
+import kotlin.contracts.ExperimentalContracts
+import kotlin.contracts.InvocationKind
+import kotlin.contracts.contract
 
 /**
  * Removes a timeout from a provided [user] if [removeTimeout] is true.
@@ -50,12 +53,12 @@ public suspend inline fun SlashCommandContext<*, *>.removeTimeout(removeTimeout:
 internal suspend inline fun SlashCommandContext<*, *>.sendDm(
 	shouldDm: Boolean,
 	targetUserId: Snowflake,
-	noinline dmEmbedBuilder: (EmbedBuilder.() -> Unit)?
+	noinline dmEmbedBuilder: (suspend EmbedBuilder.() -> Unit)?
 ): DmResult =
 	if (shouldDm && dmEmbedBuilder != null) {
 		try {
 			event.kord.getUser(targetUserId)?.dm {
-				embeds.add(EmbedBuilder().apply(dmEmbedBuilder))
+				embeds.add(EmbedBuilder().applyBuilder(dmEmbedBuilder))
 			}
 			DmResult.DM_SUCCESS
 		} catch (e: Exception) {
@@ -76,12 +79,12 @@ internal suspend inline fun SlashCommandContext<*, *>.sendDm(
  */
 internal suspend inline fun SlashCommandContext<*, *>.sendPublicLog(
 	shouldLog: Boolean?,
-	noinline publicLogEmbedBuilder: (EmbedBuilder.() -> Unit)?
+	noinline publicLogEmbedBuilder: (suspend EmbedBuilder.() -> Unit)?
 ): PublicActionLogResult =
 	if (shouldLog == true && publicLogEmbedBuilder != null) {
 		try {
 			channel.createMessage {
-				embeds.add(EmbedBuilder().apply(publicLogEmbedBuilder))
+				embeds.add(EmbedBuilder().applyBuilder(publicLogEmbedBuilder))
 			}
 			PublicActionLogResult.PUBLIC_LOG_SUCCESS
 		} catch (e: Exception) {
@@ -104,12 +107,12 @@ internal suspend inline fun SlashCommandContext<*, *>.sendPublicLog(
 internal suspend inline fun sendPrivateLog(
 	shouldLog: Boolean?,
 	channel: MessageChannelBehavior?,
-	noinline actionEmbedBuilder: (EmbedBuilder.() -> Unit)?
+	noinline actionEmbedBuilder: (suspend EmbedBuilder.() -> Unit)?
 ): ActionLogResult =
 	if (shouldLog == true && actionEmbedBuilder != null && channel != null) {
 		try {
 			channel.createMessage {
-				embeds.add(EmbedBuilder().apply(actionEmbedBuilder))
+				embeds.add(EmbedBuilder().applyBuilder(actionEmbedBuilder))
 			}
 			ActionLogResult.LOG_SUCCESS
 		} catch (e: Exception) {
@@ -119,3 +122,12 @@ internal suspend inline fun sendPrivateLog(
 	} else {
 		ActionLogResult.LOG_NOT_SENT
 	}
+
+@OptIn(ExperimentalContracts::class)
+public suspend inline fun <T> T.applyBuilder(crossinline block: suspend T.() -> Unit): T {
+	contract {
+		callsInPlace(block, InvocationKind.EXACTLY_ONCE)
+	}
+	block()
+	return this
+}

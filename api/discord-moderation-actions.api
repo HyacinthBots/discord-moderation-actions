@@ -13,59 +13,59 @@ public final class io/github/nocomment1105/discordmoderationactions/builder/_Act
 }
 
 public abstract interface class io/github/nocomment1105/discordmoderationactions/builder/action/Action {
-	public abstract fun actionEmbed (Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public abstract fun dmEmbed (Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public abstract fun getActionEmbedBuilder ()Lkotlin/jvm/functions/Function1;
-	public abstract fun getDmEmbedBuilder ()Lkotlin/jvm/functions/Function1;
+	public abstract fun actionEmbed (Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun dmEmbed (Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun getActionEmbedBuilder ()Lkotlin/jvm/functions/Function2;
+	public abstract fun getDmEmbedBuilder ()Lkotlin/jvm/functions/Function2;
 	public abstract fun getHasLogChannelPerms ()Ljava/lang/Boolean;
 	public abstract fun getLogPublicly ()Ljava/lang/Boolean;
 	public abstract fun getLoggingChannel ()Ldev/kord/core/entity/channel/GuildMessageChannel;
-	public abstract fun getPublicActionEmbedBuilder ()Lkotlin/jvm/functions/Function1;
+	public abstract fun getPublicActionEmbedBuilder ()Lkotlin/jvm/functions/Function2;
 	public abstract fun getReason ()Ljava/lang/String;
 	public abstract fun getSendActionLog ()Z
 	public abstract fun getSendDm ()Z
-	public abstract fun publicActionEmbed (Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public abstract fun setActionEmbedBuilder (Lkotlin/jvm/functions/Function1;)V
-	public abstract fun setDmEmbedBuilder (Lkotlin/jvm/functions/Function1;)V
+	public abstract fun publicActionEmbed (Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun setActionEmbedBuilder (Lkotlin/jvm/functions/Function2;)V
+	public abstract fun setDmEmbedBuilder (Lkotlin/jvm/functions/Function2;)V
 	public abstract fun setHasLogChannelPerms (Ljava/lang/Boolean;)V
 	public abstract fun setLogPublicly (Ljava/lang/Boolean;)V
 	public abstract fun setLoggingChannel (Ldev/kord/core/entity/channel/GuildMessageChannel;)V
-	public abstract fun setPublicActionEmbedBuilder (Lkotlin/jvm/functions/Function1;)V
+	public abstract fun setPublicActionEmbedBuilder (Lkotlin/jvm/functions/Function2;)V
 	public abstract fun setReason (Ljava/lang/String;)V
 	public abstract fun setSendActionLog (Z)V
 	public abstract fun setSendDm (Z)V
 }
 
 public final class io/github/nocomment1105/discordmoderationactions/builder/action/Action$DefaultImpls {
-	public static fun actionEmbed (Lio/github/nocomment1105/discordmoderationactions/builder/action/Action;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static fun dmEmbed (Lio/github/nocomment1105/discordmoderationactions/builder/action/Action;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static fun publicActionEmbed (Lio/github/nocomment1105/discordmoderationactions/builder/action/Action;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun actionEmbed (Lio/github/nocomment1105/discordmoderationactions/builder/action/Action;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun dmEmbed (Lio/github/nocomment1105/discordmoderationactions/builder/action/Action;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun publicActionEmbed (Lio/github/nocomment1105/discordmoderationactions/builder/action/Action;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public class io/github/nocomment1105/discordmoderationactions/builder/action/BanActionBuilder : io/github/nocomment1105/discordmoderationactions/builder/action/Action {
 	public field deleteMessageDuration Lkotlinx/datetime/DateTimePeriod;
 	public fun <init> ()V
-	public fun actionEmbed (Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public fun dmEmbed (Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public fun getActionEmbedBuilder ()Lkotlin/jvm/functions/Function1;
+	public fun actionEmbed (Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun dmEmbed (Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun getActionEmbedBuilder ()Lkotlin/jvm/functions/Function2;
 	public fun getDeleteMessageDuration ()Lkotlinx/datetime/DateTimePeriod;
-	public fun getDmEmbedBuilder ()Lkotlin/jvm/functions/Function1;
+	public fun getDmEmbedBuilder ()Lkotlin/jvm/functions/Function2;
 	public fun getHasLogChannelPerms ()Ljava/lang/Boolean;
 	public fun getLogPublicly ()Ljava/lang/Boolean;
 	public fun getLoggingChannel ()Ldev/kord/core/entity/channel/GuildMessageChannel;
-	public fun getPublicActionEmbedBuilder ()Lkotlin/jvm/functions/Function1;
+	public fun getPublicActionEmbedBuilder ()Lkotlin/jvm/functions/Function2;
 	public fun getReason ()Ljava/lang/String;
 	public final fun getRemoveTimeout ()Z
 	public fun getSendActionLog ()Z
 	public fun getSendDm ()Z
-	public fun publicActionEmbed (Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public fun setActionEmbedBuilder (Lkotlin/jvm/functions/Function1;)V
+	public fun publicActionEmbed (Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun setActionEmbedBuilder (Lkotlin/jvm/functions/Function2;)V
 	public fun setDeleteMessageDuration (Lkotlinx/datetime/DateTimePeriod;)V
-	public fun setDmEmbedBuilder (Lkotlin/jvm/functions/Function1;)V
+	public fun setDmEmbedBuilder (Lkotlin/jvm/functions/Function2;)V
 	public fun setHasLogChannelPerms (Ljava/lang/Boolean;)V
 	public fun setLogPublicly (Ljava/lang/Boolean;)V
 	public fun setLoggingChannel (Ldev/kord/core/entity/channel/GuildMessageChannel;)V
-	public fun setPublicActionEmbedBuilder (Lkotlin/jvm/functions/Function1;)V
+	public fun setPublicActionEmbedBuilder (Lkotlin/jvm/functions/Function2;)V
 	public fun setReason (Ljava/lang/String;)V
 	public final fun setRemoveTimeout (Z)V
 	public fun setSendActionLog (Z)V
@@ -74,25 +74,25 @@ public class io/github/nocomment1105/discordmoderationactions/builder/action/Ban
 
 public class io/github/nocomment1105/discordmoderationactions/builder/action/KickActionBuilder : io/github/nocomment1105/discordmoderationactions/builder/action/Action {
 	public fun <init> ()V
-	public fun actionEmbed (Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public fun dmEmbed (Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public fun getActionEmbedBuilder ()Lkotlin/jvm/functions/Function1;
-	public fun getDmEmbedBuilder ()Lkotlin/jvm/functions/Function1;
+	public fun actionEmbed (Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun dmEmbed (Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun getActionEmbedBuilder ()Lkotlin/jvm/functions/Function2;
+	public fun getDmEmbedBuilder ()Lkotlin/jvm/functions/Function2;
 	public fun getHasLogChannelPerms ()Ljava/lang/Boolean;
 	public fun getLogPublicly ()Ljava/lang/Boolean;
 	public fun getLoggingChannel ()Ldev/kord/core/entity/channel/GuildMessageChannel;
-	public fun getPublicActionEmbedBuilder ()Lkotlin/jvm/functions/Function1;
+	public fun getPublicActionEmbedBuilder ()Lkotlin/jvm/functions/Function2;
 	public fun getReason ()Ljava/lang/String;
 	public final fun getRemoveTimeout ()Z
 	public fun getSendActionLog ()Z
 	public fun getSendDm ()Z
-	public fun publicActionEmbed (Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public fun setActionEmbedBuilder (Lkotlin/jvm/functions/Function1;)V
-	public fun setDmEmbedBuilder (Lkotlin/jvm/functions/Function1;)V
+	public fun publicActionEmbed (Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun setActionEmbedBuilder (Lkotlin/jvm/functions/Function2;)V
+	public fun setDmEmbedBuilder (Lkotlin/jvm/functions/Function2;)V
 	public fun setHasLogChannelPerms (Ljava/lang/Boolean;)V
 	public fun setLogPublicly (Ljava/lang/Boolean;)V
 	public fun setLoggingChannel (Ldev/kord/core/entity/channel/GuildMessageChannel;)V
-	public fun setPublicActionEmbedBuilder (Lkotlin/jvm/functions/Function1;)V
+	public fun setPublicActionEmbedBuilder (Lkotlin/jvm/functions/Function2;)V
 	public fun setReason (Ljava/lang/String;)V
 	public final fun setRemoveTimeout (Z)V
 	public fun setSendActionLog (Z)V
@@ -108,25 +108,25 @@ public class io/github/nocomment1105/discordmoderationactions/builder/action/Sof
 public class io/github/nocomment1105/discordmoderationactions/builder/action/TimeoutActionBuilder : io/github/nocomment1105/discordmoderationactions/builder/action/Action {
 	public field timeoutDuration Lkotlinx/datetime/Instant;
 	public fun <init> ()V
-	public fun actionEmbed (Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public fun dmEmbed (Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public fun getActionEmbedBuilder ()Lkotlin/jvm/functions/Function1;
-	public fun getDmEmbedBuilder ()Lkotlin/jvm/functions/Function1;
+	public fun actionEmbed (Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun dmEmbed (Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun getActionEmbedBuilder ()Lkotlin/jvm/functions/Function2;
+	public fun getDmEmbedBuilder ()Lkotlin/jvm/functions/Function2;
 	public fun getHasLogChannelPerms ()Ljava/lang/Boolean;
 	public fun getLogPublicly ()Ljava/lang/Boolean;
 	public fun getLoggingChannel ()Ldev/kord/core/entity/channel/GuildMessageChannel;
-	public fun getPublicActionEmbedBuilder ()Lkotlin/jvm/functions/Function1;
+	public fun getPublicActionEmbedBuilder ()Lkotlin/jvm/functions/Function2;
 	public fun getReason ()Ljava/lang/String;
 	public fun getSendActionLog ()Z
 	public fun getSendDm ()Z
 	public final fun getTimeoutDuration ()Lkotlinx/datetime/Instant;
-	public fun publicActionEmbed (Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public fun setActionEmbedBuilder (Lkotlin/jvm/functions/Function1;)V
-	public fun setDmEmbedBuilder (Lkotlin/jvm/functions/Function1;)V
+	public fun publicActionEmbed (Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun setActionEmbedBuilder (Lkotlin/jvm/functions/Function2;)V
+	public fun setDmEmbedBuilder (Lkotlin/jvm/functions/Function2;)V
 	public fun setHasLogChannelPerms (Ljava/lang/Boolean;)V
 	public fun setLogPublicly (Ljava/lang/Boolean;)V
 	public fun setLoggingChannel (Ldev/kord/core/entity/channel/GuildMessageChannel;)V
-	public fun setPublicActionEmbedBuilder (Lkotlin/jvm/functions/Function1;)V
+	public fun setPublicActionEmbedBuilder (Lkotlin/jvm/functions/Function2;)V
 	public fun setReason (Ljava/lang/String;)V
 	public fun setSendActionLog (Z)V
 	public fun setSendDm (Z)V
@@ -188,6 +188,7 @@ public final class io/github/nocomment1105/discordmoderationactions/utils/Result
 }
 
 public final class io/github/nocomment1105/discordmoderationactions/utils/_UtilsKt {
+	public static final fun applyBuilder (Ljava/lang/Object;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun removeTimeout (Lcom/kotlindiscord/kord/extensions/commands/application/slash/SlashCommandContext;ZLdev/kord/core/entity/User;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 

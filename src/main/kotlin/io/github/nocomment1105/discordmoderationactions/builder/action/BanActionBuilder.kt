@@ -32,9 +32,9 @@ public open class BanActionBuilder : Action {
 
 	public override var hasLogChannelPerms: Boolean? = null
 
-	public override var dmEmbedBuilder: (EmbedBuilder.() -> Unit)? = null
+	public override var dmEmbedBuilder: (suspend EmbedBuilder.() -> Unit)? = null
 
-	public override var actionEmbedBuilder: (EmbedBuilder.() -> Unit)? = null
+	public override var actionEmbedBuilder: (suspend EmbedBuilder.() -> Unit)? = null
 
-	public override var publicActionEmbedBuilder: (EmbedBuilder.() -> Unit)? = null
+	public override var publicActionEmbedBuilder: (suspend EmbedBuilder.() -> Unit)? = null
 }

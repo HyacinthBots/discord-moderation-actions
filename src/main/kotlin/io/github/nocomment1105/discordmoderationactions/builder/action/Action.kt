@@ -41,13 +41,13 @@ public interface Action {
 	public var hasLogChannelPerms: Boolean?
 
 	/** @suppress Builder that shouldn't be set directly by the user. */
-	public var dmEmbedBuilder: (EmbedBuilder.() -> Unit)?
+	public var dmEmbedBuilder: (suspend EmbedBuilder.() -> Unit)?
 
 	/** @suppress Builder that shouldn't be set directly by the user. */
-	public var actionEmbedBuilder: (EmbedBuilder.() -> Unit)?
+	public var actionEmbedBuilder: (suspend EmbedBuilder.() -> Unit)?
 
 	/** @suppress Builder that shouldn't be set directly by the user. */
-	public var publicActionEmbedBuilder: (EmbedBuilder.() -> Unit)?
+	public var publicActionEmbedBuilder: (suspend EmbedBuilder.() -> Unit)?
 
 	/**
 	 * DSL function used to configure the DM embed.
@@ -55,7 +55,7 @@ public interface Action {
 	 * @see EmbedBuilder
 	 */
 	@ActionBuilderDSL
-	public suspend fun dmEmbed(builder: EmbedBuilder.() -> Unit) {
+	public suspend fun dmEmbed(builder: suspend EmbedBuilder.() -> Unit) {
 		dmEmbedBuilder = builder
 	}
 
@@ -65,7 +65,7 @@ public interface Action {
 	 * @see EmbedBuilder
 	 */
 	@ActionBuilderDSL
-	public suspend fun actionEmbed(builder: EmbedBuilder.() -> Unit) {
+	public suspend fun actionEmbed(builder: suspend EmbedBuilder.() -> Unit) {
 		actionEmbedBuilder = builder
 	}
 
@@ -75,7 +75,7 @@ public interface Action {
 	 * @see EmbedBuilder
 	 */
 	@ActionBuilderDSL
-	public suspend fun publicActionEmbed(builder: EmbedBuilder.() -> Unit) {
+	public suspend fun publicActionEmbed(builder: suspend EmbedBuilder.() -> Unit) {
 		publicActionEmbedBuilder = builder
 	}
 }
