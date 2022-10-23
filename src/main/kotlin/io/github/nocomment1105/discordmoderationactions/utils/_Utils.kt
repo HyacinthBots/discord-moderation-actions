@@ -100,6 +100,7 @@ internal suspend inline fun SlashCommandContext<*, *>.sendPublicLog(
  *
  * @param shouldLog Whether to send a log or not
  * @param channel The channel to send the message in
+ * @param hasLogChannelPerms Whether the bot has log channel perms or not
  * @param actionEmbedBuilder The builder for the embed to send
  *
  * @return [PrivateLogResult] ordinal based on the success
@@ -107,9 +108,10 @@ internal suspend inline fun SlashCommandContext<*, *>.sendPublicLog(
 internal suspend inline fun sendPrivateLog(
 	shouldLog: Boolean?,
 	channel: MessageChannelBehavior?,
+	hasLogChannelPerms: Boolean?,
 	noinline actionEmbedBuilder: (suspend EmbedBuilder.() -> Unit)?
 ): PrivateLogResult =
-	if (shouldLog == true && actionEmbedBuilder != null && channel != null) {
+	if (shouldLog == true && actionEmbedBuilder != null && channel != null && hasLogChannelPerms != false) {
 		try {
 			channel.createMessage {
 				embeds.add(EmbedBuilder().applyBuilder(actionEmbedBuilder))

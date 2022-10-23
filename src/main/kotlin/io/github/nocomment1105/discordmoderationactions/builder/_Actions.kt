@@ -61,7 +61,12 @@ public suspend fun SlashCommandContext<*, *>.ban(
 
 	val publicLog = sendPublicLog(action.logPublicly, action.publicActionEmbedBuilder)
 
-	val privateLog = sendPrivateLog(action.sendActionLog, action.loggingChannel, action.actionEmbedBuilder)
+	val privateLog = sendPrivateLog(
+		action.sendActionLog,
+		action.loggingChannel,
+		action.hasLogChannelPerms,
+		action.actionEmbedBuilder
+	)
 
 	return Result(ActionResults.ACTION_SUCCESS, action.dmResult, privateLog, publicLog)
 }
@@ -110,7 +115,12 @@ public suspend fun SlashCommandContext<*, *>.softban(
 
 	val publicLog = sendPublicLog(action.logPublicly, action.publicActionEmbedBuilder)
 
-	val privateLog = sendPrivateLog(action.sendActionLog, action.loggingChannel, action.actionEmbedBuilder)
+	val privateLog = sendPrivateLog(
+		action.sendActionLog,
+		action.loggingChannel,
+		action.hasLogChannelPerms,
+		action.actionEmbedBuilder
+	)
 
 	return Result(ActionResults.ACTION_SUCCESS, dm, privateLog, publicLog)
 }
@@ -153,7 +163,12 @@ public suspend fun SlashCommandContext<*, *>.kick(
 
 	val publicLog = sendPublicLog(action.logPublicly, action.publicActionEmbedBuilder)
 
-	val privateLog = sendPrivateLog(action.sendActionLog, action.loggingChannel, action.actionEmbedBuilder)
+	val privateLog = sendPrivateLog(
+		action.sendActionLog,
+		action.loggingChannel,
+		action.hasLogChannelPerms,
+		action.actionEmbedBuilder
+	)
 
 	return Result(ActionResults.ACTION_SUCCESS, dm, privateLog, publicLog)
 }
@@ -194,7 +209,12 @@ public suspend fun SlashCommandContext<*, *>.timeout(
 
 	val publicLog = sendPublicLog(action.logPublicly, action.publicActionEmbedBuilder)
 
-	val privateLog = sendPrivateLog(action.sendActionLog, action.loggingChannel, action.actionEmbedBuilder)
+	val privateLog = sendPrivateLog(
+		action.sendActionLog,
+		action.loggingChannel,
+		action.hasLogChannelPerms,
+		action.actionEmbedBuilder
+	)
 
 	return Result(ActionResults.ACTION_SUCCESS, dm, privateLog, publicLog)
 }
