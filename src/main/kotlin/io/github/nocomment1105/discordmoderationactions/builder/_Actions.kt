@@ -43,7 +43,7 @@ internal val actionLogger = KotlinLogging.logger("Action Logger")
  */
 public suspend fun SlashCommandContext<*, *>.ban(
 	targetUserId: Snowflake,
-	builder: BanActionBuilder.() -> Unit
+	builder: suspend BanActionBuilder.() -> Unit
 ): Result {
 	val action = BanActionBuilder()
 	action.builder()
@@ -76,7 +76,7 @@ public suspend fun SlashCommandContext<*, *>.ban(
  */
 public suspend fun <T : UserBehavior> SlashCommandContext<*, *>.ban(
 	targetUser: T,
-	builder: BanActionBuilder.() -> Unit
+	builder: suspend BanActionBuilder.() -> Unit
 ): Result = ban(targetUser.id, builder)
 
 /**
@@ -90,7 +90,7 @@ public suspend fun <T : UserBehavior> SlashCommandContext<*, *>.ban(
 @Suppress("DuplicatedCode")
 public suspend fun SlashCommandContext<*, *>.softban(
 	targetUserId: Snowflake,
-	builder: SoftBanActionBuilder.() -> Unit
+	builder: suspend SoftBanActionBuilder.() -> Unit
 ): Result {
 	val action = SoftBanActionBuilder()
 	action.builder()
@@ -125,7 +125,7 @@ public suspend fun SlashCommandContext<*, *>.softban(
  */
 public suspend fun <T : UserBehavior> SlashCommandContext<*, *>.softban(
 	targetUser: T,
-	builder: SoftBanActionBuilder.() -> Unit
+	builder: suspend SoftBanActionBuilder.() -> Unit
 ): Result = softban(targetUser.id, builder)
 
 /**
@@ -138,7 +138,7 @@ public suspend fun <T : UserBehavior> SlashCommandContext<*, *>.softban(
  */
 public suspend fun SlashCommandContext<*, *>.kick(
 	targetUserId: Snowflake,
-	builder: KickActionBuilder.() -> Unit
+	builder: suspend KickActionBuilder.() -> Unit
 ): Result {
 	val action = KickActionBuilder()
 	action.builder()
@@ -168,7 +168,7 @@ public suspend fun SlashCommandContext<*, *>.kick(
  */
 public suspend fun <T : UserBehavior> SlashCommandContext<*, *>.kick(
 	targetUser: T,
-	builder: KickActionBuilder.() -> Unit
+	builder: suspend KickActionBuilder.() -> Unit
 ): Result = kick(targetUser.id, builder)
 
 /**
@@ -181,7 +181,7 @@ public suspend fun <T : UserBehavior> SlashCommandContext<*, *>.kick(
  */
 public suspend fun SlashCommandContext<*, *>.timeout(
 	targetUserId: Snowflake,
-	builder: TimeoutActionBuilder.() -> Unit
+	builder: suspend TimeoutActionBuilder.() -> Unit
 ): Result {
 	val action = TimeoutActionBuilder()
 	action.builder()
@@ -209,5 +209,5 @@ public suspend fun SlashCommandContext<*, *>.timeout(
  */
 public suspend fun <T : UserBehavior> SlashCommandContext<*, *>.timeout(
 	targetUser: T,
-	builder: TimeoutActionBuilder.() -> Unit
+	builder: suspend TimeoutActionBuilder.() -> Unit
 ): Result = timeout(targetUser.id, builder)

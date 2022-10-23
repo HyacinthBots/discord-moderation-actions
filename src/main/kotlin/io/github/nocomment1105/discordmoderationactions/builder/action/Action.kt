@@ -55,7 +55,7 @@ public interface Action {
 	 * @see EmbedBuilder
 	 */
 	@ActionBuilderDSL
-	public fun dmEmbed(builder: EmbedBuilder.() -> Unit) {
+	public suspend fun dmEmbed(builder: EmbedBuilder.() -> Unit) {
 		dmEmbedBuilder = builder
 	}
 
@@ -65,7 +65,7 @@ public interface Action {
 	 * @see EmbedBuilder
 	 */
 	@ActionBuilderDSL
-	public fun actionEmbed(builder: EmbedBuilder.() -> Unit) {
+	public suspend fun actionEmbed(builder: EmbedBuilder.() -> Unit) {
 		actionEmbedBuilder = builder
 	}
 
@@ -75,7 +75,7 @@ public interface Action {
 	 * @see EmbedBuilder
 	 */
 	@ActionBuilderDSL
-	public fun publicActionEmbed(builder: EmbedBuilder.() -> Unit) {
+	public suspend fun publicActionEmbed(builder: EmbedBuilder.() -> Unit) {
 		publicActionEmbedBuilder = builder
 	}
 }
