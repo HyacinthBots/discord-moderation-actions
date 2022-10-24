@@ -108,7 +108,7 @@ public suspend fun SlashCommandContext<*, *>.softban(
 
 	val dm = sendDm(action.sendDm, targetUserId, action.dmEmbedBuilder)
 
-	removeTimeout(action.removeTimeout, event.kord.getUser(targetUserId))
+	removeTimeout(action.removeTimeout, guild?.getMemberOrNull(targetUserId))
 
 	guild?.ban(targetUserId) {
 		reason = action.reason + "**SOFT-BAN**"
@@ -212,7 +212,7 @@ public suspend fun SlashCommandContext<*, *>.kick(
 
 	val dm = sendDm(action.sendDm, targetUserId, action.dmEmbedBuilder)
 
-	removeTimeout(action.removeTimeout, event.kord.getUser(targetUserId))
+	removeTimeout(action.removeTimeout, guild?.getMemberOrNull(targetUserId))
 
 	guild?.kick(targetUserId, action.reason)
 
