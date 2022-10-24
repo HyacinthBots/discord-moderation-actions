@@ -21,11 +21,13 @@ import io.github.nocomment1105.discordmoderationactions.enums.PublicActionLogRes
  * @property dmResult The result of dming the user
  * @property logResult The result of the private log
  * @property publicLogResult the result of the public log
+ * @property extraInfo Any extra info for the result.
  *
  */
 public data class Result(
 	public val result: ActionResults,
 	public val dmResult: DmResult? = null,
 	public val logResult: PrivateLogResult? = null,
-	public val publicLogResult: PublicActionLogResult? = null
+	public val publicLogResult: PublicActionLogResult? = null,
+	public val extraInfo: String? = null
 )
