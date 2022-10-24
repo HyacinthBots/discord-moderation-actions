@@ -10,6 +10,8 @@ public final class io/github/nocomment1105/discordmoderationactions/builder/_Act
 	public static final fun softban (Lcom/kotlindiscord/kord/extensions/commands/application/slash/SlashCommandContext;Ldev/kord/core/behavior/UserBehavior;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun timeout (Lcom/kotlindiscord/kord/extensions/commands/application/slash/SlashCommandContext;Ldev/kord/common/entity/Snowflake;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun timeout (Lcom/kotlindiscord/kord/extensions/commands/application/slash/SlashCommandContext;Ldev/kord/core/behavior/UserBehavior;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun unban (Lcom/kotlindiscord/kord/extensions/commands/application/slash/SlashCommandContext;Ldev/kord/common/entity/Snowflake;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun unban (Lcom/kotlindiscord/kord/extensions/commands/application/slash/SlashCommandContext;Ldev/kord/core/behavior/UserBehavior;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public abstract interface class io/github/nocomment1105/discordmoderationactions/builder/action/Action {
@@ -166,6 +168,40 @@ public class io/github/nocomment1105/discordmoderationactions/builder/action/Tim
 	public final fun setTimeoutDuration (Lkotlinx/datetime/Instant;)V
 }
 
+public class io/github/nocomment1105/discordmoderationactions/builder/action/UnbanActionBuilder : io/github/nocomment1105/discordmoderationactions/builder/action/Action {
+	public field dmResult Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;
+	public field privateLogResult Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;
+	public field publicLogResult Lio/github/nocomment1105/discordmoderationactions/enums/PublicActionLogResult;
+	public fun <init> ()V
+	public fun actionEmbed (Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun dmEmbed (Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun getActionEmbedBuilder ()Lkotlin/jvm/functions/Function2;
+	public fun getDmEmbedBuilder ()Lkotlin/jvm/functions/Function2;
+	public fun getDmResult ()Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;
+	public fun getHasLogChannelPerms ()Ljava/lang/Boolean;
+	public fun getLogPublicly ()Ljava/lang/Boolean;
+	public fun getLoggingChannel ()Ldev/kord/core/entity/channel/GuildMessageChannel;
+	public fun getPrivateLogResult ()Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;
+	public fun getPublicActionEmbedBuilder ()Lkotlin/jvm/functions/Function2;
+	public fun getPublicLogResult ()Lio/github/nocomment1105/discordmoderationactions/enums/PublicActionLogResult;
+	public fun getReason ()Ljava/lang/String;
+	public fun getSendActionLog ()Z
+	public fun getSendDm ()Z
+	public fun publicActionEmbed (Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun setActionEmbedBuilder (Lkotlin/jvm/functions/Function2;)V
+	public fun setDmEmbedBuilder (Lkotlin/jvm/functions/Function2;)V
+	public fun setDmResult (Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;)V
+	public fun setHasLogChannelPerms (Ljava/lang/Boolean;)V
+	public fun setLogPublicly (Ljava/lang/Boolean;)V
+	public fun setLoggingChannel (Ldev/kord/core/entity/channel/GuildMessageChannel;)V
+	public fun setPrivateLogResult (Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;)V
+	public fun setPublicActionEmbedBuilder (Lkotlin/jvm/functions/Function2;)V
+	public fun setPublicLogResult (Lio/github/nocomment1105/discordmoderationactions/enums/PublicActionLogResult;)V
+	public fun setReason (Ljava/lang/String;)V
+	public fun setSendActionLog (Z)V
+	public fun setSendDm (Z)V
+}
+
 public final class io/github/nocomment1105/discordmoderationactions/enums/ActionResults : java/lang/Enum {
 	public static final field ACTION_FAIL Lio/github/nocomment1105/discordmoderationactions/enums/ActionResults;
 	public static final field ACTION_SUCCESS Lio/github/nocomment1105/discordmoderationactions/enums/ActionResults;
@@ -203,16 +239,18 @@ public final class io/github/nocomment1105/discordmoderationactions/enums/Public
 }
 
 public final class io/github/nocomment1105/discordmoderationactions/utils/Result {
-	public fun <init> (Lio/github/nocomment1105/discordmoderationactions/enums/ActionResults;Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;Lio/github/nocomment1105/discordmoderationactions/enums/PublicActionLogResult;)V
-	public synthetic fun <init> (Lio/github/nocomment1105/discordmoderationactions/enums/ActionResults;Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;Lio/github/nocomment1105/discordmoderationactions/enums/PublicActionLogResult;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Lio/github/nocomment1105/discordmoderationactions/enums/ActionResults;Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;Lio/github/nocomment1105/discordmoderationactions/enums/PublicActionLogResult;Ljava/lang/String;)V
+	public synthetic fun <init> (Lio/github/nocomment1105/discordmoderationactions/enums/ActionResults;Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;Lio/github/nocomment1105/discordmoderationactions/enums/PublicActionLogResult;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Lio/github/nocomment1105/discordmoderationactions/enums/ActionResults;
 	public final fun component2 ()Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;
 	public final fun component3 ()Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;
 	public final fun component4 ()Lio/github/nocomment1105/discordmoderationactions/enums/PublicActionLogResult;
-	public final fun copy (Lio/github/nocomment1105/discordmoderationactions/enums/ActionResults;Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;Lio/github/nocomment1105/discordmoderationactions/enums/PublicActionLogResult;)Lio/github/nocomment1105/discordmoderationactions/utils/Result;
-	public static synthetic fun copy$default (Lio/github/nocomment1105/discordmoderationactions/utils/Result;Lio/github/nocomment1105/discordmoderationactions/enums/ActionResults;Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;Lio/github/nocomment1105/discordmoderationactions/enums/PublicActionLogResult;ILjava/lang/Object;)Lio/github/nocomment1105/discordmoderationactions/utils/Result;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun copy (Lio/github/nocomment1105/discordmoderationactions/enums/ActionResults;Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;Lio/github/nocomment1105/discordmoderationactions/enums/PublicActionLogResult;Ljava/lang/String;)Lio/github/nocomment1105/discordmoderationactions/utils/Result;
+	public static synthetic fun copy$default (Lio/github/nocomment1105/discordmoderationactions/utils/Result;Lio/github/nocomment1105/discordmoderationactions/enums/ActionResults;Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;Lio/github/nocomment1105/discordmoderationactions/enums/PublicActionLogResult;Ljava/lang/String;ILjava/lang/Object;)Lio/github/nocomment1105/discordmoderationactions/utils/Result;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getDmResult ()Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;
+	public final fun getExtraInfo ()Ljava/lang/String;
 	public final fun getLogResult ()Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;
 	public final fun getPublicLogResult ()Lio/github/nocomment1105/discordmoderationactions/enums/PublicActionLogResult;
 	public final fun getResult ()Lio/github/nocomment1105/discordmoderationactions/enums/ActionResults;

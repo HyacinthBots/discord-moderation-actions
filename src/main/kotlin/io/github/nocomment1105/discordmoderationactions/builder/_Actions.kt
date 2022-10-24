@@ -22,12 +22,16 @@ import io.github.nocomment1105.discordmoderationactions.builder.action.BanAction
 import io.github.nocomment1105.discordmoderationactions.builder.action.KickActionBuilder
 import io.github.nocomment1105.discordmoderationactions.builder.action.SoftBanActionBuilder
 import io.github.nocomment1105.discordmoderationactions.builder.action.TimeoutActionBuilder
+import io.github.nocomment1105.discordmoderationactions.builder.action.UnbanActionBuilder
 import io.github.nocomment1105.discordmoderationactions.enums.ActionResults
+import io.github.nocomment1105.discordmoderationactions.enums.DmResult
+import io.github.nocomment1105.discordmoderationactions.enums.PublicActionLogResult
 import io.github.nocomment1105.discordmoderationactions.utils.Result
 import io.github.nocomment1105.discordmoderationactions.utils.removeTimeout
 import io.github.nocomment1105.discordmoderationactions.utils.sendDm
 import io.github.nocomment1105.discordmoderationactions.utils.sendPrivateLog
 import io.github.nocomment1105.discordmoderationactions.utils.sendPublicLog
+import kotlinx.coroutines.flow.toList
 import kotlinx.datetime.TimeZone
 import mu.KotlinLogging
 
@@ -37,7 +41,7 @@ internal val actionLogger = KotlinLogging.logger("Action Logger")
  * DSL function for easily running a ban action.
  * This will ban the user, and carryout any extra tasks specified
  *
- * @param targetUserId The user to ban
+ * @param targetUserId The id of the user to ban
  * @param builder Builder lambda used for setting up the ban action
  * @see BanActionBuilder
  */
@@ -52,7 +56,7 @@ public suspend fun SlashCommandContext<*, *>.ban(
 
 	action.dmResult = sendDm(action.sendDm, targetUserId, action.dmEmbedBuilder)
 
-	removeTimeout(action.removeTimeout, event.kord.getUser(targetUserId))
+	removeTimeout(action.removeTimeout, guild?.getMemberOrNull(targetUserId))
 
 	guild?.ban(targetUserId) {
 		reason = action.reason
@@ -88,7 +92,7 @@ public suspend fun <T : UserBehavior> SlashCommandContext<*, *>.ban(
  * DSL function for easily running a ban action.
  * This will softban the user, and carryout any extra tasks specified
  *
- * @param targetUserId The user to softban
+ * @param targetUserId The id of the user to softban
  * @param builder Builder lambda used for setting up the softban action
  * @see SoftBanActionBuilder
  */
@@ -126,7 +130,7 @@ public suspend fun SlashCommandContext<*, *>.softban(
 }
 
 /**
- * DSL function for easily running a ban action.
+ * DSL function for easily running a softban action.
  * This will softban the user, and carryout any extra tasks specified
  *
  * @param targetUser The user to softban
@@ -139,10 +143,61 @@ public suspend fun <T : UserBehavior> SlashCommandContext<*, *>.softban(
 ): Result = softban(targetUser.id, builder)
 
 /**
+ * DSL function for easily running an unban action.
+ * This will unban the user, and carryout any extra tasks specified
+ *
+ * @param targetUserId The id of the user to unban
+ * @param builder Builder lambda used for setting up the unban action
+ * @see UnbanActionBuilder
+ */
+public suspend fun SlashCommandContext<*, *>.unban(
+	targetUserId: Snowflake,
+	builder: suspend UnbanActionBuilder.() -> Unit
+): Result {
+	val action = UnbanActionBuilder()
+	action.builder()
+
+	if (guild == null) return Result(ActionResults.NULL_GUILD)
+
+	if (targetUserId in guild!!.bans.toList().map { it.userId }) {
+		guild?.unban(targetUserId, action.reason)
+	} else {
+		return Result(ActionResults.ACTION_FAIL, extraInfo = "**Error:** User is not banned")
+	}
+
+	val privateLog = sendPrivateLog(
+		action.sendActionLog,
+		action.loggingChannel,
+		action.hasLogChannelPerms,
+		action.actionEmbedBuilder
+	)
+
+	return Result(
+		ActionResults.ACTION_SUCCESS,
+		DmResult.DM_NOT_SENT,
+		privateLog,
+		PublicActionLogResult.PUBLIC_LOG_NOT_SENT
+	)
+}
+
+/**
+ * DSL function for easily running an unban action.
+ * This will unban the user, and carryout any extra tasks specified
+ *
+ * @param targetUser The user to unban
+ * @param builder Builder lambda used for setting up the unban action
+ * @see UnbanActionBuilder
+ */
+public suspend fun <T : UserBehavior> SlashCommandContext<*, *>.unban(
+	targetUser: T,
+	builder: suspend UnbanActionBuilder.() -> Unit
+): Result = unban(targetUser.id, builder)
+
+/**
  * DSL function for easily running a ban action.
  * This will kick the user, and carryout any extra tasks specified
  *
- * @param targetUserId The user to kick
+ * @param targetUserId The id of the user to kick
  * @param builder Builder lambda used for setting up the kick action
  * @see KickActionBuilder
  */
@@ -190,7 +245,7 @@ public suspend fun <T : UserBehavior> SlashCommandContext<*, *>.kick(
  * DSL function for easily running a ban action.
  * This will time out the user, and carryout any extra tasks specified
  *
- * @param targetUserId The user to timeout
+ * @param targetUserId The id of the user to timeout
  * @param builder Builder lambda used for setting up the timeout action
  * @see BanActionBuilder
  */

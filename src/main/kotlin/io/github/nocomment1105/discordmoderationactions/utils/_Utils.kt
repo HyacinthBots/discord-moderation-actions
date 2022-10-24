@@ -35,9 +35,12 @@ import kotlin.contracts.contract
  * @param removeTimeout Whether to remove the timeout or not
  * @param user The user to remove the timeout from
  */
-public suspend inline fun SlashCommandContext<*, *>.removeTimeout(removeTimeout: Boolean, user: User?) {
+@Suppress("KotlinConstantConditions") // Yes, but just for safety. False logging is suboptimal
+public suspend fun SlashCommandContext<*, *>.removeTimeout(removeTimeout: Boolean, user: User?) {
 	if (removeTimeout && user != null) {
 		user.asMemberOrNull(guildFor(event)!!.id)?.edit { timeoutUntil = null }
+	} else if (removeTimeout && user == null) {
+		actionLogger.debug { "Unable to find user! Skipping timeout removal" }
 	}
 }
 
@@ -56,18 +59,13 @@ internal suspend inline fun SlashCommandContext<*, *>.sendDm(
 	noinline dmEmbedBuilder: (suspend EmbedBuilder.() -> Unit)?
 ): DmResult =
 	if (shouldDm && dmEmbedBuilder != null) {
-		try {
-			event.kord.getUser(targetUserId)?.dm {
-				embeds.add(EmbedBuilder().applyBuilder(dmEmbedBuilder))
-			}
-			DmResult.DM_SUCCESS
-		} catch (e: Exception) {
-			actionLogger.error(e) { e.message }
-			DmResult.DM_FAIL
+		val dm = event.kord.getUser(targetUserId)?.dm {
+			embeds.add(EmbedBuilder().applyBuilder(dmEmbedBuilder))
 		}
+		if (dm == null) DmResult.DM_FAIL else DmResult.DM_SUCCESS
 	} else {
 		DmResult.DM_NOT_SENT
-}
+	}
 
 /**
  * Sends a public log to the channel the command was run it, and returns the [PublicActionLogResult].
