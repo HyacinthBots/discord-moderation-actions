@@ -20,6 +20,7 @@ import dev.kord.core.behavior.ban
 import dev.kord.core.behavior.edit
 import io.github.nocomment1105.discordmoderationactions.builder.action.BanActionBuilder
 import io.github.nocomment1105.discordmoderationactions.builder.action.KickActionBuilder
+import io.github.nocomment1105.discordmoderationactions.builder.action.RemoveTimeoutActionBuilder
 import io.github.nocomment1105.discordmoderationactions.builder.action.SoftBanActionBuilder
 import io.github.nocomment1105.discordmoderationactions.builder.action.TimeoutActionBuilder
 import io.github.nocomment1105.discordmoderationactions.builder.action.UnbanActionBuilder
@@ -106,7 +107,7 @@ public suspend fun SlashCommandContext<*, *>.softban(
 
 	if (guild == null) return Result(ActionResults.NULL_GUILD)
 
-	val dm = sendDm(action.sendDm, targetUserId, action.dmEmbedBuilder)
+	action.dmResult = sendDm(action.sendDm, targetUserId, action.dmEmbedBuilder)
 
 	removeTimeout(action.removeTimeout, guild?.getMemberOrNull(targetUserId))
 
@@ -126,7 +127,7 @@ public suspend fun SlashCommandContext<*, *>.softban(
 		action.actionEmbedBuilder
 	)
 
-	return Result(ActionResults.ACTION_SUCCESS, dm, privateLog, publicLog)
+	return Result(ActionResults.ACTION_SUCCESS, action.dmResult, privateLog, publicLog)
 }
 
 /**
@@ -194,7 +195,7 @@ public suspend fun <T : UserBehavior> SlashCommandContext<*, *>.unban(
 ): Result = unban(targetUser.id, builder)
 
 /**
- * DSL function for easily running a ban action.
+ * DSL function for easily running a kick action.
  * This will kick the user, and carryout any extra tasks specified
  *
  * @param targetUserId The id of the user to kick
@@ -210,7 +211,7 @@ public suspend fun SlashCommandContext<*, *>.kick(
 
 	if (guild == null) return Result(ActionResults.NULL_GUILD)
 
-	val dm = sendDm(action.sendDm, targetUserId, action.dmEmbedBuilder)
+	action.dmResult = sendDm(action.sendDm, targetUserId, action.dmEmbedBuilder)
 
 	removeTimeout(action.removeTimeout, guild?.getMemberOrNull(targetUserId))
 
@@ -225,11 +226,11 @@ public suspend fun SlashCommandContext<*, *>.kick(
 		action.actionEmbedBuilder
 	)
 
-	return Result(ActionResults.ACTION_SUCCESS, dm, privateLog, publicLog)
+	return Result(ActionResults.ACTION_SUCCESS, action.dmResult, privateLog, publicLog)
 }
 
 /**
- * DSL function for easily running a ban action.
+ * DSL function for easily running a kick action.
  * This will kick the user, and carryout any extra tasks specified
  *
  * @param targetUser The user to kick
@@ -242,12 +243,12 @@ public suspend fun <T : UserBehavior> SlashCommandContext<*, *>.kick(
 ): Result = kick(targetUser.id, builder)
 
 /**
- * DSL function for easily running a ban action.
+ * DSL function for easily running a timeout action.
  * This will time out the user, and carryout any extra tasks specified
  *
  * @param targetUserId The id of the user to timeout
  * @param builder Builder lambda used for setting up the timeout action
- * @see BanActionBuilder
+ * @see TimeoutActionBuilder
  */
 public suspend fun SlashCommandContext<*, *>.timeout(
 	targetUserId: Snowflake,
@@ -258,7 +259,7 @@ public suspend fun SlashCommandContext<*, *>.timeout(
 
 	if (guild == null) return Result(ActionResults.NULL_GUILD)
 
-	val dm = sendDm(action.sendDm, targetUserId, action.dmEmbedBuilder)
+	action.dmResult = sendDm(action.sendDm, targetUserId, action.dmEmbedBuilder)
 
 	guild?.getMemberOrNull(targetUserId)?.edit { timeoutUntil = action.timeoutDuration }
 
@@ -271,18 +272,62 @@ public suspend fun SlashCommandContext<*, *>.timeout(
 		action.actionEmbedBuilder
 	)
 
-	return Result(ActionResults.ACTION_SUCCESS, dm, privateLog, publicLog)
+	return Result(ActionResults.ACTION_SUCCESS, action.dmResult, privateLog, publicLog)
 }
 
 /**
- * DSL function for easily running a ban action.
- * This will time out the user, and carryout any extra tasks specified
+ * DSL function for easily running a timeout action.
+ * This will time out the user, and carryout any extra tasks specified.
  *
  * @param targetUser The user to timeout
  * @param builder Builder lambda used for setting up the timeout action
- * @see BanActionBuilder
+ * @see TimeoutActionBuilder
  */
 public suspend fun <T : UserBehavior> SlashCommandContext<*, *>.timeout(
 	targetUser: T,
 	builder: suspend TimeoutActionBuilder.() -> Unit
 ): Result = timeout(targetUser.id, builder)
+
+/**
+ * DSL function for easily running a remove timeout action.
+ * This will remove the timeout from a user, and carryout any extra tasks specified.
+ *
+ * @param targetUserId The id of the user to remove the timeout from
+ * @param builder Builder lambda used for setting up the remove timeout action
+ * @see RemoveTimeoutActionBuilder
+ */
+public suspend fun SlashCommandContext<*, *>.removeTimeout(
+	targetUserId: Snowflake,
+	builder: suspend RemoveTimeoutActionBuilder.() -> Unit
+): Result {
+	val action = RemoveTimeoutActionBuilder()
+	action.builder()
+
+	if (guild == null) return Result(ActionResults.NULL_GUILD)
+
+	action.dmResult = sendDm(action.sendDm, targetUserId, action.dmEmbedBuilder)
+
+	removeTimeout(true, guild?.getMemberOrNull(targetUserId))
+
+	val privateLog = sendPrivateLog(
+		action.sendActionLog,
+		action.loggingChannel,
+		action.hasLogChannelPerms,
+		action.actionEmbedBuilder
+	)
+
+	return Result(ActionResults.ACTION_SUCCESS, action.dmResult, privateLog, PublicActionLogResult.PUBLIC_LOG_NOT_SENT)
+}
+
+/**
+ * DSL function for easily running a remove timeout action.
+ * This will remove the timeout from a user, and carryout any extra tasks specified.
+ *
+ * @param targetUser The user to remove the timeout from
+ * @param builder Builder lambda used for setting up the remove timeout action
+ * @see RemoveTimeoutActionBuilder
+ */
+public suspend fun <T : UserBehavior> SlashCommandContext<*, *>.removeTimeout(
+	targetUser: T,
+	builder: suspend RemoveTimeoutActionBuilder.() -> Unit
+): Result = removeTimeout(targetUser.id, builder)

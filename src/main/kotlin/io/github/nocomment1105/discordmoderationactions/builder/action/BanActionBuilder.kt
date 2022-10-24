@@ -19,8 +19,10 @@ import kotlinx.datetime.DateTimePeriod
 
 @ActionBuilderDSL
 public open class BanActionBuilder : Action {
+	/** The duration into the past of message from this user to delete. */
 	public open lateinit var deleteMessageDuration: DateTimePeriod
 
+	/** Whether to remove the timeout on the user before banning. Default: False. */
 	public var removeTimeout: Boolean = false
 
 	/** Whether to send a DM about this action to the user. Default: true. */

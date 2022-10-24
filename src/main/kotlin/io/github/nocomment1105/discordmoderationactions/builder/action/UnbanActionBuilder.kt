@@ -12,12 +12,10 @@ package io.github.nocomment1105.discordmoderationactions.builder.action
 import dev.kord.core.entity.channel.GuildMessageChannel
 import dev.kord.rest.builder.message.EmbedBuilder
 import io.github.nocomment1105.discordmoderationactions.annotations.ActionBuilderDSL
-import io.github.nocomment1105.discordmoderationactions.enums.DmResult
 import io.github.nocomment1105.discordmoderationactions.enums.PrivateLogResult
-import io.github.nocomment1105.discordmoderationactions.enums.PublicActionLogResult
 
 @ActionBuilderDSL
-public open class UnbanActionBuilder : Action {
+public open class UnbanActionBuilder : RemoveAction {
 	/** Whether to send a message to the action log provided. Default: True. */
 	public override var sendActionLog: Boolean = true
 
@@ -38,25 +36,4 @@ public open class UnbanActionBuilder : Action {
 
 	/** @suppress Builder that shouldn't be set directly by the user. */
 	public override var actionEmbedBuilder: (suspend EmbedBuilder.() -> Unit)? = null
-
-	// Unused Options that require implementing from the interface. This class cannot be abstract as then it cannot be
-	// instantiated in the function
-
-	/** @suppress Unused option. */
-	override var sendDm: Boolean = false
-
-	/** @suppress Unused option. */
-	override var logPublicly: Boolean? = null
-
-	/** @suppress Unused option. */
-	override lateinit var dmResult: DmResult
-
-	/** @suppress Unused option. */
-	override lateinit var publicLogResult: PublicActionLogResult
-
-	/** @suppress Unused option. */
-	override var dmEmbedBuilder: (suspend EmbedBuilder.() -> Unit)? = null
-
-	/** @suppress Unused option. */
-	override var publicActionEmbedBuilder: (suspend EmbedBuilder.() -> Unit)? = null
 }

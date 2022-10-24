@@ -18,6 +18,7 @@ import io.github.nocomment1105.discordmoderationactions.enums.PublicActionLogRes
 
 @ActionBuilderDSL
 public open class KickActionBuilder : Action {
+	/** Whether to remove the timeout on the user before banning. Default: False. */
 	public var removeTimeout: Boolean = false
 
 	/** Whether to send a DM about this action to the user. Default: true. */

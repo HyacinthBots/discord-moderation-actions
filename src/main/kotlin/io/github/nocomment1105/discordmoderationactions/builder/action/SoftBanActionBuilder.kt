@@ -14,5 +14,6 @@ import kotlinx.datetime.DateTimePeriod
 
 @ActionBuilderDSL
 public open class SoftBanActionBuilder : BanActionBuilder() {
+	/** The duration into the past of message from this user to delete. Default: 3 days. */
 	public override var deleteMessageDuration: DateTimePeriod = DateTimePeriod(days = 3)
 }
