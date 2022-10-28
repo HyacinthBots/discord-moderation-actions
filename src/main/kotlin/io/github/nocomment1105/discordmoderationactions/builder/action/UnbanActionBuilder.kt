@@ -12,6 +12,7 @@ package io.github.nocomment1105.discordmoderationactions.builder.action
 import dev.kord.core.entity.channel.GuildMessageChannel
 import dev.kord.rest.builder.message.EmbedBuilder
 import io.github.nocomment1105.discordmoderationactions.annotations.ActionBuilderDSL
+import io.github.nocomment1105.discordmoderationactions.builder.RemoveAction
 import io.github.nocomment1105.discordmoderationactions.enums.PrivateLogResult
 
 @ActionBuilderDSL
