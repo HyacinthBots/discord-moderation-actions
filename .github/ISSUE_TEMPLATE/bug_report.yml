@@ -1,0 +1,45 @@
+name: Bug Report
+description: Create a bug report to help me improve DMA
+labels:
+  - bug
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+        
+        Before continuing, please make sure there are no similar issues on [the issue tracker](https://github.com/NoComment1105/discord-moderation-actions/issues). If there are, consider contributing your information there instead!
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      placeholder: Tell us what you see!
+      value: "A bug happened!"
+    validations:
+      required: true
+
+  - type: textarea
+    id: exception
+    attributes:
+      label: Log output
+      description: Provide a log output containing any exceptions thrown in the process of finding this issue
+      render: bash
+
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Please provide the version of DMA you are using in your project
+      placeholder: v1.3.5
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Add any other context about the problem here.
+    validations:
+      required: false

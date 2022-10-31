@@ -1,0 +1,53 @@
+name: Feature Request
+description: Create a feature request for DMA
+labels:
+  - enhancement
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to provide this request!
+        
+        Before continuing please make sure there are no similar requests on [the issue tracker](https://github.com/NoComment1105/discord-moderation-actions/issues).
+        
+  - type: textarea
+    id: request
+    attributes:
+      label: The request
+      description: Provide detailed information on the feature request you are making
+    validations:
+      required: false
+
+  - type: textarea
+    id: alternates
+    attributes:
+      label: Alternatives
+      description: Provide any alternative solutions or features you have considered
+    validations:
+      required: false
+
+  - type: dropdown
+    id: related-to-problem
+    attributes:
+      label: Is your request related to a problem?
+      options:
+        - Yes
+        - No
+    validations:
+      required: true
+  - type: input
+    id: related-to-problem-description
+    attributes:
+      label: What problem is this related too
+      description: If you answered yes to the above, please detail what problem this is related too
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Add any other context about the problem here.
+    validations:
+      required: false
