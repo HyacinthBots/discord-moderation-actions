@@ -6,7 +6,15 @@ on:
       - published
 
 jobs:
+  check-api:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Check API
+        run: ./gradlew clean apiCheck
+
   build:
+    needs: check-api
     runs-on: ubuntu-latest
 
     steps:
@@ -28,6 +36,11 @@ jobs:
         with:
           arguments: build --stacktrace
 
+  publish-files:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Upload artifacts GitHub
         uses: AButler/upload-release-assets@v2.0
 
