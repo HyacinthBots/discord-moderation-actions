@@ -24,7 +24,7 @@ import dev.kord.rest.builder.message.EmbedBuilder
 import io.github.nocomment1105.discordmoderationactions.builder.actionLogger
 import io.github.nocomment1105.discordmoderationactions.enums.DmResult
 import io.github.nocomment1105.discordmoderationactions.enums.PrivateLogResult
-import io.github.nocomment1105.discordmoderationactions.enums.PublicActionLogResult
+import io.github.nocomment1105.discordmoderationactions.enums.PublicLogResult
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.InvocationKind
 import kotlin.contracts.contract
@@ -68,29 +68,29 @@ internal suspend inline fun SlashCommandContext<*, *>.sendDm(
 	}
 
 /**
- * Sends a public log to the channel the command was run it, and returns the [PublicActionLogResult].
+ * Sends a public log to the channel the command was run it, and returns the [PublicLogResult].
  *
  * @param shouldLog Whether to send a log or not
  * @param publicLogEmbedBuilder The builder for the embed to send
  *
- * @return [PublicActionLogResult] ordinal based on the success
+ * @return [PublicLogResult] ordinal based on the success
  */
 internal suspend inline fun SlashCommandContext<*, *>.sendPublicLog(
 	shouldLog: Boolean?,
 	noinline publicLogEmbedBuilder: (suspend EmbedBuilder.() -> Unit)?
-): PublicActionLogResult =
+): PublicLogResult =
 	if (shouldLog == true && publicLogEmbedBuilder != null) {
 		try {
 			channel.createMessage {
 				embeds.add(EmbedBuilder().applyBuilder(publicLogEmbedBuilder))
 			}
-			PublicActionLogResult.PUBLIC_LOG_SUCCESS
+			PublicLogResult.PUBLIC_LOG_SUCCESS
 		} catch (e: Exception) {
 			actionLogger.error(e) { e.message }
-			PublicActionLogResult.PUBLIC_LOG_FAIL
+			PublicLogResult.PUBLIC_LOG_FAIL
 		}
 	} else {
-		PublicActionLogResult.PUBLIC_LOG_NOT_SENT
+		PublicLogResult.PUBLIC_LOG_NOT_SENT
 	}
 
 /**

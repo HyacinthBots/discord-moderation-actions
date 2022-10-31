@@ -14,7 +14,7 @@ import dev.kord.rest.builder.message.EmbedBuilder
 import io.github.nocomment1105.discordmoderationactions.annotations.ActionBuilderDSL
 import io.github.nocomment1105.discordmoderationactions.enums.DmResult
 import io.github.nocomment1105.discordmoderationactions.enums.PrivateLogResult
-import io.github.nocomment1105.discordmoderationactions.enums.PublicActionLogResult
+import io.github.nocomment1105.discordmoderationactions.enums.PublicLogResult
 
 /**
  * An interface containing the common fields for actions.
@@ -33,7 +33,7 @@ public interface Action {
 
 	public var dmResult: DmResult
 
-	public var publicLogResult: PublicActionLogResult
+	public var publicLogResult: PublicLogResult
 
 	public var privateLogResult: PrivateLogResult
 

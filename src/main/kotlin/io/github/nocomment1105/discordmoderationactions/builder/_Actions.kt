@@ -26,7 +26,7 @@ import io.github.nocomment1105.discordmoderationactions.builder.action.TimeoutAc
 import io.github.nocomment1105.discordmoderationactions.builder.action.UnbanActionBuilder
 import io.github.nocomment1105.discordmoderationactions.enums.ActionResults
 import io.github.nocomment1105.discordmoderationactions.enums.DmResult
-import io.github.nocomment1105.discordmoderationactions.enums.PublicActionLogResult
+import io.github.nocomment1105.discordmoderationactions.enums.PublicLogResult
 import io.github.nocomment1105.discordmoderationactions.utils.Result
 import io.github.nocomment1105.discordmoderationactions.utils.removeTimeout
 import io.github.nocomment1105.discordmoderationactions.utils.sendDm
@@ -177,7 +177,7 @@ public suspend fun SlashCommandContext<*, *>.unban(
 		ActionResults.ACTION_SUCCESS,
 		DmResult.DM_NOT_SENT,
 		privateLog,
-		PublicActionLogResult.PUBLIC_LOG_NOT_SENT
+		PublicLogResult.PUBLIC_LOG_NOT_SENT
 	)
 }
 
@@ -316,7 +316,7 @@ public suspend fun SlashCommandContext<*, *>.removeTimeout(
 		action.actionEmbedBuilder
 	)
 
-	return Result(ActionResults.ACTION_SUCCESS, action.dmResult, privateLog, PublicActionLogResult.PUBLIC_LOG_NOT_SENT)
+	return Result(ActionResults.ACTION_SUCCESS, action.dmResult, privateLog, PublicLogResult.PUBLIC_LOG_NOT_SENT)
 }
 
 /**

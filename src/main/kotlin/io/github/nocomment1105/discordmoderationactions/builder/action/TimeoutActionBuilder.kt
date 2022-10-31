@@ -15,7 +15,7 @@ import io.github.nocomment1105.discordmoderationactions.annotations.ActionBuilde
 import io.github.nocomment1105.discordmoderationactions.builder.Action
 import io.github.nocomment1105.discordmoderationactions.enums.DmResult
 import io.github.nocomment1105.discordmoderationactions.enums.PrivateLogResult
-import io.github.nocomment1105.discordmoderationactions.enums.PublicActionLogResult
+import io.github.nocomment1105.discordmoderationactions.enums.PublicLogResult
 import kotlinx.datetime.Instant
 
 @ActionBuilderDSL
@@ -42,7 +42,7 @@ public open class TimeoutActionBuilder : Action {
 	public override lateinit var dmResult: DmResult
 
 	/** The result of the attempt to send a public action log. */
-	public override lateinit var publicLogResult: PublicActionLogResult
+	public override lateinit var publicLogResult: PublicLogResult
 
 	/** The result of the attempt to send a private action log. */
 	public override lateinit var privateLogResult: PrivateLogResult

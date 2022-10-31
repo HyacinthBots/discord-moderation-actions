@@ -12,7 +12,7 @@ public abstract interface class io/github/nocomment1105/discordmoderationactions
 	public abstract fun getLoggingChannel ()Ldev/kord/core/entity/channel/GuildMessageChannel;
 	public abstract fun getPrivateLogResult ()Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;
 	public abstract fun getPublicActionEmbedBuilder ()Lkotlin/jvm/functions/Function2;
-	public abstract fun getPublicLogResult ()Lio/github/nocomment1105/discordmoderationactions/enums/PublicActionLogResult;
+	public abstract fun getPublicLogResult ()Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;
 	public abstract fun getReason ()Ljava/lang/String;
 	public abstract fun getSendActionLog ()Z
 	public abstract fun getSendDm ()Z
@@ -25,7 +25,7 @@ public abstract interface class io/github/nocomment1105/discordmoderationactions
 	public abstract fun setLoggingChannel (Ldev/kord/core/entity/channel/GuildMessageChannel;)V
 	public abstract fun setPrivateLogResult (Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;)V
 	public abstract fun setPublicActionEmbedBuilder (Lkotlin/jvm/functions/Function2;)V
-	public abstract fun setPublicLogResult (Lio/github/nocomment1105/discordmoderationactions/enums/PublicActionLogResult;)V
+	public abstract fun setPublicLogResult (Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;)V
 	public abstract fun setReason (Ljava/lang/String;)V
 	public abstract fun setSendActionLog (Z)V
 	public abstract fun setSendDm (Z)V
@@ -76,7 +76,7 @@ public class io/github/nocomment1105/discordmoderationactions/builder/action/Ban
 	public field deleteMessageDuration Lkotlinx/datetime/DateTimePeriod;
 	public field dmResult Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;
 	public field privateLogResult Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;
-	public field publicLogResult Lio/github/nocomment1105/discordmoderationactions/enums/PublicActionLogResult;
+	public field publicLogResult Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;
 	public fun <init> ()V
 	public fun actionEmbed (Lkotlin/jvm/functions/Function2;)V
 	public fun dmEmbed (Lkotlin/jvm/functions/Function2;)V
@@ -89,7 +89,7 @@ public class io/github/nocomment1105/discordmoderationactions/builder/action/Ban
 	public fun getLoggingChannel ()Ldev/kord/core/entity/channel/GuildMessageChannel;
 	public fun getPrivateLogResult ()Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;
 	public fun getPublicActionEmbedBuilder ()Lkotlin/jvm/functions/Function2;
-	public fun getPublicLogResult ()Lio/github/nocomment1105/discordmoderationactions/enums/PublicActionLogResult;
+	public fun getPublicLogResult ()Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;
 	public fun getReason ()Ljava/lang/String;
 	public final fun getRemoveTimeout ()Z
 	public fun getSendActionLog ()Z
@@ -104,7 +104,7 @@ public class io/github/nocomment1105/discordmoderationactions/builder/action/Ban
 	public fun setLoggingChannel (Ldev/kord/core/entity/channel/GuildMessageChannel;)V
 	public fun setPrivateLogResult (Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;)V
 	public fun setPublicActionEmbedBuilder (Lkotlin/jvm/functions/Function2;)V
-	public fun setPublicLogResult (Lio/github/nocomment1105/discordmoderationactions/enums/PublicActionLogResult;)V
+	public fun setPublicLogResult (Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;)V
 	public fun setReason (Ljava/lang/String;)V
 	public final fun setRemoveTimeout (Z)V
 	public fun setSendActionLog (Z)V
@@ -114,7 +114,7 @@ public class io/github/nocomment1105/discordmoderationactions/builder/action/Ban
 public class io/github/nocomment1105/discordmoderationactions/builder/action/KickActionBuilder : io/github/nocomment1105/discordmoderationactions/builder/Action {
 	public field dmResult Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;
 	public field privateLogResult Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;
-	public field publicLogResult Lio/github/nocomment1105/discordmoderationactions/enums/PublicActionLogResult;
+	public field publicLogResult Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;
 	public fun <init> ()V
 	public fun actionEmbed (Lkotlin/jvm/functions/Function2;)V
 	public fun dmEmbed (Lkotlin/jvm/functions/Function2;)V
@@ -126,7 +126,7 @@ public class io/github/nocomment1105/discordmoderationactions/builder/action/Kic
 	public fun getLoggingChannel ()Ldev/kord/core/entity/channel/GuildMessageChannel;
 	public fun getPrivateLogResult ()Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;
 	public fun getPublicActionEmbedBuilder ()Lkotlin/jvm/functions/Function2;
-	public fun getPublicLogResult ()Lio/github/nocomment1105/discordmoderationactions/enums/PublicActionLogResult;
+	public fun getPublicLogResult ()Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;
 	public fun getReason ()Ljava/lang/String;
 	public final fun getRemoveTimeout ()Z
 	public fun getSendActionLog ()Z
@@ -140,7 +140,7 @@ public class io/github/nocomment1105/discordmoderationactions/builder/action/Kic
 	public fun setLoggingChannel (Ldev/kord/core/entity/channel/GuildMessageChannel;)V
 	public fun setPrivateLogResult (Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;)V
 	public fun setPublicActionEmbedBuilder (Lkotlin/jvm/functions/Function2;)V
-	public fun setPublicLogResult (Lio/github/nocomment1105/discordmoderationactions/enums/PublicActionLogResult;)V
+	public fun setPublicLogResult (Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;)V
 	public fun setReason (Ljava/lang/String;)V
 	public final fun setRemoveTimeout (Z)V
 	public fun setSendActionLog (Z)V
@@ -182,7 +182,7 @@ public class io/github/nocomment1105/discordmoderationactions/builder/action/Sof
 public class io/github/nocomment1105/discordmoderationactions/builder/action/TimeoutActionBuilder : io/github/nocomment1105/discordmoderationactions/builder/Action {
 	public field dmResult Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;
 	public field privateLogResult Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;
-	public field publicLogResult Lio/github/nocomment1105/discordmoderationactions/enums/PublicActionLogResult;
+	public field publicLogResult Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;
 	public field timeoutDuration Lkotlinx/datetime/Instant;
 	public fun <init> ()V
 	public fun actionEmbed (Lkotlin/jvm/functions/Function2;)V
@@ -195,7 +195,7 @@ public class io/github/nocomment1105/discordmoderationactions/builder/action/Tim
 	public fun getLoggingChannel ()Ldev/kord/core/entity/channel/GuildMessageChannel;
 	public fun getPrivateLogResult ()Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;
 	public fun getPublicActionEmbedBuilder ()Lkotlin/jvm/functions/Function2;
-	public fun getPublicLogResult ()Lio/github/nocomment1105/discordmoderationactions/enums/PublicActionLogResult;
+	public fun getPublicLogResult ()Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;
 	public fun getReason ()Ljava/lang/String;
 	public fun getSendActionLog ()Z
 	public fun getSendDm ()Z
@@ -209,7 +209,7 @@ public class io/github/nocomment1105/discordmoderationactions/builder/action/Tim
 	public fun setLoggingChannel (Ldev/kord/core/entity/channel/GuildMessageChannel;)V
 	public fun setPrivateLogResult (Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;)V
 	public fun setPublicActionEmbedBuilder (Lkotlin/jvm/functions/Function2;)V
-	public fun setPublicLogResult (Lio/github/nocomment1105/discordmoderationactions/enums/PublicActionLogResult;)V
+	public fun setPublicLogResult (Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;)V
 	public fun setReason (Ljava/lang/String;)V
 	public fun setSendActionLog (Z)V
 	public fun setSendDm (Z)V
@@ -261,30 +261,30 @@ public final class io/github/nocomment1105/discordmoderationactions/enums/Privat
 	public static fun values ()[Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;
 }
 
-public final class io/github/nocomment1105/discordmoderationactions/enums/PublicActionLogResult : java/lang/Enum {
-	public static final field PUBLIC_LOG_FAIL Lio/github/nocomment1105/discordmoderationactions/enums/PublicActionLogResult;
-	public static final field PUBLIC_LOG_NOT_SENT Lio/github/nocomment1105/discordmoderationactions/enums/PublicActionLogResult;
-	public static final field PUBLIC_LOG_SUCCESS Lio/github/nocomment1105/discordmoderationactions/enums/PublicActionLogResult;
+public final class io/github/nocomment1105/discordmoderationactions/enums/PublicLogResult : java/lang/Enum {
+	public static final field PUBLIC_LOG_FAIL Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;
+	public static final field PUBLIC_LOG_NOT_SENT Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;
+	public static final field PUBLIC_LOG_SUCCESS Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;
 	public final fun getMessage ()Ljava/lang/String;
-	public static fun valueOf (Ljava/lang/String;)Lio/github/nocomment1105/discordmoderationactions/enums/PublicActionLogResult;
-	public static fun values ()[Lio/github/nocomment1105/discordmoderationactions/enums/PublicActionLogResult;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;
+	public static fun values ()[Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;
 }
 
 public final class io/github/nocomment1105/discordmoderationactions/utils/Result {
-	public fun <init> (Lio/github/nocomment1105/discordmoderationactions/enums/ActionResults;Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;Lio/github/nocomment1105/discordmoderationactions/enums/PublicActionLogResult;Ljava/lang/String;)V
-	public synthetic fun <init> (Lio/github/nocomment1105/discordmoderationactions/enums/ActionResults;Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;Lio/github/nocomment1105/discordmoderationactions/enums/PublicActionLogResult;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Lio/github/nocomment1105/discordmoderationactions/enums/ActionResults;Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;Ljava/lang/String;)V
+	public synthetic fun <init> (Lio/github/nocomment1105/discordmoderationactions/enums/ActionResults;Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Lio/github/nocomment1105/discordmoderationactions/enums/ActionResults;
 	public final fun component2 ()Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;
 	public final fun component3 ()Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;
-	public final fun component4 ()Lio/github/nocomment1105/discordmoderationactions/enums/PublicActionLogResult;
+	public final fun component4 ()Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;
 	public final fun component5 ()Ljava/lang/String;
-	public final fun copy (Lio/github/nocomment1105/discordmoderationactions/enums/ActionResults;Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;Lio/github/nocomment1105/discordmoderationactions/enums/PublicActionLogResult;Ljava/lang/String;)Lio/github/nocomment1105/discordmoderationactions/utils/Result;
-	public static synthetic fun copy$default (Lio/github/nocomment1105/discordmoderationactions/utils/Result;Lio/github/nocomment1105/discordmoderationactions/enums/ActionResults;Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;Lio/github/nocomment1105/discordmoderationactions/enums/PublicActionLogResult;Ljava/lang/String;ILjava/lang/Object;)Lio/github/nocomment1105/discordmoderationactions/utils/Result;
+	public final fun copy (Lio/github/nocomment1105/discordmoderationactions/enums/ActionResults;Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;Ljava/lang/String;)Lio/github/nocomment1105/discordmoderationactions/utils/Result;
+	public static synthetic fun copy$default (Lio/github/nocomment1105/discordmoderationactions/utils/Result;Lio/github/nocomment1105/discordmoderationactions/enums/ActionResults;Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;Ljava/lang/String;ILjava/lang/Object;)Lio/github/nocomment1105/discordmoderationactions/utils/Result;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getDmResult ()Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;
 	public final fun getExtraInfo ()Ljava/lang/String;
 	public final fun getLogResult ()Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;
-	public final fun getPublicLogResult ()Lio/github/nocomment1105/discordmoderationactions/enums/PublicActionLogResult;
+	public final fun getPublicLogResult ()Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;
 	public final fun getResult ()Lio/github/nocomment1105/discordmoderationactions/enums/ActionResults;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
