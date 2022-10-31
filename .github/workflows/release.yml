@@ -36,11 +36,6 @@ jobs:
         with:
           arguments: build --stacktrace
 
-  publish-files:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
       - name: Upload artifacts GitHub
         uses: AButler/upload-release-assets@v2.0
 
