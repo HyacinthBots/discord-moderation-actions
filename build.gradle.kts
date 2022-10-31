@@ -40,7 +40,7 @@ dependencies {
 
 gitHooks {
     setHooks(
-        mapOf("pre-commit" to "updateLicenses detekt")
+        mapOf("pre-commit" to "updateLicenses apiCheck detekt")
     )
 }
 
