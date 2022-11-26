@@ -7,8 +7,6 @@
  * please see the LICENSE file or https://mit-license.org/
  */
 
-@file:Suppress("DuplicatedCode")
-
 package io.github.nocomment1105.discordmoderationactions.builder
 
 import com.kotlindiscord.kord.extensions.commands.application.slash.SlashCommandContext
@@ -97,7 +95,6 @@ public suspend fun <T : UserBehavior> SlashCommandContext<*, *>.ban(
  * @param builder Builder lambda used for setting up the softban action
  * @see SoftBanActionBuilder
  */
-@Suppress("DuplicatedCode")
 public suspend fun SlashCommandContext<*, *>.softban(
 	targetUserId: Snowflake,
 	builder: suspend SoftBanActionBuilder.() -> Unit

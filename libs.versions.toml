@@ -1,10 +1,9 @@
 [versions]
-kotlin = "1.7.20"
-kordex = "1.5.5-20221019.205922-33"
+kordex = "1.5.5-20221121.113710-37"
 
-detekt = "1.21.0"
-logging = "3.0.2"
-logback = "1.4.4"
+detekt = "1.22.0"
+logging = "3.0.4"
+logback = "1.4.5"
 
 [libraries]
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8" }
