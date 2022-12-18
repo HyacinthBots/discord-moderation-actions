@@ -36,7 +36,7 @@ import kotlin.contracts.contract
  * @param user The user to remove the timeout from
  */
 @Suppress("KotlinConstantConditions") // Yes, but just for safety. False logging is suboptimal
-public suspend fun SlashCommandContext<*, *>.removeTimeout(removeTimeout: Boolean, user: User?) {
+public suspend fun SlashCommandContext<*, *, *>.removeTimeout(removeTimeout: Boolean, user: User?) {
 	if (removeTimeout && user != null) {
 		user.asMemberOrNull(guildFor(event)!!.id)?.edit { timeoutUntil = null }
 	} else if (removeTimeout && user == null) {
@@ -53,7 +53,7 @@ public suspend fun SlashCommandContext<*, *>.removeTimeout(removeTimeout: Boolea
  *
  * @return [DmResult] ordinal based on the success
  */
-internal suspend inline fun SlashCommandContext<*, *>.sendDm(
+internal suspend inline fun SlashCommandContext<*, *, *>.sendDm(
 	shouldDm: Boolean,
 	targetUserId: Snowflake,
 	noinline dmEmbedBuilder: (suspend EmbedBuilder.() -> Unit)?
@@ -75,7 +75,7 @@ internal suspend inline fun SlashCommandContext<*, *>.sendDm(
  *
  * @return [PublicLogResult] ordinal based on the success
  */
-internal suspend inline fun SlashCommandContext<*, *>.sendPublicLog(
+internal suspend inline fun SlashCommandContext<*, *, *>.sendPublicLog(
 	shouldLog: Boolean?,
 	noinline publicLogEmbedBuilder: (suspend EmbedBuilder.() -> Unit)?
 ): PublicLogResult =

@@ -44,7 +44,7 @@ internal val actionLogger = KotlinLogging.logger("Action Logger")
  * @param builder Builder lambda used for setting up the ban action
  * @see BanActionBuilder
  */
-public suspend fun SlashCommandContext<*, *>.ban(
+public suspend fun SlashCommandContext<*, *, *>.ban(
 	targetUserId: Snowflake,
 	builder: suspend BanActionBuilder.() -> Unit
 ): Result {
@@ -82,7 +82,7 @@ public suspend fun SlashCommandContext<*, *>.ban(
  * @param builder Builder lambda used for setting up the ban action
  * @see BanActionBuilder
  */
-public suspend fun <T : UserBehavior> SlashCommandContext<*, *>.ban(
+public suspend fun <T : UserBehavior> SlashCommandContext<*, *, *>.ban(
 	targetUser: T,
 	builder: suspend BanActionBuilder.() -> Unit
 ): Result = ban(targetUser.id, builder)
@@ -95,7 +95,7 @@ public suspend fun <T : UserBehavior> SlashCommandContext<*, *>.ban(
  * @param builder Builder lambda used for setting up the softban action
  * @see SoftBanActionBuilder
  */
-public suspend fun SlashCommandContext<*, *>.softban(
+public suspend fun SlashCommandContext<*, *, *>.softban(
 	targetUserId: Snowflake,
 	builder: suspend SoftBanActionBuilder.() -> Unit
 ): Result {
@@ -135,7 +135,7 @@ public suspend fun SlashCommandContext<*, *>.softban(
  * @param builder Builder lambda used for setting up the softban action
  * @see SoftBanActionBuilder
  */
-public suspend fun <T : UserBehavior> SlashCommandContext<*, *>.softban(
+public suspend fun <T : UserBehavior> SlashCommandContext<*, *, *>.softban(
 	targetUser: T,
 	builder: suspend SoftBanActionBuilder.() -> Unit
 ): Result = softban(targetUser.id, builder)
@@ -148,7 +148,7 @@ public suspend fun <T : UserBehavior> SlashCommandContext<*, *>.softban(
  * @param builder Builder lambda used for setting up the unban action
  * @see UnbanActionBuilder
  */
-public suspend fun SlashCommandContext<*, *>.unban(
+public suspend fun SlashCommandContext<*, *, *>.unban(
 	targetUserId: Snowflake,
 	builder: suspend UnbanActionBuilder.() -> Unit
 ): Result {
@@ -186,7 +186,7 @@ public suspend fun SlashCommandContext<*, *>.unban(
  * @param builder Builder lambda used for setting up the unban action
  * @see UnbanActionBuilder
  */
-public suspend fun <T : UserBehavior> SlashCommandContext<*, *>.unban(
+public suspend fun <T : UserBehavior> SlashCommandContext<*, *, *>.unban(
 	targetUser: T,
 	builder: suspend UnbanActionBuilder.() -> Unit
 ): Result = unban(targetUser.id, builder)
@@ -199,7 +199,7 @@ public suspend fun <T : UserBehavior> SlashCommandContext<*, *>.unban(
  * @param builder Builder lambda used for setting up the kick action
  * @see KickActionBuilder
  */
-public suspend fun SlashCommandContext<*, *>.kick(
+public suspend fun SlashCommandContext<*, *, *>.kick(
 	targetUserId: Snowflake,
 	builder: suspend KickActionBuilder.() -> Unit
 ): Result {
@@ -234,7 +234,7 @@ public suspend fun SlashCommandContext<*, *>.kick(
  * @param builder Builder lambda used for setting up the kick action
  * @see KickActionBuilder
  */
-public suspend fun <T : UserBehavior> SlashCommandContext<*, *>.kick(
+public suspend fun <T : UserBehavior> SlashCommandContext<*, *, *>.kick(
 	targetUser: T,
 	builder: suspend KickActionBuilder.() -> Unit
 ): Result = kick(targetUser.id, builder)
@@ -247,7 +247,7 @@ public suspend fun <T : UserBehavior> SlashCommandContext<*, *>.kick(
  * @param builder Builder lambda used for setting up the timeout action
  * @see TimeoutActionBuilder
  */
-public suspend fun SlashCommandContext<*, *>.timeout(
+public suspend fun SlashCommandContext<*, *, *>.timeout(
 	targetUserId: Snowflake,
 	builder: suspend TimeoutActionBuilder.() -> Unit
 ): Result {
@@ -280,7 +280,7 @@ public suspend fun SlashCommandContext<*, *>.timeout(
  * @param builder Builder lambda used for setting up the timeout action
  * @see TimeoutActionBuilder
  */
-public suspend fun <T : UserBehavior> SlashCommandContext<*, *>.timeout(
+public suspend fun <T : UserBehavior> SlashCommandContext<*, *, *>.timeout(
 	targetUser: T,
 	builder: suspend TimeoutActionBuilder.() -> Unit
 ): Result = timeout(targetUser.id, builder)
@@ -293,7 +293,7 @@ public suspend fun <T : UserBehavior> SlashCommandContext<*, *>.timeout(
  * @param builder Builder lambda used for setting up the remove timeout action
  * @see RemoveTimeoutActionBuilder
  */
-public suspend fun SlashCommandContext<*, *>.removeTimeout(
+public suspend fun SlashCommandContext<*, *, *>.removeTimeout(
 	targetUserId: Snowflake,
 	builder: suspend RemoveTimeoutActionBuilder.() -> Unit
 ): Result {
@@ -324,7 +324,7 @@ public suspend fun SlashCommandContext<*, *>.removeTimeout(
  * @param builder Builder lambda used for setting up the remove timeout action
  * @see RemoveTimeoutActionBuilder
  */
-public suspend fun <T : UserBehavior> SlashCommandContext<*, *>.removeTimeout(
+public suspend fun <T : UserBehavior> SlashCommandContext<*, *, *>.removeTimeout(
 	targetUser: T,
 	builder: suspend RemoveTimeoutActionBuilder.() -> Unit
 ): Result = removeTimeout(targetUser.id, builder)
