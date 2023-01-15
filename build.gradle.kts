@@ -89,10 +89,6 @@ if (JavaVersion.current() < JavaVersion.toVersion(javaVersion)) {
 }
 
 tasks {
-    wrapper {
-        distributionType = Wrapper.DistributionType.ALL
-    }
-
     withType<KotlinCompile> {
         kotlinOptions {
             jvmTarget = javaVersion.toString()
@@ -103,6 +99,16 @@ tasks {
             )
         }
     }
+
+	withType<JavaCompile> {
+		options.encoding = "UTF-8"
+		options.isDeprecation = true
+		options.release.set(javaVersion)
+	}
+
+	wrapper {
+		distributionType = Wrapper.DistributionType.ALL
+	}
 }
 
 detekt {
