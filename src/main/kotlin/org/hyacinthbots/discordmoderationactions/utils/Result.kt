@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 NoComment1105 <nocomment1105@outlook.com>
+ * Copyright (c) 2022 HyacinthBots <hyacinthbots@outlook.com>
  *
  * This file is part of discord-moderation-actions.
  *
@@ -7,12 +7,12 @@
  * please see the LICENSE file or https://mit-license.org/
  */
 
-package io.github.nocomment1105.discordmoderationactions.utils
+package org.hyacinthbots.discordmoderationactions.utils
 
-import io.github.nocomment1105.discordmoderationactions.enums.ActionResults
-import io.github.nocomment1105.discordmoderationactions.enums.DmResult
-import io.github.nocomment1105.discordmoderationactions.enums.PrivateLogResult
-import io.github.nocomment1105.discordmoderationactions.enums.PublicLogResult
+import org.hyacinthbots.discordmoderationactions.enums.ActionResults
+import org.hyacinthbots.discordmoderationactions.enums.DmResult
+import org.hyacinthbots.discordmoderationactions.enums.PrivateLogResult
+import org.hyacinthbots.discordmoderationactions.enums.PublicLogResult
 
 /**
  * The result of an action.

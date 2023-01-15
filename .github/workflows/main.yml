@@ -11,7 +11,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Check API
-        run: ./gradlew clean apiCheck
+        uses: gradle/gradle-build-action@v2
+
+        with:
+          arguments: clean apiCheck -x build
+          gradle-home-cache-cleanup: true
 
   build:
     needs: check-api
@@ -33,11 +37,28 @@ jobs:
       - name: Build Artifacts
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: build --stacktrace
+          arguments: --stacktrace
 
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
 
+    env:
+      NEXUS_USER: ${{ secrets.NEXUS_USER }}
+      NEXUS_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
+      GPG_SIGNING_KEY: ${{ secrets.GPG_SIGNING_KEY }}
+      GPG_SIGNING_PASS: ${{ secrets.GPG_SIGNING_PASS }}
+      GITHUB_BRANCH_NAME: ${{ github.ref }}
+      GITHUB_TAG_NAME: ${{ github.event.release.tag_name }}
+      ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+
+    steps:
+      - uses: actions/checkout@v3
         with:
-          name: Build Artifacts
-          path: build/libs/*[0-9].jar
+          fetch-depth: 0
+
+      - name: Publish with Gradle
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: build publish -x test
+          gradle-home-cache-cleanup: true

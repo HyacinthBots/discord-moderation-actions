@@ -1,63 +1,63 @@
-public abstract interface annotation class io/github/nocomment1105/discordmoderationactions/annotations/ActionBuilderDSL : java/lang/annotation/Annotation {
+public abstract interface annotation class org/hyacinthbots/discordmoderationactions/annotations/ActionBuilderDSL : java/lang/annotation/Annotation {
 }
 
-public abstract interface class io/github/nocomment1105/discordmoderationactions/builder/Action {
+public abstract interface class org/hyacinthbots/discordmoderationactions/builder/Action {
 	public abstract fun actionEmbed (Lkotlin/jvm/functions/Function2;)V
 	public abstract fun dmEmbed (Lkotlin/jvm/functions/Function2;)V
 	public abstract fun getActionEmbedBuilder ()Lkotlin/jvm/functions/Function2;
 	public abstract fun getDmEmbedBuilder ()Lkotlin/jvm/functions/Function2;
-	public abstract fun getDmResult ()Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;
+	public abstract fun getDmResult ()Lorg/hyacinthbots/discordmoderationactions/enums/DmResult;
 	public abstract fun getHasLogChannelPerms ()Ljava/lang/Boolean;
 	public abstract fun getLogPublicly ()Ljava/lang/Boolean;
 	public abstract fun getLoggingChannel ()Ldev/kord/core/entity/channel/GuildMessageChannel;
-	public abstract fun getPrivateLogResult ()Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;
+	public abstract fun getPrivateLogResult ()Lorg/hyacinthbots/discordmoderationactions/enums/PrivateLogResult;
 	public abstract fun getPublicActionEmbedBuilder ()Lkotlin/jvm/functions/Function2;
-	public abstract fun getPublicLogResult ()Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;
+	public abstract fun getPublicLogResult ()Lorg/hyacinthbots/discordmoderationactions/enums/PublicLogResult;
 	public abstract fun getReason ()Ljava/lang/String;
 	public abstract fun getSendActionLog ()Z
 	public abstract fun getSendDm ()Z
 	public abstract fun publicActionEmbed (Lkotlin/jvm/functions/Function2;)V
 	public abstract fun setActionEmbedBuilder (Lkotlin/jvm/functions/Function2;)V
 	public abstract fun setDmEmbedBuilder (Lkotlin/jvm/functions/Function2;)V
-	public abstract fun setDmResult (Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;)V
+	public abstract fun setDmResult (Lorg/hyacinthbots/discordmoderationactions/enums/DmResult;)V
 	public abstract fun setHasLogChannelPerms (Ljava/lang/Boolean;)V
 	public abstract fun setLogPublicly (Ljava/lang/Boolean;)V
 	public abstract fun setLoggingChannel (Ldev/kord/core/entity/channel/GuildMessageChannel;)V
-	public abstract fun setPrivateLogResult (Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;)V
+	public abstract fun setPrivateLogResult (Lorg/hyacinthbots/discordmoderationactions/enums/PrivateLogResult;)V
 	public abstract fun setPublicActionEmbedBuilder (Lkotlin/jvm/functions/Function2;)V
-	public abstract fun setPublicLogResult (Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;)V
+	public abstract fun setPublicLogResult (Lorg/hyacinthbots/discordmoderationactions/enums/PublicLogResult;)V
 	public abstract fun setReason (Ljava/lang/String;)V
 	public abstract fun setSendActionLog (Z)V
 	public abstract fun setSendDm (Z)V
 }
 
-public final class io/github/nocomment1105/discordmoderationactions/builder/Action$DefaultImpls {
-	public static fun actionEmbed (Lio/github/nocomment1105/discordmoderationactions/builder/Action;Lkotlin/jvm/functions/Function2;)V
-	public static fun dmEmbed (Lio/github/nocomment1105/discordmoderationactions/builder/Action;Lkotlin/jvm/functions/Function2;)V
-	public static fun publicActionEmbed (Lio/github/nocomment1105/discordmoderationactions/builder/Action;Lkotlin/jvm/functions/Function2;)V
+public final class org/hyacinthbots/discordmoderationactions/builder/Action$DefaultImpls {
+	public static fun actionEmbed (Lorg/hyacinthbots/discordmoderationactions/builder/Action;Lkotlin/jvm/functions/Function2;)V
+	public static fun dmEmbed (Lorg/hyacinthbots/discordmoderationactions/builder/Action;Lkotlin/jvm/functions/Function2;)V
+	public static fun publicActionEmbed (Lorg/hyacinthbots/discordmoderationactions/builder/Action;Lkotlin/jvm/functions/Function2;)V
 }
 
-public abstract interface class io/github/nocomment1105/discordmoderationactions/builder/RemoveAction {
+public abstract interface class org/hyacinthbots/discordmoderationactions/builder/RemoveAction {
 	public abstract fun actionEmbed (Lkotlin/jvm/functions/Function2;)V
 	public abstract fun getActionEmbedBuilder ()Lkotlin/jvm/functions/Function2;
 	public abstract fun getHasLogChannelPerms ()Ljava/lang/Boolean;
 	public abstract fun getLoggingChannel ()Ldev/kord/core/entity/channel/GuildMessageChannel;
-	public abstract fun getPrivateLogResult ()Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;
+	public abstract fun getPrivateLogResult ()Lorg/hyacinthbots/discordmoderationactions/enums/PrivateLogResult;
 	public abstract fun getReason ()Ljava/lang/String;
 	public abstract fun getSendActionLog ()Z
 	public abstract fun setActionEmbedBuilder (Lkotlin/jvm/functions/Function2;)V
 	public abstract fun setHasLogChannelPerms (Ljava/lang/Boolean;)V
 	public abstract fun setLoggingChannel (Ldev/kord/core/entity/channel/GuildMessageChannel;)V
-	public abstract fun setPrivateLogResult (Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;)V
+	public abstract fun setPrivateLogResult (Lorg/hyacinthbots/discordmoderationactions/enums/PrivateLogResult;)V
 	public abstract fun setReason (Ljava/lang/String;)V
 	public abstract fun setSendActionLog (Z)V
 }
 
-public final class io/github/nocomment1105/discordmoderationactions/builder/RemoveAction$DefaultImpls {
-	public static fun actionEmbed (Lio/github/nocomment1105/discordmoderationactions/builder/RemoveAction;Lkotlin/jvm/functions/Function2;)V
+public final class org/hyacinthbots/discordmoderationactions/builder/RemoveAction$DefaultImpls {
+	public static fun actionEmbed (Lorg/hyacinthbots/discordmoderationactions/builder/RemoveAction;Lkotlin/jvm/functions/Function2;)V
 }
 
-public final class io/github/nocomment1105/discordmoderationactions/builder/_ActionsKt {
+public final class org/hyacinthbots/discordmoderationactions/builder/_ActionsKt {
 	public static final fun ban (Lcom/kotlindiscord/kord/extensions/commands/application/slash/SlashCommandContext;Ldev/kord/common/entity/Snowflake;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun ban (Lcom/kotlindiscord/kord/extensions/commands/application/slash/SlashCommandContext;Ldev/kord/core/behavior/UserBehavior;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun kick (Lcom/kotlindiscord/kord/extensions/commands/application/slash/SlashCommandContext;Ldev/kord/common/entity/Snowflake;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
@@ -72,24 +72,24 @@ public final class io/github/nocomment1105/discordmoderationactions/builder/_Act
 	public static final fun unban (Lcom/kotlindiscord/kord/extensions/commands/application/slash/SlashCommandContext;Ldev/kord/core/behavior/UserBehavior;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
-public class io/github/nocomment1105/discordmoderationactions/builder/action/BanActionBuilder : io/github/nocomment1105/discordmoderationactions/builder/Action {
+public class org/hyacinthbots/discordmoderationactions/builder/action/BanActionBuilder : org/hyacinthbots/discordmoderationactions/builder/Action {
 	public field deleteMessageDuration Lkotlinx/datetime/DateTimePeriod;
-	public field dmResult Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;
-	public field privateLogResult Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;
-	public field publicLogResult Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;
+	public field dmResult Lorg/hyacinthbots/discordmoderationactions/enums/DmResult;
+	public field privateLogResult Lorg/hyacinthbots/discordmoderationactions/enums/PrivateLogResult;
+	public field publicLogResult Lorg/hyacinthbots/discordmoderationactions/enums/PublicLogResult;
 	public fun <init> ()V
 	public fun actionEmbed (Lkotlin/jvm/functions/Function2;)V
 	public fun dmEmbed (Lkotlin/jvm/functions/Function2;)V
 	public fun getActionEmbedBuilder ()Lkotlin/jvm/functions/Function2;
 	public fun getDeleteMessageDuration ()Lkotlinx/datetime/DateTimePeriod;
 	public fun getDmEmbedBuilder ()Lkotlin/jvm/functions/Function2;
-	public fun getDmResult ()Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;
+	public fun getDmResult ()Lorg/hyacinthbots/discordmoderationactions/enums/DmResult;
 	public fun getHasLogChannelPerms ()Ljava/lang/Boolean;
 	public fun getLogPublicly ()Ljava/lang/Boolean;
 	public fun getLoggingChannel ()Ldev/kord/core/entity/channel/GuildMessageChannel;
-	public fun getPrivateLogResult ()Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;
+	public fun getPrivateLogResult ()Lorg/hyacinthbots/discordmoderationactions/enums/PrivateLogResult;
 	public fun getPublicActionEmbedBuilder ()Lkotlin/jvm/functions/Function2;
-	public fun getPublicLogResult ()Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;
+	public fun getPublicLogResult ()Lorg/hyacinthbots/discordmoderationactions/enums/PublicLogResult;
 	public fun getReason ()Ljava/lang/String;
 	public final fun getRemoveTimeout ()Z
 	public fun getSendActionLog ()Z
@@ -98,35 +98,35 @@ public class io/github/nocomment1105/discordmoderationactions/builder/action/Ban
 	public fun setActionEmbedBuilder (Lkotlin/jvm/functions/Function2;)V
 	public fun setDeleteMessageDuration (Lkotlinx/datetime/DateTimePeriod;)V
 	public fun setDmEmbedBuilder (Lkotlin/jvm/functions/Function2;)V
-	public fun setDmResult (Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;)V
+	public fun setDmResult (Lorg/hyacinthbots/discordmoderationactions/enums/DmResult;)V
 	public fun setHasLogChannelPerms (Ljava/lang/Boolean;)V
 	public fun setLogPublicly (Ljava/lang/Boolean;)V
 	public fun setLoggingChannel (Ldev/kord/core/entity/channel/GuildMessageChannel;)V
-	public fun setPrivateLogResult (Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;)V
+	public fun setPrivateLogResult (Lorg/hyacinthbots/discordmoderationactions/enums/PrivateLogResult;)V
 	public fun setPublicActionEmbedBuilder (Lkotlin/jvm/functions/Function2;)V
-	public fun setPublicLogResult (Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;)V
+	public fun setPublicLogResult (Lorg/hyacinthbots/discordmoderationactions/enums/PublicLogResult;)V
 	public fun setReason (Ljava/lang/String;)V
 	public final fun setRemoveTimeout (Z)V
 	public fun setSendActionLog (Z)V
 	public fun setSendDm (Z)V
 }
 
-public class io/github/nocomment1105/discordmoderationactions/builder/action/KickActionBuilder : io/github/nocomment1105/discordmoderationactions/builder/Action {
-	public field dmResult Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;
-	public field privateLogResult Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;
-	public field publicLogResult Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;
+public class org/hyacinthbots/discordmoderationactions/builder/action/KickActionBuilder : org/hyacinthbots/discordmoderationactions/builder/Action {
+	public field dmResult Lorg/hyacinthbots/discordmoderationactions/enums/DmResult;
+	public field privateLogResult Lorg/hyacinthbots/discordmoderationactions/enums/PrivateLogResult;
+	public field publicLogResult Lorg/hyacinthbots/discordmoderationactions/enums/PublicLogResult;
 	public fun <init> ()V
 	public fun actionEmbed (Lkotlin/jvm/functions/Function2;)V
 	public fun dmEmbed (Lkotlin/jvm/functions/Function2;)V
 	public fun getActionEmbedBuilder ()Lkotlin/jvm/functions/Function2;
 	public fun getDmEmbedBuilder ()Lkotlin/jvm/functions/Function2;
-	public fun getDmResult ()Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;
+	public fun getDmResult ()Lorg/hyacinthbots/discordmoderationactions/enums/DmResult;
 	public fun getHasLogChannelPerms ()Ljava/lang/Boolean;
 	public fun getLogPublicly ()Ljava/lang/Boolean;
 	public fun getLoggingChannel ()Ldev/kord/core/entity/channel/GuildMessageChannel;
-	public fun getPrivateLogResult ()Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;
+	public fun getPrivateLogResult ()Lorg/hyacinthbots/discordmoderationactions/enums/PrivateLogResult;
 	public fun getPublicActionEmbedBuilder ()Lkotlin/jvm/functions/Function2;
-	public fun getPublicLogResult ()Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;
+	public fun getPublicLogResult ()Lorg/hyacinthbots/discordmoderationactions/enums/PublicLogResult;
 	public fun getReason ()Ljava/lang/String;
 	public final fun getRemoveTimeout ()Z
 	public fun getSendActionLog ()Z
@@ -134,68 +134,68 @@ public class io/github/nocomment1105/discordmoderationactions/builder/action/Kic
 	public fun publicActionEmbed (Lkotlin/jvm/functions/Function2;)V
 	public fun setActionEmbedBuilder (Lkotlin/jvm/functions/Function2;)V
 	public fun setDmEmbedBuilder (Lkotlin/jvm/functions/Function2;)V
-	public fun setDmResult (Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;)V
+	public fun setDmResult (Lorg/hyacinthbots/discordmoderationactions/enums/DmResult;)V
 	public fun setHasLogChannelPerms (Ljava/lang/Boolean;)V
 	public fun setLogPublicly (Ljava/lang/Boolean;)V
 	public fun setLoggingChannel (Ldev/kord/core/entity/channel/GuildMessageChannel;)V
-	public fun setPrivateLogResult (Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;)V
+	public fun setPrivateLogResult (Lorg/hyacinthbots/discordmoderationactions/enums/PrivateLogResult;)V
 	public fun setPublicActionEmbedBuilder (Lkotlin/jvm/functions/Function2;)V
-	public fun setPublicLogResult (Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;)V
+	public fun setPublicLogResult (Lorg/hyacinthbots/discordmoderationactions/enums/PublicLogResult;)V
 	public fun setReason (Ljava/lang/String;)V
 	public final fun setRemoveTimeout (Z)V
 	public fun setSendActionLog (Z)V
 	public fun setSendDm (Z)V
 }
 
-public class io/github/nocomment1105/discordmoderationactions/builder/action/RemoveTimeoutActionBuilder : io/github/nocomment1105/discordmoderationactions/builder/RemoveAction {
-	public field dmResult Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;
-	public field privateLogResult Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;
+public class org/hyacinthbots/discordmoderationactions/builder/action/RemoveTimeoutActionBuilder : org/hyacinthbots/discordmoderationactions/builder/RemoveAction {
+	public field dmResult Lorg/hyacinthbots/discordmoderationactions/enums/DmResult;
+	public field privateLogResult Lorg/hyacinthbots/discordmoderationactions/enums/PrivateLogResult;
 	public fun <init> ()V
 	public fun actionEmbed (Lkotlin/jvm/functions/Function2;)V
 	public final fun dmEmbed (Lkotlin/jvm/functions/Function2;)V
 	public fun getActionEmbedBuilder ()Lkotlin/jvm/functions/Function2;
 	public final fun getDmEmbedBuilder ()Lkotlin/jvm/functions/Function2;
-	public final fun getDmResult ()Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;
+	public final fun getDmResult ()Lorg/hyacinthbots/discordmoderationactions/enums/DmResult;
 	public fun getHasLogChannelPerms ()Ljava/lang/Boolean;
 	public fun getLoggingChannel ()Ldev/kord/core/entity/channel/GuildMessageChannel;
-	public fun getPrivateLogResult ()Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;
+	public fun getPrivateLogResult ()Lorg/hyacinthbots/discordmoderationactions/enums/PrivateLogResult;
 	public fun getReason ()Ljava/lang/String;
 	public fun getSendActionLog ()Z
 	public final fun getSendDm ()Z
 	public fun setActionEmbedBuilder (Lkotlin/jvm/functions/Function2;)V
 	public final fun setDmEmbedBuilder (Lkotlin/jvm/functions/Function2;)V
-	public final fun setDmResult (Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;)V
+	public final fun setDmResult (Lorg/hyacinthbots/discordmoderationactions/enums/DmResult;)V
 	public fun setHasLogChannelPerms (Ljava/lang/Boolean;)V
 	public fun setLoggingChannel (Ldev/kord/core/entity/channel/GuildMessageChannel;)V
-	public fun setPrivateLogResult (Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;)V
+	public fun setPrivateLogResult (Lorg/hyacinthbots/discordmoderationactions/enums/PrivateLogResult;)V
 	public fun setReason (Ljava/lang/String;)V
 	public fun setSendActionLog (Z)V
 	public final fun setSendDm (Z)V
 }
 
-public class io/github/nocomment1105/discordmoderationactions/builder/action/SoftBanActionBuilder : io/github/nocomment1105/discordmoderationactions/builder/action/BanActionBuilder {
+public class org/hyacinthbots/discordmoderationactions/builder/action/SoftBanActionBuilder : org/hyacinthbots/discordmoderationactions/builder/action/BanActionBuilder {
 	public fun <init> ()V
 	public fun getDeleteMessageDuration ()Lkotlinx/datetime/DateTimePeriod;
 	public fun setDeleteMessageDuration (Lkotlinx/datetime/DateTimePeriod;)V
 }
 
-public class io/github/nocomment1105/discordmoderationactions/builder/action/TimeoutActionBuilder : io/github/nocomment1105/discordmoderationactions/builder/Action {
-	public field dmResult Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;
-	public field privateLogResult Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;
-	public field publicLogResult Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;
+public class org/hyacinthbots/discordmoderationactions/builder/action/TimeoutActionBuilder : org/hyacinthbots/discordmoderationactions/builder/Action {
+	public field dmResult Lorg/hyacinthbots/discordmoderationactions/enums/DmResult;
+	public field privateLogResult Lorg/hyacinthbots/discordmoderationactions/enums/PrivateLogResult;
+	public field publicLogResult Lorg/hyacinthbots/discordmoderationactions/enums/PublicLogResult;
 	public field timeoutDuration Lkotlinx/datetime/Instant;
 	public fun <init> ()V
 	public fun actionEmbed (Lkotlin/jvm/functions/Function2;)V
 	public fun dmEmbed (Lkotlin/jvm/functions/Function2;)V
 	public fun getActionEmbedBuilder ()Lkotlin/jvm/functions/Function2;
 	public fun getDmEmbedBuilder ()Lkotlin/jvm/functions/Function2;
-	public fun getDmResult ()Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;
+	public fun getDmResult ()Lorg/hyacinthbots/discordmoderationactions/enums/DmResult;
 	public fun getHasLogChannelPerms ()Ljava/lang/Boolean;
 	public fun getLogPublicly ()Ljava/lang/Boolean;
 	public fun getLoggingChannel ()Ldev/kord/core/entity/channel/GuildMessageChannel;
-	public fun getPrivateLogResult ()Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;
+	public fun getPrivateLogResult ()Lorg/hyacinthbots/discordmoderationactions/enums/PrivateLogResult;
 	public fun getPublicActionEmbedBuilder ()Lkotlin/jvm/functions/Function2;
-	public fun getPublicLogResult ()Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;
+	public fun getPublicLogResult ()Lorg/hyacinthbots/discordmoderationactions/enums/PublicLogResult;
 	public fun getReason ()Ljava/lang/String;
 	public fun getSendActionLog ()Z
 	public fun getSendDm ()Z
@@ -203,94 +203,94 @@ public class io/github/nocomment1105/discordmoderationactions/builder/action/Tim
 	public fun publicActionEmbed (Lkotlin/jvm/functions/Function2;)V
 	public fun setActionEmbedBuilder (Lkotlin/jvm/functions/Function2;)V
 	public fun setDmEmbedBuilder (Lkotlin/jvm/functions/Function2;)V
-	public fun setDmResult (Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;)V
+	public fun setDmResult (Lorg/hyacinthbots/discordmoderationactions/enums/DmResult;)V
 	public fun setHasLogChannelPerms (Ljava/lang/Boolean;)V
 	public fun setLogPublicly (Ljava/lang/Boolean;)V
 	public fun setLoggingChannel (Ldev/kord/core/entity/channel/GuildMessageChannel;)V
-	public fun setPrivateLogResult (Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;)V
+	public fun setPrivateLogResult (Lorg/hyacinthbots/discordmoderationactions/enums/PrivateLogResult;)V
 	public fun setPublicActionEmbedBuilder (Lkotlin/jvm/functions/Function2;)V
-	public fun setPublicLogResult (Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;)V
+	public fun setPublicLogResult (Lorg/hyacinthbots/discordmoderationactions/enums/PublicLogResult;)V
 	public fun setReason (Ljava/lang/String;)V
 	public fun setSendActionLog (Z)V
 	public fun setSendDm (Z)V
 	public final fun setTimeoutDuration (Lkotlinx/datetime/Instant;)V
 }
 
-public class io/github/nocomment1105/discordmoderationactions/builder/action/UnbanActionBuilder : io/github/nocomment1105/discordmoderationactions/builder/RemoveAction {
-	public field privateLogResult Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;
+public class org/hyacinthbots/discordmoderationactions/builder/action/UnbanActionBuilder : org/hyacinthbots/discordmoderationactions/builder/RemoveAction {
+	public field privateLogResult Lorg/hyacinthbots/discordmoderationactions/enums/PrivateLogResult;
 	public fun <init> ()V
 	public fun actionEmbed (Lkotlin/jvm/functions/Function2;)V
 	public fun getActionEmbedBuilder ()Lkotlin/jvm/functions/Function2;
 	public fun getHasLogChannelPerms ()Ljava/lang/Boolean;
 	public fun getLoggingChannel ()Ldev/kord/core/entity/channel/GuildMessageChannel;
-	public fun getPrivateLogResult ()Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;
+	public fun getPrivateLogResult ()Lorg/hyacinthbots/discordmoderationactions/enums/PrivateLogResult;
 	public fun getReason ()Ljava/lang/String;
 	public fun getSendActionLog ()Z
 	public fun setActionEmbedBuilder (Lkotlin/jvm/functions/Function2;)V
 	public fun setHasLogChannelPerms (Ljava/lang/Boolean;)V
 	public fun setLoggingChannel (Ldev/kord/core/entity/channel/GuildMessageChannel;)V
-	public fun setPrivateLogResult (Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;)V
+	public fun setPrivateLogResult (Lorg/hyacinthbots/discordmoderationactions/enums/PrivateLogResult;)V
 	public fun setReason (Ljava/lang/String;)V
 	public fun setSendActionLog (Z)V
 }
 
-public final class io/github/nocomment1105/discordmoderationactions/enums/ActionResults : java/lang/Enum {
-	public static final field ACTION_FAIL Lio/github/nocomment1105/discordmoderationactions/enums/ActionResults;
-	public static final field ACTION_SUCCESS Lio/github/nocomment1105/discordmoderationactions/enums/ActionResults;
-	public static final field NULL_GUILD Lio/github/nocomment1105/discordmoderationactions/enums/ActionResults;
+public final class org/hyacinthbots/discordmoderationactions/enums/ActionResults : java/lang/Enum {
+	public static final field ACTION_FAIL Lorg/hyacinthbots/discordmoderationactions/enums/ActionResults;
+	public static final field ACTION_SUCCESS Lorg/hyacinthbots/discordmoderationactions/enums/ActionResults;
+	public static final field NULL_GUILD Lorg/hyacinthbots/discordmoderationactions/enums/ActionResults;
 	public final fun getMessage ()Ljava/lang/String;
-	public static fun valueOf (Ljava/lang/String;)Lio/github/nocomment1105/discordmoderationactions/enums/ActionResults;
-	public static fun values ()[Lio/github/nocomment1105/discordmoderationactions/enums/ActionResults;
+	public static fun valueOf (Ljava/lang/String;)Lorg/hyacinthbots/discordmoderationactions/enums/ActionResults;
+	public static fun values ()[Lorg/hyacinthbots/discordmoderationactions/enums/ActionResults;
 }
 
-public final class io/github/nocomment1105/discordmoderationactions/enums/DmResult : java/lang/Enum {
-	public static final field DM_FAIL Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;
-	public static final field DM_NOT_SENT Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;
-	public static final field DM_SUCCESS Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;
+public final class org/hyacinthbots/discordmoderationactions/enums/DmResult : java/lang/Enum {
+	public static final field DM_FAIL Lorg/hyacinthbots/discordmoderationactions/enums/DmResult;
+	public static final field DM_NOT_SENT Lorg/hyacinthbots/discordmoderationactions/enums/DmResult;
+	public static final field DM_SUCCESS Lorg/hyacinthbots/discordmoderationactions/enums/DmResult;
 	public final fun getMessage ()Ljava/lang/String;
-	public static fun valueOf (Ljava/lang/String;)Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;
-	public static fun values ()[Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;
+	public static fun valueOf (Ljava/lang/String;)Lorg/hyacinthbots/discordmoderationactions/enums/DmResult;
+	public static fun values ()[Lorg/hyacinthbots/discordmoderationactions/enums/DmResult;
 }
 
-public final class io/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult : java/lang/Enum {
-	public static final field LOG_FAIL Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;
-	public static final field LOG_NOT_SENT Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;
-	public static final field LOG_SUCCESS Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;
+public final class org/hyacinthbots/discordmoderationactions/enums/PrivateLogResult : java/lang/Enum {
+	public static final field LOG_FAIL Lorg/hyacinthbots/discordmoderationactions/enums/PrivateLogResult;
+	public static final field LOG_NOT_SENT Lorg/hyacinthbots/discordmoderationactions/enums/PrivateLogResult;
+	public static final field LOG_SUCCESS Lorg/hyacinthbots/discordmoderationactions/enums/PrivateLogResult;
 	public final fun getMessage ()Ljava/lang/String;
-	public static fun valueOf (Ljava/lang/String;)Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;
-	public static fun values ()[Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;
+	public static fun valueOf (Ljava/lang/String;)Lorg/hyacinthbots/discordmoderationactions/enums/PrivateLogResult;
+	public static fun values ()[Lorg/hyacinthbots/discordmoderationactions/enums/PrivateLogResult;
 }
 
-public final class io/github/nocomment1105/discordmoderationactions/enums/PublicLogResult : java/lang/Enum {
-	public static final field PUBLIC_LOG_FAIL Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;
-	public static final field PUBLIC_LOG_NOT_SENT Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;
-	public static final field PUBLIC_LOG_SUCCESS Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;
+public final class org/hyacinthbots/discordmoderationactions/enums/PublicLogResult : java/lang/Enum {
+	public static final field PUBLIC_LOG_FAIL Lorg/hyacinthbots/discordmoderationactions/enums/PublicLogResult;
+	public static final field PUBLIC_LOG_NOT_SENT Lorg/hyacinthbots/discordmoderationactions/enums/PublicLogResult;
+	public static final field PUBLIC_LOG_SUCCESS Lorg/hyacinthbots/discordmoderationactions/enums/PublicLogResult;
 	public final fun getMessage ()Ljava/lang/String;
-	public static fun valueOf (Ljava/lang/String;)Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;
-	public static fun values ()[Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;
+	public static fun valueOf (Ljava/lang/String;)Lorg/hyacinthbots/discordmoderationactions/enums/PublicLogResult;
+	public static fun values ()[Lorg/hyacinthbots/discordmoderationactions/enums/PublicLogResult;
 }
 
-public final class io/github/nocomment1105/discordmoderationactions/utils/Result {
-	public fun <init> (Lio/github/nocomment1105/discordmoderationactions/enums/ActionResults;Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;Ljava/lang/String;)V
-	public synthetic fun <init> (Lio/github/nocomment1105/discordmoderationactions/enums/ActionResults;Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Lio/github/nocomment1105/discordmoderationactions/enums/ActionResults;
-	public final fun component2 ()Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;
-	public final fun component3 ()Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;
-	public final fun component4 ()Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;
+public final class org/hyacinthbots/discordmoderationactions/utils/Result {
+	public fun <init> (Lorg/hyacinthbots/discordmoderationactions/enums/ActionResults;Lorg/hyacinthbots/discordmoderationactions/enums/DmResult;Lorg/hyacinthbots/discordmoderationactions/enums/PrivateLogResult;Lorg/hyacinthbots/discordmoderationactions/enums/PublicLogResult;Ljava/lang/String;)V
+	public synthetic fun <init> (Lorg/hyacinthbots/discordmoderationactions/enums/ActionResults;Lorg/hyacinthbots/discordmoderationactions/enums/DmResult;Lorg/hyacinthbots/discordmoderationactions/enums/PrivateLogResult;Lorg/hyacinthbots/discordmoderationactions/enums/PublicLogResult;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lorg/hyacinthbots/discordmoderationactions/enums/ActionResults;
+	public final fun component2 ()Lorg/hyacinthbots/discordmoderationactions/enums/DmResult;
+	public final fun component3 ()Lorg/hyacinthbots/discordmoderationactions/enums/PrivateLogResult;
+	public final fun component4 ()Lorg/hyacinthbots/discordmoderationactions/enums/PublicLogResult;
 	public final fun component5 ()Ljava/lang/String;
-	public final fun copy (Lio/github/nocomment1105/discordmoderationactions/enums/ActionResults;Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;Ljava/lang/String;)Lio/github/nocomment1105/discordmoderationactions/utils/Result;
-	public static synthetic fun copy$default (Lio/github/nocomment1105/discordmoderationactions/utils/Result;Lio/github/nocomment1105/discordmoderationactions/enums/ActionResults;Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;Ljava/lang/String;ILjava/lang/Object;)Lio/github/nocomment1105/discordmoderationactions/utils/Result;
+	public final fun copy (Lorg/hyacinthbots/discordmoderationactions/enums/ActionResults;Lorg/hyacinthbots/discordmoderationactions/enums/DmResult;Lorg/hyacinthbots/discordmoderationactions/enums/PrivateLogResult;Lorg/hyacinthbots/discordmoderationactions/enums/PublicLogResult;Ljava/lang/String;)Lorg/hyacinthbots/discordmoderationactions/utils/Result;
+	public static synthetic fun copy$default (Lorg/hyacinthbots/discordmoderationactions/utils/Result;Lorg/hyacinthbots/discordmoderationactions/enums/ActionResults;Lorg/hyacinthbots/discordmoderationactions/enums/DmResult;Lorg/hyacinthbots/discordmoderationactions/enums/PrivateLogResult;Lorg/hyacinthbots/discordmoderationactions/enums/PublicLogResult;Ljava/lang/String;ILjava/lang/Object;)Lorg/hyacinthbots/discordmoderationactions/utils/Result;
 	public fun equals (Ljava/lang/Object;)Z
-	public final fun getDmResult ()Lio/github/nocomment1105/discordmoderationactions/enums/DmResult;
+	public final fun getDmResult ()Lorg/hyacinthbots/discordmoderationactions/enums/DmResult;
 	public final fun getExtraInfo ()Ljava/lang/String;
-	public final fun getLogResult ()Lio/github/nocomment1105/discordmoderationactions/enums/PrivateLogResult;
-	public final fun getPublicLogResult ()Lio/github/nocomment1105/discordmoderationactions/enums/PublicLogResult;
-	public final fun getResult ()Lio/github/nocomment1105/discordmoderationactions/enums/ActionResults;
+	public final fun getLogResult ()Lorg/hyacinthbots/discordmoderationactions/enums/PrivateLogResult;
+	public final fun getPublicLogResult ()Lorg/hyacinthbots/discordmoderationactions/enums/PublicLogResult;
+	public final fun getResult ()Lorg/hyacinthbots/discordmoderationactions/enums/ActionResults;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class io/github/nocomment1105/discordmoderationactions/utils/_UtilsKt {
+public final class org/hyacinthbots/discordmoderationactions/utils/_UtilsKt {
 	public static final fun applyBuilder (Ljava/lang/Object;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun removeTimeout (Lcom/kotlindiscord/kord/extensions/commands/application/slash/SlashCommandContext;ZLdev/kord/core/entity/User;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }

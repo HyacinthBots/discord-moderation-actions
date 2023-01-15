@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 NoComment1105 <nocomment1105@outlook.com>
+ * Copyright (c) 2022 HyacinthBots <hyacinthbots@outlook.com>
  *
  * This file is part of discord-moderation-actions.
  *
@@ -9,7 +9,7 @@
 
 @file:Suppress("TooGenericExceptionCaught")
 
-package io.github.nocomment1105.discordmoderationactions.utils
+package org.hyacinthbots.discordmoderationactions.utils
 
 import com.kotlindiscord.kord.extensions.checks.guildFor
 import com.kotlindiscord.kord.extensions.commands.application.slash.SlashCommandContext
@@ -21,10 +21,10 @@ import dev.kord.core.behavior.channel.createMessage
 import dev.kord.core.behavior.edit
 import dev.kord.core.entity.User
 import dev.kord.rest.builder.message.EmbedBuilder
-import io.github.nocomment1105.discordmoderationactions.builder.actionLogger
-import io.github.nocomment1105.discordmoderationactions.enums.DmResult
-import io.github.nocomment1105.discordmoderationactions.enums.PrivateLogResult
-import io.github.nocomment1105.discordmoderationactions.enums.PublicLogResult
+import org.hyacinthbots.discordmoderationactions.builder.actionLogger
+import org.hyacinthbots.discordmoderationactions.enums.DmResult
+import org.hyacinthbots.discordmoderationactions.enums.PrivateLogResult
+import org.hyacinthbots.discordmoderationactions.enums.PublicLogResult
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.InvocationKind
 import kotlin.contracts.contract

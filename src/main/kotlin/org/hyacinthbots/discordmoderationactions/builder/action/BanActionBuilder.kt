@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 NoComment1105 <nocomment1105@outlook.com>
+ * Copyright (c) 2022 HyacinthBots <hyacinthbots@outlook.com>
  *
  * This file is part of discord-moderation-actions.
  *
@@ -7,21 +7,24 @@
  * please see the LICENSE file or https://mit-license.org/
  */
 
-package io.github.nocomment1105.discordmoderationactions.builder.action
+package org.hyacinthbots.discordmoderationactions.builder.action
 
 import dev.kord.core.entity.channel.GuildMessageChannel
 import dev.kord.rest.builder.message.EmbedBuilder
-import io.github.nocomment1105.discordmoderationactions.annotations.ActionBuilderDSL
-import io.github.nocomment1105.discordmoderationactions.builder.Action
-import io.github.nocomment1105.discordmoderationactions.enums.DmResult
-import io.github.nocomment1105.discordmoderationactions.enums.PrivateLogResult
-import io.github.nocomment1105.discordmoderationactions.enums.PublicLogResult
-import kotlinx.datetime.Instant
+import kotlinx.datetime.DateTimePeriod
+import org.hyacinthbots.discordmoderationactions.annotations.ActionBuilderDSL
+import org.hyacinthbots.discordmoderationactions.builder.Action
+import org.hyacinthbots.discordmoderationactions.enums.DmResult
+import org.hyacinthbots.discordmoderationactions.enums.PrivateLogResult
+import org.hyacinthbots.discordmoderationactions.enums.PublicLogResult
 
 @ActionBuilderDSL
-public open class TimeoutActionBuilder : Action {
-	/** The duration of the timeout. */
-	public lateinit var timeoutDuration: Instant
+public open class BanActionBuilder : Action {
+	/** The duration into the past of message from this user to delete. */
+	public open lateinit var deleteMessageDuration: DateTimePeriod
+
+	/** Whether to remove the timeout on the user before banning. Default: False. */
+	public var removeTimeout: Boolean = false
 
 	/** Whether to send a DM about this action to the user. Default: true. */
 	public override var sendDm: Boolean = true
@@ -59,6 +62,5 @@ public open class TimeoutActionBuilder : Action {
 	/** @suppress Builder that shouldn't be set directly by the user. */
 	public override var actionEmbedBuilder: (suspend EmbedBuilder.() -> Unit)? = null
 
-	/** @suppress Builder that shouldn't be set directly by the user. */
 	public override var publicActionEmbedBuilder: (suspend EmbedBuilder.() -> Unit)? = null
 }

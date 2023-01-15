@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 NoComment1105 <nocomment1105@outlook.com>
+ * Copyright (c) 2022 HyacinthBots <hyacinthbots@outlook.com>
  *
  * This file is part of discord-moderation-actions.
  *
@@ -7,14 +7,14 @@
  * please see the LICENSE file or https://mit-license.org/
  */
 
-package io.github.nocomment1105.discordmoderationactions.builder
+package org.hyacinthbots.discordmoderationactions.builder
 
 import dev.kord.core.entity.channel.GuildMessageChannel
 import dev.kord.rest.builder.message.EmbedBuilder
-import io.github.nocomment1105.discordmoderationactions.annotations.ActionBuilderDSL
-import io.github.nocomment1105.discordmoderationactions.enums.DmResult
-import io.github.nocomment1105.discordmoderationactions.enums.PrivateLogResult
-import io.github.nocomment1105.discordmoderationactions.enums.PublicLogResult
+import org.hyacinthbots.discordmoderationactions.annotations.ActionBuilderDSL
+import org.hyacinthbots.discordmoderationactions.enums.DmResult
+import org.hyacinthbots.discordmoderationactions.enums.PrivateLogResult
+import org.hyacinthbots.discordmoderationactions.enums.PublicLogResult
 
 /**
  * An interface containing the common fields for actions.

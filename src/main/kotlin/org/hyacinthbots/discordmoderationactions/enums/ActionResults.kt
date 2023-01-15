@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 NoComment1105 <nocomment1105@outlook.com>
+ * Copyright (c) 2022 HyacinthBots <hyacinthbots@outlook.com>
  *
  * This file is part of discord-moderation-actions.
  *
@@ -7,7 +7,7 @@
  * please see the LICENSE file or https://mit-license.org/
  */
 
-package io.github.nocomment1105.discordmoderationactions.enums
+package org.hyacinthbots.discordmoderationactions.enums
 
 /**
  * An enum for the result of actions.

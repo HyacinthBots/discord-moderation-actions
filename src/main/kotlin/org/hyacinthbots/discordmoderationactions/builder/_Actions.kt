@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 NoComment1105 <nocomment1105@outlook.com>
+ * Copyright (c) 2022 HyacinthBots <hyacinthbots@outlook.com>
  *
  * This file is part of discord-moderation-actions.
  *
@@ -7,7 +7,7 @@
  * please see the LICENSE file or https://mit-license.org/
  */
 
-package io.github.nocomment1105.discordmoderationactions.builder
+package org.hyacinthbots.discordmoderationactions.builder
 
 import com.kotlindiscord.kord.extensions.commands.application.slash.SlashCommandContext
 import com.kotlindiscord.kord.extensions.utils.timeoutUntil
@@ -16,23 +16,23 @@ import dev.kord.common.entity.Snowflake
 import dev.kord.core.behavior.UserBehavior
 import dev.kord.core.behavior.ban
 import dev.kord.core.behavior.edit
-import io.github.nocomment1105.discordmoderationactions.builder.action.BanActionBuilder
-import io.github.nocomment1105.discordmoderationactions.builder.action.KickActionBuilder
-import io.github.nocomment1105.discordmoderationactions.builder.action.RemoveTimeoutActionBuilder
-import io.github.nocomment1105.discordmoderationactions.builder.action.SoftBanActionBuilder
-import io.github.nocomment1105.discordmoderationactions.builder.action.TimeoutActionBuilder
-import io.github.nocomment1105.discordmoderationactions.builder.action.UnbanActionBuilder
-import io.github.nocomment1105.discordmoderationactions.enums.ActionResults
-import io.github.nocomment1105.discordmoderationactions.enums.DmResult
-import io.github.nocomment1105.discordmoderationactions.enums.PublicLogResult
-import io.github.nocomment1105.discordmoderationactions.utils.Result
-import io.github.nocomment1105.discordmoderationactions.utils.removeTimeout
-import io.github.nocomment1105.discordmoderationactions.utils.sendDm
-import io.github.nocomment1105.discordmoderationactions.utils.sendPrivateLog
-import io.github.nocomment1105.discordmoderationactions.utils.sendPublicLog
 import kotlinx.coroutines.flow.toList
 import kotlinx.datetime.TimeZone
 import mu.KotlinLogging
+import org.hyacinthbots.discordmoderationactions.builder.action.BanActionBuilder
+import org.hyacinthbots.discordmoderationactions.builder.action.KickActionBuilder
+import org.hyacinthbots.discordmoderationactions.builder.action.RemoveTimeoutActionBuilder
+import org.hyacinthbots.discordmoderationactions.builder.action.SoftBanActionBuilder
+import org.hyacinthbots.discordmoderationactions.builder.action.TimeoutActionBuilder
+import org.hyacinthbots.discordmoderationactions.builder.action.UnbanActionBuilder
+import org.hyacinthbots.discordmoderationactions.enums.ActionResults
+import org.hyacinthbots.discordmoderationactions.enums.DmResult
+import org.hyacinthbots.discordmoderationactions.enums.PublicLogResult
+import org.hyacinthbots.discordmoderationactions.utils.Result
+import org.hyacinthbots.discordmoderationactions.utils.removeTimeout
+import org.hyacinthbots.discordmoderationactions.utils.sendDm
+import org.hyacinthbots.discordmoderationactions.utils.sendPrivateLog
+import org.hyacinthbots.discordmoderationactions.utils.sendPublicLog
 
 internal val actionLogger = KotlinLogging.logger("Action Logger")
 

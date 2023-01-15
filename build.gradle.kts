@@ -1,17 +1,45 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
+object Meta {
+    const val description =
+        "Create moderation actions with ease, reduce code duplication and making things easy in KordEx discord bots"
+    const val githubRepo = "HyacinthBots/discord-moderation-actions"
+    const val release = "https://s01.oss.sonatype.org/service/local/"
+    const val snapshot = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
+
+    val version: String
+        get() {
+            val tag = System.getenv("GITHUB_TAG_NAME")
+            val branch = System.getenv("GITHUB_BRANCH_NAME")
+            return when {
+                !tag.isNullOrBlank() -> tag
+                !branch.isNullOrBlank() && branch.startsWith("refs/heads/") ->
+                    branch.substringAfter("refs/heads/").replace("/", "-") + "-SNAPSHOT"
+
+                else -> "undefined"
+            }
+        }
+
+    val isSnapshot: Boolean get() = version.endsWith("-SNAPSHOT")
+    val isRelease: Boolean get() = !isSnapshot && !isUndefined
+    private val isUndefined: Boolean get() = version == "undefined"
+}
+
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     `java-library`
     `maven-publish`
-    kotlin("jvm")
-    kotlin("plugin.serialization")
-    id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.11.1"
-    id("io.gitlab.arturbosch.detekt")
-    id("com.github.jakemarsden.git-hooks")
-    id("org.cadixdev.licenser")
+    signing
+
+    alias(libs.plugins.kotlin)
+
+    alias(libs.plugins.detekt)
+    alias(libs.plugins.git.hooks)
+    alias(libs.plugins.licenser)
+    alias(libs.plugins.binary.compatibility.validator)
 }
 
-group = "io.github.nocomment1105"
+group = "org.hyacinthbots"
 version = "0.1.0"
 val javaVersion = 17
 
@@ -46,35 +74,29 @@ gitHooks {
 
 kotlin {
     explicitApi()
-    jvmToolchain(javaVersion)
 }
 
-val sourceJar = task("sourceJar", Jar::class) {
-    dependsOn(tasks["classes"])
-    archiveClassifier.set("sources")
-    from(sourceSets.main.get().allSource)
+java {
+    sourceCompatibility = JavaVersion.toVersion(javaVersion)
+    targetCompatibility = JavaVersion.toVersion(javaVersion)
+
+    withJavadocJar()
+    withSourcesJar()
 }
 
-val javadocJar = task("javadocJar", Jar::class) {
-    archiveClassifier.set("javadoc")
-    from(tasks.javadoc)
-    from(tasks.javadoc)
+if (JavaVersion.current() < JavaVersion.toVersion(javaVersion)) {
+    kotlin.jvmToolchain(javaVersion)
 }
 
 tasks {
     wrapper {
-        gradleVersion = "7.6"
         distributionType = Wrapper.DistributionType.ALL
-    }
-
-    withType<Test> {
-        useJUnitPlatform()
     }
 
     withType<KotlinCompile> {
         kotlinOptions {
             jvmTarget = javaVersion.toString()
-            languageVersion = "1.7"
+            languageVersion = libs.plugins.kotlin.get().version.requiredVersion.substringBeforeLast(".")
             incremental = true
             freeCompilerArgs = freeCompilerArgs + listOf(
                 "-opt-in=kotlin.RequiresOptIn"
@@ -97,12 +119,72 @@ license {
 
 publishing {
     publications {
-        create<MavenPublication>("publishToMavenLocal") {
-            from(components.getByName("java"))
-            artifact(javadocJar)
-            artifact(sourceJar)
+        create<MavenPublication>("maven") {
+            groupId = project.group.toString()
+            artifactId = project.name
+            version = Meta.version
+            from(components["kotlin"])
+            artifact(tasks["sourcesJar"])
+            artifact(tasks["javadocJar"])
+
+            pom {
+                name.set(project.name)
+                description.set(Meta.description)
+                url.set("https://github.com/${Meta.githubRepo}")
+
+                organization {
+                    name.set("HyacinthBots")
+                    url.set("https://github.com/HyacinthBots")
+                }
+
+                developers {
+                    developer {
+                        name.set("The HyacinthBots team")
+                    }
+                }
+
+                issueManagement {
+                    system.set("GitHub")
+                    url.set("https://github.com/${Meta.githubRepo}/issues")
+                }
+
+                licenses {
+                    license {
+                        name.set("MIT")
+                        url.set("https://mit-license.org/")
+                    }
+                }
+
+                scm {
+                    url.set("https://github.com/${Meta.githubRepo}.git")
+                    connection.set("scm:git:git://github.com/${Meta.githubRepo}.git")
+                    developerConnection.set("scm:git:git://github.com/#${Meta.githubRepo}.git")
+                }
+            }
         }
     }
-    repositories {  }
+    repositories {
+        maven {
+            url = uri(if (Meta.isSnapshot) Meta.snapshot else Meta.release)
+
+            credentials {
+                username = System.getenv("NEXUS_USER")
+                password = System.getenv("NEXUS_PASSWORD")
+            }
+        }
+    }
+}
+
+if (Meta.isRelease) {
+    signing {
+        val signingKey = providers.environmentVariable("GPG_SIGNING_KEY")
+        val signingPass = providers.environmentVariable("GPG_SIGNING_PASS")
+
+        if (signingKey.isPresent && signingPass.isPresent) {
+            useInMemoryPgpKeys(signingKey.get(), signingPass.get())
+            val extension = extensions.getByName("publishing") as PublishingExtension
+            sign(extension.publications)
+        }
+    }
 }
 

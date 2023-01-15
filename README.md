@@ -9,7 +9,7 @@ This project is licensed under the MIT License
 
 #### Latest version:
 
-* [Jitpack](https://jitpack.io/#NoComment1105/discord-moderation-actions)
+* [Maven Central](https://s01.oss.sonatype.org/content/repositories/releases/org/hyacinthbots/discord-moderation-actions)
 * [GitHub](https://github.com/NoComment1105/disord-moderation-actions/releases/latest)
 
 ### Adding the dependency:
@@ -17,17 +17,17 @@ This project is licensed under the MIT License
 #### Maven:
 
 ```xml
-<!-- Adding the Jitpack repository -->
+<!-- Optioanlly adding the snapshot repository repository -->
 <repositories>
     <repository>
-        <id>jitpack.io</id>
-        <url>https://jitpack.io</url>
+        <id>Sonatype snapshots</id>
+        <url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
     </repository>
 </repositories>
 
         <!-- Adding the dependency. Replace TAG with the latest version -->
 <dependency>
-<groupId>com.github.nocomment1105</groupId>
+<groupId>org.hyacinthbots</groupId>
 <artifactId>discord-moderation-actions</artifactId>
 <version>TAG</version>
 </dependency>
@@ -37,34 +37,36 @@ This project is licensed under the MIT License
 #### Gradle (Groovy):
 
 ```groovy
-// Adding the Jitpack repository
 repositories {
+    mavenCentral()
+    // Optionally add the snapshots repo
     maven {
-        name = 'Jitpack'
-        url = 'https://jitpack.io'
+        name = 'Sonatype snapshots'
+        url = 'https://s01.oss.sonatype.org/content/repositories/snapshots/'
     }
 }
 
 // Adding the dependency. Replace TAG with the latest version
 dependencies {
-    implementation('com.github.nocomment1105:discord-moderation-actions:TAG')
+    implementation('org.hyacinthbots:discord-moderation-actions:TAG')
 }
 ```
 
 #### Gradle (Kotlin):
 
 ```kotlin
-// Adding the Jitpack repository
 repositories {
+    mavenCentral()
+    // Optionally add the snapshots repository
     maven {
-        name = "Jitpack"
-        url = uri("https://jitpack.io")
+        name = "Sonatype snapshots"
+        url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
     }
 }
 
 // Adding the dependency. Replace TAG with the latest version
 dependencies {
-    implementation("com.github.nocomment1105:discord-moderation-actions:TAG")
+    implementation("org.hyacinthbots:discord-moderation-actions:TAG")
 }
 ```
 
@@ -78,7 +80,7 @@ DSL.
 future support for vanilla [Kord](https://github.com/kordlib/Kord) will be added**
 
 Examples and full documentation can be found in
-the [Wiki](https://github.com/NoComment1105/discord-moderation-actions/wiki)
+the [Wiki](https://github.com/HyacinthBots/discord-moderation-actions/wiki)
 
 ## Reporting Issues and Requesting features
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 NoComment1105 <nocomment1105@outlook.com>
+ * Copyright (c) 2022 HyacinthBots <hyacinthbots@outlook.com>
  *
  * This file is part of discord-moderation-actions.
  *
@@ -7,10 +7,10 @@
  * please see the LICENSE file or https://mit-license.org/
  */
 
-package io.github.nocomment1105.discordmoderationactions.builder.action
+package org.hyacinthbots.discordmoderationactions.builder.action
 
-import io.github.nocomment1105.discordmoderationactions.annotations.ActionBuilderDSL
 import kotlinx.datetime.DateTimePeriod
+import org.hyacinthbots.discordmoderationactions.annotations.ActionBuilderDSL
 
 @ActionBuilderDSL
 public open class SoftBanActionBuilder : BanActionBuilder() {
