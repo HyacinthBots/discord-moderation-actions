@@ -14,7 +14,7 @@ jobs:
         uses: gradle/gradle-build-action@v2
 
         with:
-          arguments: clean apiCheck -x build
+          arguments: clean apiCheck -x build detekt checkLicences
           gradle-home-cache-cleanup: true
 
   build:
@@ -68,6 +68,6 @@ jobs:
       - name: Publish with Gradle
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: build publish -x test
+          arguments: build publish -x test detekt checkLicences apiCheck
           gradle-home-cache-cleanup: true
 
