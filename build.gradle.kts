@@ -40,7 +40,7 @@ plugins {
 }
 
 group = "org.hyacinthbots"
-version = "0.1.0"
+version = "0.2.0"
 val javaVersion = 17
 
 repositories {
