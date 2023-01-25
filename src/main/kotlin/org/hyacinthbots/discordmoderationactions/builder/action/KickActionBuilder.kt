@@ -11,6 +11,7 @@ package org.hyacinthbots.discordmoderationactions.builder.action
 
 import dev.kord.core.entity.channel.GuildMessageChannel
 import dev.kord.rest.builder.message.EmbedBuilder
+import dev.kord.rest.builder.message.create.UserMessageCreateBuilder
 import org.hyacinthbots.discordmoderationactions.annotations.ActionBuilderDSL
 import org.hyacinthbots.discordmoderationactions.builder.Action
 import org.hyacinthbots.discordmoderationactions.enums.DmResult
@@ -56,8 +57,8 @@ public open class KickActionBuilder : Action {
 	public override var dmEmbedBuilder: (suspend EmbedBuilder.() -> Unit)? = null
 
 	/** @suppress Builder that shouldn't be set directly by the user. */
-	public override var actionEmbedBuilder: (suspend EmbedBuilder.() -> Unit)? = null
+	public override var actionEmbedBuilder: (suspend UserMessageCreateBuilder.() -> Unit)? = null
 
 	/** @suppress Builder that shouldn't be set directly by the user. */
-	public override var publicActionEmbedBuilder: (suspend EmbedBuilder.() -> Unit)? = null
+	public override var publicActionEmbedBuilder: (suspend UserMessageCreateBuilder.() -> Unit)? = null
 }

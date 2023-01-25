@@ -21,6 +21,7 @@ import dev.kord.core.behavior.channel.createMessage
 import dev.kord.core.behavior.edit
 import dev.kord.core.entity.User
 import dev.kord.rest.builder.message.EmbedBuilder
+import dev.kord.rest.builder.message.create.UserMessageCreateBuilder
 import org.hyacinthbots.discordmoderationactions.builder.actionLogger
 import org.hyacinthbots.discordmoderationactions.enums.DmResult
 import org.hyacinthbots.discordmoderationactions.enums.PrivateLogResult
@@ -71,19 +72,20 @@ internal suspend inline fun SlashCommandContext<*, *, *>.sendDm(
  * Sends a public log to the channel the command was run it, and returns the [PublicLogResult].
  *
  * @param shouldLog Whether to send a log or not
- * @param publicLogEmbedBuilder The builder for the embed to send
+ * @param publicLogMessageBuilder The builder for the message to send
  *
  * @return [PublicLogResult] ordinal based on the success
  */
 internal suspend inline fun SlashCommandContext<*, *, *>.sendPublicLog(
 	shouldLog: Boolean?,
-	noinline publicLogEmbedBuilder: (suspend EmbedBuilder.() -> Unit)?
+	noinline publicLogMessageBuilder: (suspend UserMessageCreateBuilder.() -> Unit)?
 ): PublicLogResult =
-	if (shouldLog == true && publicLogEmbedBuilder != null) {
+	if (shouldLog == true && publicLogMessageBuilder != null) {
 		try {
-			channel.createMessage {
-				embeds.add(EmbedBuilder().applyBuilder(publicLogEmbedBuilder))
-			}
+// 			channel.createMessage {
+// 				publicLogMessageBuilder.invoke(UserMessageCreateBuilder())
+// 			}
+			channel.createMessage { publicLogMessageBuilder() }
 			PublicLogResult.PUBLIC_LOG_SUCCESS
 		} catch (e: Exception) {
 			actionLogger.error(e) { e.message }
@@ -99,7 +101,7 @@ internal suspend inline fun SlashCommandContext<*, *, *>.sendPublicLog(
  * @param shouldLog Whether to send a log or not
  * @param channel The channel to send the message in
  * @param hasLogChannelPerms Whether the bot has log channel perms or not
- * @param actionEmbedBuilder The builder for the embed to send
+ * @param actionMessageBuilder The builder for the embed to send
  *
  * @return [PrivateLogResult] ordinal based on the success
  */
@@ -107,13 +109,11 @@ internal suspend inline fun sendPrivateLog(
 	shouldLog: Boolean?,
 	channel: MessageChannelBehavior?,
 	hasLogChannelPerms: Boolean?,
-	noinline actionEmbedBuilder: (suspend EmbedBuilder.() -> Unit)?
+	noinline actionMessageBuilder: (suspend UserMessageCreateBuilder.() -> Unit)?
 ): PrivateLogResult =
-	if (shouldLog == true && actionEmbedBuilder != null && channel != null && hasLogChannelPerms != false) {
+	if (shouldLog == true && actionMessageBuilder != null && channel != null && hasLogChannelPerms != false) {
 		try {
-			channel.createMessage {
-				embeds.add(EmbedBuilder().applyBuilder(actionEmbedBuilder))
-			}
+			channel.createMessage { actionMessageBuilder() }
 			PrivateLogResult.LOG_SUCCESS
 		} catch (e: Exception) {
 			actionLogger.error(e) { e.message }

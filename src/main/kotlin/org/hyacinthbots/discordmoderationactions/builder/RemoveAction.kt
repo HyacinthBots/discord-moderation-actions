@@ -11,6 +11,7 @@ package org.hyacinthbots.discordmoderationactions.builder
 
 import dev.kord.core.entity.channel.GuildMessageChannel
 import dev.kord.rest.builder.message.EmbedBuilder
+import dev.kord.rest.builder.message.create.UserMessageCreateBuilder
 import org.hyacinthbots.discordmoderationactions.annotations.ActionBuilderDSL
 import org.hyacinthbots.discordmoderationactions.enums.PrivateLogResult
 
@@ -26,7 +27,7 @@ public interface RemoveAction {
 
 	public var hasLogChannelPerms: Boolean?
 
-	public var actionEmbedBuilder: (suspend EmbedBuilder.() -> Unit)?
+	public var actionEmbedBuilder: (suspend UserMessageCreateBuilder.() -> Unit)?
 
 	/**
 	 * DSL function used to configure the private log embed.
@@ -34,7 +35,7 @@ public interface RemoveAction {
 	 * @see EmbedBuilder
 	 */
 	@ActionBuilderDSL
-	public fun actionEmbed(builder: suspend EmbedBuilder.() -> Unit) {
+	public fun actionEmbed(builder: suspend UserMessageCreateBuilder.() -> Unit) {
 		actionEmbedBuilder = builder
 	}
 }

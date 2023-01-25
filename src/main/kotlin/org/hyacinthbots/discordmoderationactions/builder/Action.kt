@@ -11,6 +11,7 @@ package org.hyacinthbots.discordmoderationactions.builder
 
 import dev.kord.core.entity.channel.GuildMessageChannel
 import dev.kord.rest.builder.message.EmbedBuilder
+import dev.kord.rest.builder.message.create.UserMessageCreateBuilder
 import org.hyacinthbots.discordmoderationactions.annotations.ActionBuilderDSL
 import org.hyacinthbots.discordmoderationactions.enums.DmResult
 import org.hyacinthbots.discordmoderationactions.enums.PrivateLogResult
@@ -41,9 +42,9 @@ public interface Action {
 
 	public var dmEmbedBuilder: (suspend EmbedBuilder.() -> Unit)?
 
-	public var actionEmbedBuilder: (suspend EmbedBuilder.() -> Unit)?
+	public var actionEmbedBuilder: (suspend UserMessageCreateBuilder.() -> Unit)?
 
-	public var publicActionEmbedBuilder: (suspend EmbedBuilder.() -> Unit)?
+	public var publicActionEmbedBuilder: (suspend UserMessageCreateBuilder.() -> Unit)?
 
 	/**
 	 * DSL function used to configure the DM embed.
@@ -61,7 +62,7 @@ public interface Action {
 	 * @see EmbedBuilder
 	 */
 	@ActionBuilderDSL
-	public fun actionEmbed(builder: suspend EmbedBuilder.() -> Unit) {
+	public fun actionEmbed(builder: suspend UserMessageCreateBuilder.() -> Unit) {
 		actionEmbedBuilder = builder
 	}
 
@@ -71,7 +72,7 @@ public interface Action {
 	 * @see EmbedBuilder
 	 */
 	@ActionBuilderDSL
-	public fun publicActionEmbed(builder: suspend EmbedBuilder.() -> Unit) {
+	public fun publicActionEmbed(builder: suspend UserMessageCreateBuilder.() -> Unit) {
 		publicActionEmbedBuilder = builder
 	}
 }
