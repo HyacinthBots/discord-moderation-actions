@@ -4,7 +4,7 @@ object Meta {
     const val description =
         "Create moderation actions with ease, reduce code duplication and making things easy in KordEx discord bots"
     const val githubRepo = "HyacinthBots/discord-moderation-actions"
-    const val release = "https://s01.oss.sonatype.org/service/local/"
+    const val release = "https://s01.oss.sonatype.org/content/repositories/releases/"
     const val snapshot = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
 
     val version: String
