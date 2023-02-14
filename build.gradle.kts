@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 object Meta {
@@ -47,12 +49,12 @@ repositories {
     mavenCentral()
 
     maven {
-        name = "Kotlin Discord"
-        url = uri("https://maven.kotlindiscord.com/repository/maven-public/")
+        name = "Sonatype Snapshots"
+        url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots")
     }
 
     maven {
-        name = "Sonatype Snapshots"
+        name = "Sonatype Snapshots (Legacy)"
         url = uri("https://oss.sonatype.org/content/repositories/snapshots")
     }
 }
@@ -74,29 +76,21 @@ gitHooks {
 
 kotlin {
     explicitApi()
+	jvmToolchain(javaVersion)
 }
 
 java {
-    sourceCompatibility = JavaVersion.toVersion(javaVersion)
-    targetCompatibility = JavaVersion.toVersion(javaVersion)
-
     withJavadocJar()
     withSourcesJar()
 }
 
-if (JavaVersion.current() < JavaVersion.toVersion(javaVersion)) {
-    kotlin.jvmToolchain(javaVersion)
-}
-
 tasks {
     withType<KotlinCompile> {
-        kotlinOptions {
-            jvmTarget = javaVersion.toString()
-            languageVersion = libs.plugins.kotlin.get().version.requiredVersion.substringBeforeLast(".")
+        compilerOptions {
+            jvmTarget.set(JvmTarget.fromTarget(javaVersion.toString()))
+            languageVersion.set(KotlinVersion.fromVersion(libs.plugins.kotlin.get().version.requiredVersion.substringBeforeLast(".")))
             incremental = true
-            freeCompilerArgs = freeCompilerArgs + listOf(
-                "-opt-in=kotlin.RequiresOptIn"
-            )
+            freeCompilerArgs.add("-opt-in=kotlin.RequiresOptIn")
         }
     }
 
