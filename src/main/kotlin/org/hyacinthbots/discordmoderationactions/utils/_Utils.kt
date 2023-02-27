@@ -82,9 +82,6 @@ internal suspend inline fun SlashCommandContext<*, *, *>.sendPublicLog(
 ): PublicLogResult =
 	if (shouldLog == true && publicLogMessageBuilder != null) {
 		try {
-// 			channel.createMessage {
-// 				publicLogMessageBuilder.invoke(UserMessageCreateBuilder())
-// 			}
 			channel.createMessage { publicLogMessageBuilder() }
 			PublicLogResult.PUBLIC_LOG_SUCCESS
 		} catch (e: Exception) {
