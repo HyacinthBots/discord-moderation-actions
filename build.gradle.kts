@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 object Meta {
+	const val projectVersion = "0.2.0"
     const val description =
         "Create moderation actions with ease, reduce code duplication and making things easy in KordEx discord bots"
     const val githubRepo = "HyacinthBots/discord-moderation-actions"
@@ -16,7 +17,7 @@ object Meta {
             return when {
                 !tag.isNullOrBlank() -> tag
                 !branch.isNullOrBlank() && branch.startsWith("refs/heads/") ->
-                    branch.substringAfter("refs/heads/").replace("/", "-") + "-SNAPSHOT"
+					"$projectVersion-SNAPSHOT"
 
                 else -> "undefined"
             }
@@ -42,7 +43,7 @@ plugins {
 }
 
 group = "org.hyacinthbots"
-version = "0.2.0"
+version = Meta.projectVersion
 val javaVersion = 17
 
 repositories {
