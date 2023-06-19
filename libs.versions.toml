@@ -1,14 +1,14 @@
 [versions]
-kotlin = "1.8.10"
-kordex = "1.5.7-20230412.093301-8"
+kotlin = "1.8.22"
+kordex = "1.5.8-20230618.092018-1"
 
-detekt = "1.22.0"
+detekt = "1.23.0"
 logging = "3.0.5"
-logback = "1.4.6"
+logback = "1.4.7"
 
 git-hooks = "0.0.2"
 licenser = "0.6.1"
-bin-compat = "0.13.0"
+bin-compat = "0.13.2"
 
 [libraries]
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8" }

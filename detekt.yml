@@ -209,7 +209,6 @@ naming:
     active: true
     functionPattern: '^([a-z$][a-zA-Z$0-9]*)|(`.*`)$'
     excludeClassPattern: '$^'
-    ignoreOverridden: true
   InvalidPackageDeclaration:
     active: true
     rootPackage: 'org.HyacinthBots'
@@ -281,7 +280,7 @@ style:
     includeLineWrapping: true
   ForbiddenComment:
     active: false
-    values: ['TODO:', 'FIXME:', 'STOPSHIP:']
+    comments: ['TODO:', 'FIXME:', 'STOPSHIP:']
     allowedPatterns: ''
   ForbiddenImport:
     active: false
@@ -308,8 +307,6 @@ style:
     ignoreNamedArgument: true
     ignoreEnums: true
     ignoreRanges: false
-  MandatoryBracesIfStatements:
-    active: true
   MandatoryBracesLoops:
     active: true
   OptionalUnit:
