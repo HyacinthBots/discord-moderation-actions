@@ -17,9 +17,11 @@ import com.kotlindiscord.kord.extensions.utils.dm
 import com.kotlindiscord.kord.extensions.utils.timeoutUntil
 import dev.kord.common.entity.Snowflake
 import dev.kord.core.behavior.channel.MessageChannelBehavior
+import dev.kord.core.behavior.channel.asChannelOf
 import dev.kord.core.behavior.channel.createMessage
 import dev.kord.core.behavior.edit
 import dev.kord.core.entity.User
+import dev.kord.core.entity.channel.GuildMessageChannel
 import dev.kord.rest.builder.message.EmbedBuilder
 import dev.kord.rest.builder.message.create.UserMessageCreateBuilder
 import org.hyacinthbots.discordmoderationactions.builder.actionLogger
@@ -60,8 +62,15 @@ internal suspend inline fun SlashCommandContext<*, *, *>.sendDm(
 	noinline dmEmbedBuilder: (suspend EmbedBuilder.() -> Unit)?
 ): DmResult =
 	if (shouldDm && dmEmbedBuilder != null) {
-		val dm = event.kord.getUser(targetUserId)?.dm {
-			embeds.add(EmbedBuilder().applyBuilder(dmEmbedBuilder))
+		val member = event.kord.getGuild(
+			event.interaction.getChannel().asChannelOf<GuildMessageChannel>().guildId
+		).getMemberOrNull(targetUserId)
+		val dm = if (member != null) {
+			event.kord.getUser(targetUserId)?.dm {
+				embeds.add(EmbedBuilder().applyBuilder(dmEmbedBuilder))
+			}
+		} else {
+			null
 		}
 		if (dm == null) DmResult.DM_FAIL else DmResult.DM_SUCCESS
 	} else {
