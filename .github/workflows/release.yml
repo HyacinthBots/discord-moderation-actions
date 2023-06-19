@@ -6,21 +6,16 @@ on:
       - published
 
 jobs:
-  check-api:
+  release:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Check API
-        uses: gradle/gradle-build-action@v2
-
-        with:
-          arguments: clean apiCheck -x build detekt checkLicenses
-          gradle-home-cache-cleanup: true
-
-  build:
-    needs: check-api
-    runs-on: ubuntu-latest
-
+    env:
+      NEXUS_USER: ${{ secrets.NEXUS_USER }}
+      NEXUS_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
+      GPG_SIGNING_KEY: ${{ secrets.GPG_SIGNING_KEY }}
+      GPG_SIGNING_PASS: ${{ secrets.GPG_SIGNING_PASS }}
+      GITHUB_BRANCH_NAME: ${{ github.ref }}
+      GITHUB_TAG_NAME: ${{ github.event.release.tag_name }}
+      ACTIONS_ALLOW_UNSECURE_COMMANDS: true
     steps:
       - name: Checkout sources
         uses: actions/checkout@v3
@@ -35,6 +30,14 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
+      - uses: actions/checkout@v3
+      - name: Check API
+        uses: gradle/gradle-build-action@v2
+
+        with:
+          arguments: clean apiCheck -x build detekt checkLicenses
+          gradle-home-cache-cleanup: true
+
       - name: Build Artifacts
         uses: gradle/gradle-build-action@v2
         with:
@@ -46,24 +49,6 @@ jobs:
         with:
           files: 'build/libs/*.jar'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-
-  publish:
-    needs: build
-    runs-on: ubuntu-latest
-
-    env:
-      NEXUS_USER: ${{ secrets.NEXUS_USER }}
-      NEXUS_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
-      GPG_SIGNING_KEY: ${{ secrets.GPG_SIGNING_KEY }}
-      GPG_SIGNING_PASS: ${{ secrets.GPG_SIGNING_PASS }}
-      GITHUB_BRANCH_NAME: ${{ github.ref }}
-      GITHUB_TAG_NAME: ${{ github.event.release.tag_name }}
-      ACTIONS_ALLOW_UNSECURE_COMMANDS: true
-
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
 
       - name: Publish with Gradle
         uses: gradle/gradle-build-action@v2
