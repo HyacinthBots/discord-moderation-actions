@@ -67,7 +67,13 @@ internal suspend inline fun SlashCommandContext<*, *, *>.sendDm(
 		).getMemberOrNull(targetUserId)
 		val dm = if (member != null) {
 			event.kord.getUser(targetUserId)?.dm {
-				embeds?.add(EmbedBuilder().applyBuilder(dmEmbedBuilder))
+				val embed = EmbedBuilder().applyBuilder(dmEmbedBuilder)
+				// Cannot flatten because compiler rules are annoying
+				if (embeds?.add(embed) != null) {
+					embeds?.add(embed)
+				} else {
+					embeds = mutableListOf(embed)
+				}
 			}
 		} else {
 			null
@@ -129,11 +135,11 @@ internal suspend inline fun sendPrivateLog(
 		PrivateLogResult.LOG_NOT_SENT
 	}
 
-@OptIn(ExperimentalContracts::class)
-public suspend inline fun <T> T.applyBuilder(crossinline block: suspend T.() -> Unit): T {
-	contract {
-		callsInPlace(block, InvocationKind.EXACTLY_ONCE)
-	}
-	block()
-	return this
-}
+ @OptIn(ExperimentalContracts::class)
+ public suspend inline fun <T> T.applyBuilder(crossinline block: suspend T.() -> Unit): T {
+ 	contract {
+ 		callsInPlace(block, InvocationKind.EXACTLY_ONCE)
+ 	}
+ 	block()
+ 	return this
+ }
