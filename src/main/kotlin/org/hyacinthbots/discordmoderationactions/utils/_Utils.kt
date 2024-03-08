@@ -67,7 +67,7 @@ internal suspend inline fun SlashCommandContext<*, *, *>.sendDm(
 		).getMemberOrNull(targetUserId)
 		val dm = if (member != null) {
 			event.kord.getUser(targetUserId)?.dm {
-				embeds.add(EmbedBuilder().applyBuilder(dmEmbedBuilder))
+				embeds?.add(EmbedBuilder().applyBuilder(dmEmbedBuilder))
 			}
 		} else {
 			null

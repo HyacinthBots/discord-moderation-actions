@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 object Meta {
-	const val projectVersion = "0.2.1"
+	const val projectVersion = "0.2.2"
     const val description =
         "Create moderation actions with ease, reduce code duplication and making things easy in KordEx discord bots"
     const val githubRepo = "HyacinthBots/discord-moderation-actions"

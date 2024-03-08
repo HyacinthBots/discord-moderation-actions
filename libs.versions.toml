@@ -1,21 +1,21 @@
 [versions]
-kotlin = "1.8.22"
-kordex = "1.5.8-20230618.092018-1"
+kotlin = "1.9.22"
+kordex = "1.8.0-20240228.171743-12"
 
-detekt = "1.23.0"
-logging = "3.0.5"
-logback = "1.4.7"
+detekt = "1.23.5"
+logging = "6.0.3"
+logback = "1.5.0"
 
 git-hooks = "0.0.2"
 licenser = "0.6.1"
-bin-compat = "0.13.2"
+bin-compat = "0.14.0"
 
 [libraries]
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8" }
 detekt = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
 kordex = { module = "com.kotlindiscord.kord.extensions:kord-extensions", version.ref = "kordex" }
 logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
-logging = { module = "io.github.microutils:kotlin-logging", version.ref = "logging" }
+logging = { module = "io.github.oshai:kotlin-logging", version.ref = "logging" }
 
 [plugins]
 kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }

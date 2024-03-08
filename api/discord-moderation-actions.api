@@ -238,6 +238,7 @@ public final class org/hyacinthbots/discordmoderationactions/enums/ActionResults
 	public static final field ACTION_FAIL Lorg/hyacinthbots/discordmoderationactions/enums/ActionResults;
 	public static final field ACTION_SUCCESS Lorg/hyacinthbots/discordmoderationactions/enums/ActionResults;
 	public static final field NULL_GUILD Lorg/hyacinthbots/discordmoderationactions/enums/ActionResults;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
 	public final fun getMessage ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/hyacinthbots/discordmoderationactions/enums/ActionResults;
 	public static fun values ()[Lorg/hyacinthbots/discordmoderationactions/enums/ActionResults;
@@ -247,6 +248,7 @@ public final class org/hyacinthbots/discordmoderationactions/enums/DmResult : ja
 	public static final field DM_FAIL Lorg/hyacinthbots/discordmoderationactions/enums/DmResult;
 	public static final field DM_NOT_SENT Lorg/hyacinthbots/discordmoderationactions/enums/DmResult;
 	public static final field DM_SUCCESS Lorg/hyacinthbots/discordmoderationactions/enums/DmResult;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
 	public final fun getMessage ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/hyacinthbots/discordmoderationactions/enums/DmResult;
 	public static fun values ()[Lorg/hyacinthbots/discordmoderationactions/enums/DmResult;
@@ -256,6 +258,7 @@ public final class org/hyacinthbots/discordmoderationactions/enums/PrivateLogRes
 	public static final field LOG_FAIL Lorg/hyacinthbots/discordmoderationactions/enums/PrivateLogResult;
 	public static final field LOG_NOT_SENT Lorg/hyacinthbots/discordmoderationactions/enums/PrivateLogResult;
 	public static final field LOG_SUCCESS Lorg/hyacinthbots/discordmoderationactions/enums/PrivateLogResult;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
 	public final fun getMessage ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/hyacinthbots/discordmoderationactions/enums/PrivateLogResult;
 	public static fun values ()[Lorg/hyacinthbots/discordmoderationactions/enums/PrivateLogResult;
@@ -265,6 +268,7 @@ public final class org/hyacinthbots/discordmoderationactions/enums/PublicLogResu
 	public static final field PUBLIC_LOG_FAIL Lorg/hyacinthbots/discordmoderationactions/enums/PublicLogResult;
 	public static final field PUBLIC_LOG_NOT_SENT Lorg/hyacinthbots/discordmoderationactions/enums/PublicLogResult;
 	public static final field PUBLIC_LOG_SUCCESS Lorg/hyacinthbots/discordmoderationactions/enums/PublicLogResult;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
 	public final fun getMessage ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/hyacinthbots/discordmoderationactions/enums/PublicLogResult;
 	public static fun values ()[Lorg/hyacinthbots/discordmoderationactions/enums/PublicLogResult;
