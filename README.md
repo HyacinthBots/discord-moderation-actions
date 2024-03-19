@@ -1,3 +1,5 @@
+### :warning: This project is archived. It proved too much of a development burden, which was the opposite of what it set out to achieve. There will be no future updates to this project. :warning:
+
 # Discord Moderator Actions
 
 WIP Library for the Kord(Ex) Discord Libraries that provides a single DSL that will execute the moderation action, dm
